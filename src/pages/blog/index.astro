@@ -25,6 +25,7 @@ const posts = (await getCollection('blog')).sort(
 				flex-direction: column;
 				width: 80%; /* You may adjust this as needed */
 				margin: 0 auto;
+				margin-top: 5%;
 				padding: 3em 1em;
 			}
 			ul {
@@ -82,11 +83,14 @@ const posts = (await getCollection('blog')).sort(
 					font-size: 0.85rem;
 					
 				}
+			 }
 			@media (max-width: 600px) {
 				ul {
-					columns: 100vw 1;
+					/* column-width: 100% !important;
+					column-count: 1 !important; */
+					columns: 1;
 				}
-			} 
+			}
 		</style>
 		</style>
 		</style>
