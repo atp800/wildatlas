@@ -70,18 +70,18 @@ const posts = (await getCollection('blog')).sort(
 				margin: 0;
 			}
 			/* Media queries */
-			 @media (min-width: 1000px) {
+			 @media (min-width: 1500px) {
 				ul {
 					columns: 3;
 				}
-			}
-			/*
-			@media (max-width: 1000px) {
-				ul {
-					columns: 50vw 2; 
+				.post-title {
+				font-size: 1rem;
+				margin: 0;
 				}
-			}
-			*/
+				.post-date {
+					font-size: 0.85rem;
+					
+				}
 			@media (max-width: 600px) {
 				ul {
 					columns: 100vw 1;
