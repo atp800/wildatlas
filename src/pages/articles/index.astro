@@ -1,0 +1,56 @@
+---
+// Importing components and utilities
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+
+// Importing the content
+import { MarkdownInstance } from 'astro';
+import { promises as fs } from 'fs';
+const allPosts = import.meta.glob('../../content/blog/*.md', { eager: true });
+
+async function getPosts() {
+    let paths = Object.keys(allPosts);
+    let posts = await Promise.all(paths.map(async (path) => {
+        let { frontmatter } = allPosts[path] as MarkdownInstance<Record<string, any>>;
+        let urlPath = path.replace(/.*[\/\\](.*?).md$/, '/blog/$1');
+        return { ...frontmatter, url: urlPath };
+    }));
+    // Sort posts by date if you have a date field in the frontmatter
+    posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+    return posts;
+}
+
+const posts = await getPosts();
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <BaseHead title={`${SITE_TITLE} | Blog`} />
+    <style>
+        /* Add your styles here */
+        .blog-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .post-card {
+            /* Style for each post card */
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-feed">
+        {posts.map(post => (
+            <a href={post.url} class="post-card">
+                <img src={post.image} alt={post.title} />
+                <h3>{post.title}</h3>
+                <p>{post.date}</p>
+            </a>
+        ))}
+    </div>
+    <Footer />
+</body>
+</html>

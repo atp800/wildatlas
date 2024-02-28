@@ -1,0 +1,7 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "editor.defaultFormatter": "AstroBuild.astro-vscode",
+    "typescript.validate.enable": false,
+    "javascript.validate.enable": false
+
+}
