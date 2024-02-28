@@ -1,0 +1,15 @@
+---
+title: "Template"
+slug: "template"
+image: "/pages/blog/images/template-image.jpg"
+description: "Description"
+topic: "cambodia"
+tags: "se asia,cambodia,backpacking"
+author: "Andreas"
+views: "0"
+status: "draft"
+created_at: "2024-02-27"
+updated_at: "2024-02-27"
+deleted_at: "null"
+published_at: "null"
+---
