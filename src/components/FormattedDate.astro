@@ -1,17 +1,20 @@
 ---
 interface Props {
-	date: Date;
+  date: Date | null;
 }
 
 const { date } = Astro.props;
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+<!-- Check if date is not null -->
+<time if:date datetime={date ? date.toISOString() : undefined}>
+  {
+    date
+      ? date.toLocaleDateString('en-UK', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        })
+      : 'No Date'
+  }
 </time>

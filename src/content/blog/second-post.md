@@ -1,7 +1,7 @@
 ---
 title: "2"
 # slug: "template"
-image: '/blog-placeholder-4.jpg'
+image: '/blog/blog-placeholder-4.jpg'
 description: "Short description for hovering and search results"
 section: "blog"
 topic: "cambodia"

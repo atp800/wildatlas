@@ -1,8 +1,18 @@
 ---
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
-pubDate: 'Jul 01 2022'
-image: '/blog-placeholder-1.jpg'
+title: "Style Guide"
+# slug: "template"
+image: "/blog/blog-placeholder-2.jpg"
+description: "Short description for hovering and search results"
+section: "blog"
+topic: "cambodia"
+tags: "se asia,cambodia,backpacking"
+author: "Andreas"
+views: "0"
+status: "draft"
+created_at: "2024-02-27"
+published_at: "null"
+updated_at: "2024-02-27"
+deleted_at: "null"
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

@@ -10,7 +10,7 @@ author: "Andreas"
 views: "0"
 status: "draft"
 created_at: "2024-02-27"
-published_at: "null"
+published_at: "2024-02-27"
 updated_at: "2024-02-27"
 deleted_at: "null"
 ---
