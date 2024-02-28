@@ -65,15 +65,21 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			position: fixed; /* Fixed position */
 			top: 0; right: 0; /* Positioning */
 			background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
-			width: 200px; /* Width of the sidebar */
-			height: 100vh; /* Full height */
+			width: 150px; /* Width of the sidebar */
+			/* height: 390px; */
+			/* height: 91vh; */
+			height: 95.2vh;
 			justify-content: flex-start; /* Align links to the top */
-			padding-top: 60px; /* Space for the menu icon */
+			padding-top: 50px; /* Space for the menu icon */
+			margin-right: 0;
+			margin-top: 0;
+			border-radius: 15px 0px 0px 15px; /* Rounded corners on the bottom-left */
 		}
 		.top-right-nav a {
 		margin-left: 0px; /* Space between links */
-		margin-top: 20px;
+		margin-top: 30px;
 		text-decoration: none;
+		padding: 0 10px; /* Padding around links for better touch targets on touchscreens */
 		color: white; /* Adjust if needed to ensure visibility */
 		}
 	}
