@@ -25,6 +25,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       justify-content: space-between;
       position: relative; /* Allows absolute positioning within */
     }
+	.menu-icon {
+		display: none; /* Hide by default */
+		font-size: 30px;
+		color: white;
+		background: none;
+		border: none;
+		cursor: pointer;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		z-index: 1000;
+	}
     .top-right-nav {
       position: absolute;
       top: 0;
@@ -36,12 +48,35 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       display: flex;
       align-items: center;
       justify-content: flex-end;
+	  z-index: 500;
     }
-    .top-right-nav a {
-      margin-left: 40px; /* Space between links */
-      text-decoration: none;
-      color: white; /* Adjust if needed to ensure visibility */
-    }
+	.top-right-nav a {
+		margin-left: 40px; /* Space between links */
+		text-decoration: none;
+		color: white; /* Adjust if needed to ensure visibility */
+	}
+	@media (max-width: 768px) {
+		.menu-icon {
+			display: block; /* Show menu icon */
+		}
+		.top-right-nav {
+			display: none; /* Hide navigation links */
+			flex-direction: column; /* Stack the links vertically */
+			position: fixed; /* Fixed position */
+			top: 0; right: 0; /* Positioning */
+			background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
+			width: 200px; /* Width of the sidebar */
+			height: 100vh; /* Full height */
+			justify-content: flex-start; /* Align links to the top */
+			padding-top: 60px; /* Space for the menu icon */
+		}
+		.top-right-nav a {
+		margin-left: 0px; /* Space between links */
+		margin-top: 20px;
+		text-decoration: none;
+		color: white; /* Adjust if needed to ensure visibility */
+		}
+	}
     .overlay {
       background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
       color: white;
@@ -76,16 +111,21 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <body>
 	
   <div class="hero-image">
+
+	<!-- Logo -->
 	<div class="logo-container">
-        <!-- Replace 'path_to_your_logo.png' with your actual logo path -->
         <a href="/"><img src="/atlas2.png" alt="Logo" /></a>
     </div>
+	<!-- Menu Icon -->
+    <button class="menu-icon" aria-label="Open navigation menu">
+        ☰
+    </button>
+	<!-- Navigation -->
     <nav class="top-right-nav">
-        <!-- Ensure the href attributes point to the right routes -->
         <a href="/blog">BLOG</a> 
-        <a href="/reviews">TRAVEL TIPS</a> 
+        <a href="/travel">TRAVEL TIPS</a> 
         <a href="/articles">ARTICLES</a> 
-        <a href="/travel">REVIEWS</a> 
+        <a href="/reviews">REVIEWS</a> 
         <a href="/about">ABOUT</a>
     </nav>
     <div class="overlay">
@@ -96,5 +136,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   </div>
 
   <Footer />
+
+  <script>
+	document.addEventListener('DOMContentLoaded', () => {
+	  const menuIcon = document.querySelector('.menu-icon');
+	  const topRightNav = document.querySelector('.top-right-nav');
+  
+	  // Type assertion to HTMLElement
+	  if (menuIcon instanceof HTMLElement && topRightNav instanceof HTMLElement) {
+		menuIcon.addEventListener('click', () => {
+		  if (topRightNav.style.display === 'flex') {
+			topRightNav.style.display = 'none';
+		  } else {
+			topRightNav.style.display = 'flex';
+		  }
+		});
+	  }
+	});
+  </script>
 </body>
 </html>
