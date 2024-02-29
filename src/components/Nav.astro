@@ -48,21 +48,21 @@
             flex-direction: column; /* Stack the links vertically */
             position: fixed; /* Fixed position */
             top: 0; right: 0; /* Positioning */
-            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
+            background-color: rgba(255, 255, 255, 1); /* set last value (alpha) as 0.9 for semi-transparent background */
             width: 150px;
-            height: 95.3vh;
+            height: 100vh; /* set as 95.3vh to just touch bottom of screen and show bottom rounded corner*/
             justify-content: flex-start; /* Align links to the top */
             padding-top: 50px; /* Space for the menu icon */
             margin-right: 0;
             margin-top: 0;
-            border-radius: 15px 0px 0px 15px; /* Rounded corners on the bottom-left */
+            border-radius: 0px 0px 0px 0px; /* set first and last values as 15px for rounded corners on the bottom-left */
         }
         .top-right-nav a {
             margin-left: 0px; /* Space between links */
             margin-top: 30px;
             text-decoration: none;
             padding: 0 10px; /* Padding around links for better touch targets on touchscreens */
-            color: white; /* Adjust if needed to ensure visibility */
+            color: black; /* Adjust if needed to ensure visibility */
         }
     }  
 </style>
