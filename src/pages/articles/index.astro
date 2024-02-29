@@ -1,56 +1,92 @@
 ---
-// Importing components and utilities
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
-import { SITE_TITLE } from '../../consts';
+import Nav from '../../components/Nav.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
 
-// Importing the content
-import { MarkdownInstance } from 'astro';
-import { promises as fs } from 'fs';
-const allPosts = import.meta.glob('../../content/blog/*.md', { eager: true });
-
-async function getPosts() {
-    let paths = Object.keys(allPosts);
-    let posts = await Promise.all(paths.map(async (path) => {
-        let { frontmatter } = allPosts[path] as MarkdownInstance<Record<string, any>>;
-        let urlPath = path.replace(/.*[\/\\](.*?).md$/, '/blog/$1');
-        return { ...frontmatter, url: urlPath };
-    }));
-    // Sort posts by date if you have a date field in the frontmatter
-    posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
-    return posts;
-}
-
-const posts = await getPosts();
+const posts = (await getCollection('articles')).sort(
+	(a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf()
+);
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-    <BaseHead title={`${SITE_TITLE} | Blog`} />
-    <style>
-        /* Add your styles here */
-        .blog-feed {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .post-card {
-            /* Style for each post card */
-        }
-    </style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	<style>
+		main {
+			display: flex;
+			flex-direction: column;
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 5%;
+			padding: 3em 1em;
+		}
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr); /* 3 columns in large screens */
+			grid-gap: 1rem;
+			list-style: none;
+			padding: 0;
+		}
+		.grid li {
+			position: relative;
+			padding-top: 100%; /* This ensures that each item is a square */
+			overflow: hidden;
+		}
+		.grid li img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.post-title {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			text-align: center;
+			color: white;
+			font-size: 1rem;
+			z-index: 1;
+		}
+		/* Responsive grid columns */
+		@media (max-width: 900px) {
+			.grid {
+				grid-template-columns: repeat(2, 1fr); /* 2 columns in medium screens */
+			}
+		}
+		@media (max-width: 600px) {
+			.grid {
+				grid-template-columns: repeat(1, 1fr); /* 1 column in small screens */
+			}
+		}
+	</style>
 </head>
 <body>
-    <div class="blog-feed">
-        {posts.map(post => (
-            <a href={post.url} class="post-card">
-                <img src={post.image} alt={post.title} />
-                <h3>{post.title}</h3>
-                <p>{post.date}</p>
-            </a>
-        ))}
-    </div>
-    <Footer />
+	<Nav />
+	<main>
+		<section>
+			<ul class="grid">
+				{posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.slug}/`}>
+							<img src={post.data.image} alt="{post.data.title}" />
+							<div class="post-title">{post.data.title}</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</section>
+	</main>
+	<Footer />
 </body>
 </html>
