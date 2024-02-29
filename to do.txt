@@ -1,2 +1,45 @@
 HOMEPAGE
-- navigation bar is briefly visible when page is loaded and refreshed - website seems to be defaulting to displaying the menu, doing a window-size check or soemthing and then closing it. COuld be fixed by switching file to svelte for speed (could aslo be done with Nav.astro component) or by changing implementation
+- navigation bar is briefly visible when page is loaded and refreshed - website seems to be defaulting to displaying the menu, 
+doing a window-size check or soemthing and then closing it. COuld be fixed by switching file to svelte for speed 
+(could aslo be done with Nav.astro component) or by changing implementation
+
+
+BLOG
+- navigation links glitch slightly when the page is loaded/refreshed, 
+appearing right of where they should be before moving to their correct position
+
+
+REVIEWS/ARTICLES
+- instead of masonry layout, use verticle scrolling list, with lines that extend 
+partially across the screen (starting closer to the left and ending about 3/3 across the page) separating each post,
+an image on the far lef of each post section, text in bold for the title and then a description in slightly grey text
+- OR use normal grid with square images like wild atlas but not rounded, with centred text that fades to description
+- star ratings? add in metadataso they can be used as filters?
+
+Add colour for current page wuth slight fade transitions
+Turn menu icon into x while open
+Try solid white navigation page without rounded corners like along dusty roads
+Add slide in/out animation for menu - fast like along dusty roads
+
+
+ANALYTICS
+
+
+MONETISATION
+https://www.alongdustyroads.com/work-with-us/
+avoid ads? - stick to affiliate links, sponsorships, colabs and services?
+
+
+HOSTING
+- Heroku
+- Github pages
+- Firebase
+- Appliku
+- Render
+- does cloudflare have hosting?
+
+want free tier but reasonable progression once paid - heroku might have big jump, appliku or render seem better, not sure about github and Firebase
+
+
+
+TECH website- duplicate site, but with home page just for rounded squares with text at the top and an icon in the middle, each for a different serves, with an almost cartoony modern art style

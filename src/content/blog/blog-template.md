@@ -1,8 +1,8 @@
 ---
-title: "Template"
+title: "Mojave Desert"
 # slug: "template"
 image: "/blog/template-image.jpg"
-description: "Short description for hovering and search results"
+description: "Stopping in the Mojave Desert at the end of Spring Break in America"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

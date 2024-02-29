@@ -1,8 +1,8 @@
 ---
-title: "first"
+title: "Taormina"
 # slug: "template"
 image: '/blog/blog-placeholder-3.jpg'
-description: "Short description for hovering and search results"
+description: "Summer trip to Taormina with my mum"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

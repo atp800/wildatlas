@@ -1,8 +1,8 @@
 ---
-title: "Style Guide"
+title: "Yosemite"
 # slug: "template"
 image: "/blog/blog-placeholder-2.jpg"
-description: "Short description for hovering and search results"
+description: "Hking through Yosemite national park"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

@@ -1,8 +1,8 @@
 ---
-title: "third"
+title: "Devon in Winter"
 # slug: "template"
 image: '/blog/blog-placeholder-5.jpg'
-description: "Short description for hovering and search results"
+description: "Exploring Devonish towns and swimming in freezing seas"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

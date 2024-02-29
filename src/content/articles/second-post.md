@@ -1,8 +1,8 @@
 ---
-title: "2"
+title: "Lake Havasu"
 # slug: "template"
 image: '/blog/blog-placeholder-4.jpg'
-description: "Short description for hovering and search results"
+description: "Partying in Lake Havasu on Spring Break"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"
