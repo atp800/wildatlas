@@ -38,6 +38,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		z-index: 1000;
 	}
     .top-right-nav {
+      display: flex !important;
       position: absolute;
       top: 0;
       right: 0;
@@ -55,9 +56,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		text-decoration: none;
 		color: white; /* Adjust if needed to ensure visibility */
 	}
+	.hidden {
+    display: none !important;
+    }
+
 	@media (max-width: 768px) {
 		.menu-icon {
 			display: block; /* Show menu icon */
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
 		}
 		.top-right-nav {
 			display: none; /* Hide navigation links */
@@ -66,8 +75,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			top: 0; right: 0; /* Positioning */
 			background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
 			width: 150px; /* Width of the sidebar */
-			/* height: 390px; */
-			/* height: 91vh; */
 			height: 95.2vh;
 			justify-content: flex-start; /* Align links to the top */
 			padding-top: 50px; /* Space for the menu icon */
@@ -76,11 +83,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			border-radius: 15px 0px 0px 15px; /* Rounded corners on the bottom-left */
 		}
 		.top-right-nav a {
-		margin-left: 0px; /* Space between links */
-		margin-top: 30px;
-		text-decoration: none;
-		padding: 0 10px; /* Padding around links for better touch targets on touchscreens */
-		color: white; /* Adjust if needed to ensure visibility */
+			margin-left: 0px; /* Space between links */
+			margin-top: 30px;
+			text-decoration: none;
+			padding: 0 10px; /* Padding around links for better touch targets on touchscreens */
+			color: white; /* Adjust if needed to ensure visibility */
 		}
 	}
     .overlay {
@@ -145,20 +152,34 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
   <script>
 	document.addEventListener('DOMContentLoaded', () => {
-	  const menuIcon = document.querySelector('.menu-icon');
-	  const topRightNav = document.querySelector('.top-right-nav');
-  
-	  // Type assertion to HTMLElement
-	  if (menuIcon instanceof HTMLElement && topRightNav instanceof HTMLElement) {
-		menuIcon.addEventListener('click', () => {
-		  if (topRightNav.style.display === 'flex') {
-			topRightNav.style.display = 'none';
-		  } else {
-			topRightNav.style.display = 'flex';
-		  }
-		});
-	  }
-	});
+        const menuIcon = document.querySelector('.menu-icon');
+        const topRightNav = document.querySelector('.top-right-nav');
+
+        // Function to toggle the top-right navigation
+        function toggleNavigation() {
+            topRightNav.classList.toggle('hidden');
+        }
+
+        // Function to set the default state of the navigation menu
+        function setDefaultNavState() {
+            if (window.innerWidth <= 768) {
+                topRightNav.classList.add('hidden');
+            } else {
+                topRightNav.classList.remove('hidden');
+            }
+        }
+
+        // Set the initial state on DOMContentLoaded
+        setDefaultNavState();
+
+        // Event listener for the menu icon click
+        menuIcon.addEventListener('click', toggleNavigation);
+
+        // Event listener to handle window resize
+        window.addEventListener('resize', () => {
+            setDefaultNavState();
+        });
+    });
   </script>
 </body>
 </html>
