@@ -1,0 +1,2 @@
+HOMEPAGE
+- navigation bar is briefly visible when page is loaded and refreshed - website seems to be defaulting to displaying the menu, doing a window-size check or soemthing and then closing it. COuld be fixed by switching file to svelte for speed (could aslo be done with Nav.astro component) or by changing implementation
