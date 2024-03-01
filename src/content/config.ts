@@ -80,7 +80,7 @@ const travel = defineCollection({
 		topic: z.string().optional().nullable(),
 		tags: z.string().optional().nullable(),
 		author: z.string().optional().nullable(),
-		views: z.coerce.number().optional(),
+		views: z.number().optional(),
 		highlighted: z.boolean(),
 		status: z.string(),
 		// Transform string to Date object

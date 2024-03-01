@@ -7,6 +7,7 @@ doing a window-size check or soemthing and then closing it. COuld be fixed by sw
 BLOG
 - navigation links glitch slightly when the page is loaded/refreshed, 
 appearing right of where they should be before moving to their correct position
+- remove status property from all posts and just infer from published_at/delted_at being null or having dates
 
 
 REVIEWS/ARTICLES
@@ -25,6 +26,13 @@ Add slide in/out animation for menu - fast like along dusty roads
 
 
 ANALYTICS
+
+
+FOOTER
+- add sign up field
+- add work with us, contact, disclaimer and environmentalism/ethics of travelling page links
+
+
 
 
 MONETISATION

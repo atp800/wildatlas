@@ -7,7 +7,8 @@ section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"
 author: "Andreas"
-views: "0"
+views: 0
+highlighted: false
 status: "draft"
 created_at: "2024-02-27"
 published_at: "2023-02-6"
