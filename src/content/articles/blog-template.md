@@ -2,7 +2,7 @@
 title: "Best Places to Stay in the Mojave Desert"
 # slug: "template"
 image: "/blog/template-image.jpg"
-description: "Where to stay for every budget, and nearbya ctivities"
+description: "Where to stay for every budget, and nearby activities"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

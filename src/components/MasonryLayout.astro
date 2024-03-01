@@ -1,0 +1,118 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+interface PostMasonryProps {
+  posts: any[];
+  basePath: string; // the base path for linking to articles or blog posts
+}
+
+const { posts, basePath }: PostMasonryProps = Astro.props;
+---
+
+<ul>
+    {posts.map((post) => (
+        <li>
+            <a href={`/${basePath}/${post.slug}/`}>
+                <img src={post.data.image} alt="{post.data.title}" />
+                <div class="post-overlay">
+                    <h4 class="post-title">{post.data.title}</h4>
+                    <p class="post-date">
+                        <FormattedDate date={post.data.published_at} />
+                    </p>
+                    <div class="post-description">{post.data.description}</div>
+                </div>
+            </a>
+        </li>
+    ))}
+</ul>
+
+<style>
+    ul {
+        margin: 0;
+        padding: 1vw;
+        columns: 33vw 2;
+        column-gap: 3rem;
+        list-style-type: none;
+    }
+    ul li {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 2.1rem;
+        position: relative;
+        break-inside: avoid; 
+        page-break-inside: avoid;
+    }
+    ul li img {
+        display: block;
+        width: 100%;
+        height: auto;      
+        object-fit: cover;
+        border-radius: 0px;
+    }
+    .post-overlay {
+        position: absolute;
+        bottom: 0px;
+        right: 7px;
+        color: white;
+        font-family: 'Urbanist';
+        text-align: right;
+        padding: 1rem;
+        border-radius: 0px;
+        z-index: 2;
+    }
+    .post-title {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    .post-date {
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    .post-description {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        padding: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-family: 'Urbanist', sans-serif;
+        font-size: 0.8rem;
+        text-align: center;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    ul li:hover img {
+    }
+
+    ul li:hover .post-title,
+    ul li:hover .post-date {
+        opacity: 0;
+    }
+    ul li:hover .post-description {
+        display: block;
+        opacity: 1;
+        z-index: 3;
+    }
+
+    @media (min-width: 1500px) {
+        ul {
+            columns: 3;
+        }
+        .post-title {
+            font-size: 1rem;
+            margin: 0;
+        }
+        .post-date {
+            font-size: 0.85rem;                  
+        }
+     }
+    @media (max-width: 600px) {
+        ul {
+            columns: 1;
+        }
+    }
+</style>

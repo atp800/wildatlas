@@ -1,8 +1,8 @@
 ---
-title: "Best Places to Stay in the Mojave Desert"
+title: "Mojave Desert"
 # slug: "template"
 image: "/blog/template-image.jpg"
-description: "Where to stay for every budget, and nearbya ctivities"
+description: "The final stop of Spring Break"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

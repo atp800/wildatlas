@@ -1,8 +1,8 @@
 ---
-title: "Lake Havasu"
+title: "Tips for Spring Break at Lake Havasu"
 # slug: "template"
 image: '/blog/blog-placeholder-4.jpg'
-description: "Partying in Lake Havasu on Spring Break"
+description: "Where and when to go for the best partying and vibes"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"
@@ -10,7 +10,7 @@ author: "Andreas"
 views: "0"
 status: "draft"
 created_at: "2024-02-27"
-published_at: "null"
+published_at: "2020-02-02"
 updated_at: "2024-02-27"
 deleted_at: "null"
 ---

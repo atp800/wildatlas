@@ -1,8 +1,8 @@
 ---
-title: "Taormina"
+title: "My Favourite Things to Do in Taormina"
 # slug: "template"
 image: '/blog/blog-placeholder-3.jpg'
-description: "Summer trip to Taormina with my mum"
+description: "A stunning town with loads on offer"
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"
@@ -10,7 +10,7 @@ author: "Andreas"
 views: "0"
 status: "draft"
 created_at: "2024-02-27"
-published_at: "null"
+published_at: "2023-08-30"
 updated_at: "2024-02-27"
 deleted_at: "null"
 ---

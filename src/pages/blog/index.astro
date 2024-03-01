@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Nav from '../../components/Nav.astro';
-import GridLayout from '../../components/GridLayout.astro';
+import MasonryLayout from '../../components/MasonryLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -22,27 +22,28 @@ const posts = (await getCollection('blog'))
 <!doctype html>
 <html lang="en">
 <head>
-	{/* ... */}
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
 	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	<style>
+		main {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start; 
+			flex-direction: column;
+			width: 80%; 
+			margin: 0 auto;
+			margin-top: 6%;
+			padding: 3em 1em;
+		}
+	</style>
 </head>
 <body>
-    <Nav />
-    <main>
-      <style>
-          main {
-              display: flex;
-              flex-direction: column;
-              width: 80%;
-              margin: 0 auto;
-              margin-top: 5%;
-              padding: 3em 1em;
-          }
-      </style>
-      <GridLayout posts={posts} basePath="blog" />
-    </main>
-    <Footer />
+	<main>
+		<Nav />
+		<MasonryLayout posts={posts} basePath="blog" />
+	</main>
+	<Footer />
 </body>
 </html>
