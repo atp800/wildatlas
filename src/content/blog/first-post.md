@@ -2,7 +2,7 @@
 title: "Taormina"
 # slug: "template"
 image: '/blog/blog-placeholder-3.jpg'
-description: "Summer trip to Taormina with my mum"
+description: "Summer trip to Taormina with my mum."
 section: "blog"
 topic: "cambodia"
 tags: "se asia,cambodia,backpacking"

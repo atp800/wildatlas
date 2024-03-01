@@ -15,6 +15,8 @@ partially across the screen (starting closer to the left and ending about 3/3 ac
 an image on the far lef of each post section, text in bold for the title and then a description in slightly grey text
 - OR use normal grid with square images like wild atlas but not rounded, with centred text that fades to description
 - star ratings? add in metadataso they can be used as filters?
+- rename articels to science/nature?
+- use same posts colelction for articles and travel tips, and travel tips just filters fro ones based on travel (e.g. with travel tag?)
 
 Add colour for current page wuth slight fade transitions
 Turn menu icon into x while open

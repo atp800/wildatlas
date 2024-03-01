@@ -1,0 +1,117 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+interface PostListProps {
+  posts: any[];
+  basePath: string; // the base path for linking to articles or blog posts
+}
+
+const { posts, basePath }: PostListProps = Astro.props;
+---
+
+<ul class="list">
+    {posts.map((post) => (
+        <li class="list-item">
+            <a href={`/${basePath}/${post.slug}/`} class="list-item-link">
+                <div class="post-image-container" style={`background-image: url(${post.data.image});`}></div>
+                <div class="post-content">
+                    <div class="post-title">{post.data.title}</div>
+                    <div class="post-description">{post.data.description}</div>
+                    <div class="post-date"><FormattedDate date={new Date(post.data.published_at)} /></div>
+                </div>
+            </a>
+        </li>
+    ))}
+</ul>
+
+
+<style>
+    
+    main {
+        display: flex;
+        justify-content: center;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .list {
+        padding: 0 1em;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        margin: 2em auto 0 auto; /* Adjust the top margin as needed */
+
+        /* For the horizontal line */
+        &::before {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 95%; /* Adjust as needed */
+            background-color: lightgrey;
+            margin-bottom: 2em;
+        }
+    }
+    .list-item {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: flex-start;
+        margin-bottom: 2em;
+        max-width: 80%; /* Adjust as needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .list-item-link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    /* .post-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-right: 1em;
+        border-radius: 0px;
+    } */
+    .post-image-container {
+        width: 350px;
+        height: 180px;
+        aspect-ratio: 1;
+        margin-right: 1em;
+        border-radius: 0px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        /* filter: sepia(0.4) contrast(1.2) saturate(0.9); */
+    }
+    .post-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* width: calc(100% - 100px - 1em); */
+        max-width: 700px;
+        width: 100%
+    }
+    .post-title {
+        font-family: 'Urbanist', sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: rgb(82, 82, 82);
+        margin-bottom: 0em;
+    }
+    .post-description {
+        font-family: 'Urbanist', sans-serif;
+        font-size: 16px;
+        color: rgb(82, 82, 82);
+        /* color: rgb(129, 129, 129); */
+    }
+    .post-date {
+        font-family: 'Urbanist', sans-serif;
+        font-size: 13px;
+        color: rgb(169, 169, 169);
+    }
+</style>
