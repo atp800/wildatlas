@@ -12,7 +12,7 @@ const { posts, basePath }: PostGridProps = Astro.props;
 <ul class="grid">
     {posts.map((post) => (
         <li>
-            <a href={`/blog/${post.slug}/`}>
+            <a href={`/${basePath}/${post.slug}/`}>
                 <div class="post-img-container">
                     <img src={post.data.image} alt="{post.data.title}" />
                     <div class="post-overlay">
