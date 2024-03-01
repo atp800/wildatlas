@@ -2,155 +2,47 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Nav from '../../components/Nav.astro';
+import GridLayout from '../../components/GridLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.created_at.valueOf() - b.data.created_at.valueOf()
+const posts = (await getCollection('blog'))
+  // Filter out posts with no 'published_at' date.
+  .filter(post => post.data.published_at != null)
+  // Sort remaining posts by 'published_at' date.
+  .sort((a, b) => {
+    const dateA = new Date(a.data.published_at).valueOf();
+    const dateB = new Date(b.data.published_at).valueOf();
+    return dateB - dateA;
+  }
 );
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				display: flex;
-				justify-content: center;
-				align-items: flex-start; /* You can also try 'center' if that fits better */
-				flex-direction: column;
-				width: 80%; /* You may adjust this as needed */
-				margin: 0 auto;
-				margin-top: 6%;
-				padding: 3em 1em;
-			}
-			ul {
-				margin: 0;
-				padding: 1vw;
-				columns: 33vw 2;
-				column-gap: 3rem;
-				list-style-type: none;
-			}
-			ul li {
-				display: inline-block;
-				width: 100%;
-				margin-bottom: 2.1rem;
-				position: relative; /* Add position relative here */
-				break-inside: avoid; /* Avoid breaking elements across columns */
-        		page-break-inside: avoid; /* For older browsers */
-			}
-			ul li img {
-				display: block;
-				width: 100%;
-				height: auto;		
-				object-fit: cover;
-				border-radius: 0px;
-			}
-			.post-overlay {
-				position: absolute;
-				bottom: 0px;
-				right: 7px;
-				color: white;
-				font-family: 'Urbanist';
-				text-align: right;
-				padding: 1rem;
-				border-radius: 0px;
-				z-index: 2;
-			}
-			.post-title {
-				font-size: 0.8rem;
-				margin: 0;
-				/* transition: opacity 0.3s ease; */
-			}
-			.post-date {
-				font-size: 0.7rem;
-				margin: 0;
-				/* transition: opacity 0.3s ease; */
-			}
-			.post-description {
-				display: none; /* Initially hidden */
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 100%;
-				padding: 0.5rem;
-				background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-				color: white;
-				font-family: 'Urbanist', sans-serif;
-				font-size: 0.8rem;
-				text-align: center;
-				/* transition: opacity 0.3s ease;  */
-				opacity: 0; /* Start with the description invisible */
-				z-index: 1;
-			}
-
-			/* Hover styles */
-			ul li:hover img {
-				/* opacity: 0.7; */
-			}
-
-			ul li:hover .post-title,
-			ul li:hover .post-date {
-				opacity: 0; /* Fade out the title and date */
-			}
-			ul li:hover .post-description {
-				display: block; /* Ensure the description is displayed */
-				opacity: 1; /* Fade in the description */
-				z-index: 3; /* Bring above the title */
-			}
-
-			/* Media queries */
-			 @media (min-width: 1500px) {
-				ul {
-					columns: 3;
-				}
-				.post-title {
-					font-size: 1rem;
-					margin: 0;
-				}
-				.post-date {
-					font-size: 0.85rem;					
-				}
-			 }
-			@media (max-width: 600px) {
-				ul {
-					/* column-width: 100% !important;
-					column-count: 1 !important; */
-					columns: 1;
-				}
-			}
-		</style>
-		</style>
-		</style>
-	</head>
-	<body>
-		<main>
-			<Nav />
-			<section>
-				<ul>
-				{posts.map((post) => (
-					<li>
-						<a href={`/blog/${post.slug}/`}>
-							<img src={post.data.image} alt="{post.data.title}" />
-							<div class="post-overlay">
-								<h4 class="post-title">{post.data.title}</h4>
-								<p class="post-date">
-									<FormattedDate date={post.data.published_at} />
-								</p>
-								<div class="post-description">{post.data.description}</div> <!-- Add this -->
-							</div>
-						</a>
-					</li>
-				))}
-			</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+<head>
+	{/* ... */}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+    <Nav />
+    <main>
+      <style>
+          main {
+              display: flex;
+              flex-direction: column;
+              width: 80%;
+              margin: 0 auto;
+              margin-top: 5%;
+              padding: 3em 1em;
+          }
+      </style>
+      <GridLayout posts={posts} basePath="blog" />
+    </main>
+    <Footer />
+</body>
 </html>

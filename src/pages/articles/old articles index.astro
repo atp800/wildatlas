@@ -1,0 +1,155 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Nav from '../../components/Nav.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('articles')).sort(
+	(a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	<style>
+		main {
+			display: flex;
+			flex-direction: column;
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 5%;
+			padding: 3em 1em;
+		}
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr); /* 3 columns in large screens */
+			grid-gap: 3rem;
+			list-style: none;
+			padding: 0;
+		}
+		.grid li {
+			position: relative;
+			padding-top: 100%; /* This ensures that each item is a square */
+			overflow: hidden;
+		}
+		.grid li img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 0px;
+		}
+		.post-title {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 75%;
+			text-align: center;
+			color: white;
+			font-family: 'Urbanist';
+			font-size: 1.8rem;
+			font-weight: 500;
+			z-index: 1;
+		}
+		.post-description {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 75%;
+			text-align: center;
+			color: white;
+			font-family: 'Urbanist', sans-serif;
+			font-size: 1.3rem; /* Adjust as needed */
+			z-index: 2;
+		}
+
+		/* Hover styles */
+		.grid li:hover img {
+			opacity: 0.7; /* Slight fade effect on image */
+		}
+
+		.grid li:hover .post-title {
+			display: none; /* Hide the title */
+		}
+
+		.grid li:hover .post-description {
+			display: block; /* Show the description */
+		}
+
+		/* Ensure the post overlay container is positioned correctly */
+		.post-overlay {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/* opacity: 0;  */
+			/* transition: opacity 0.3s ease; */
+			/* transition: background-color 0.3s ease; */
+		}
+
+		.grid li:hover .post-overlay {
+			/* opacity: 1; */
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+
+
+		/* Responsive grid columns */
+		@media (max-width: 1500px) {
+			.grid {
+				grid-template-columns: repeat(2, 1fr); /* 2 columns in medium screens */
+			}
+			.post-title {
+				font-size: 1.5rem;
+			}
+			.post-description {
+				font-size: 1.2rem;
+			}
+		}
+		@media (max-width: 600px) {
+			.grid {
+				grid-template-columns: repeat(1, 1fr); /* 1 column in small screens */
+			}
+		}
+	</style>
+</head>
+<body>
+	<Nav />
+	<main>
+		<section>
+			<ul class="grid">
+				{posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.slug}/`}>
+							<div class="post-img-container">
+								<img src={post.data.image} alt="{post.data.title}" />
+								<div class="post-overlay">
+									<div class="post-title">{post.data.title}</div>
+									<div class="post-description">{post.data.description}</div>
+								</div>
+							</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</section>
+	</main>
+	<Footer />
+</body>
+</html>
