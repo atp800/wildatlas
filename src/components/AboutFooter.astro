@@ -7,8 +7,9 @@ const pageUpperText =
 	`Hey! I'm Andreas, and this is where I blog my adventures, give travel tips (especially for on a budget backpacking), and write 
 	articles about wildlife, science and sustainable products I've tried`;
 const pageText = 
-	`You can also find EVEN MORE stuff on my TikTok, where I post mini wildlife documentaries, more travel tips and ideas, and vlogs of my journey.
-	I've got a YouTube channel too, but right now I cba to make separate videos for that too, so it'll mostly just be TikTok reposts and shorts.`;
+	`You can also find EVEN MORE stuff on my TikTok, where I post mini wildlife documentaries, more travel tips and ideas, and vlogs of my journey.`;
+const pageText2 = 
+	`I've got a YouTube channel too, but right now I cba to make separate videos for that too, so it'll mostly just be TikTok reposts and shorts.`;
 ---
 
 <html>
@@ -38,6 +39,9 @@ const pageText =
 	<!-- Some text about your page (or about section) -->
 	<article>
 		<p class="page-text">{pageText}</p>
+	</article>
+	<article>
+		<p class="page-text">{pageText2}</p>
 	</article>
 
 
@@ -114,9 +118,10 @@ const pageText =
 		padding: 0 1rem; /* Padding on the sides if the screen is small */
 	}
 	footer {
-		padding: 2em 1em 6em 1em;
+		padding: 2em 1em 2em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: #444;
+		font-family: 'Urbanist';
 		text-align: center;
 	}
 	.social-links {
@@ -130,7 +135,7 @@ const pageText =
 		color: #111;
 	}
 	.social-links a:hover {
-		color: #999;
+		color: #777;
 	}
 </style>
 
