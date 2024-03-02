@@ -43,8 +43,25 @@ const posts = (await getCollection('travel'))
 <body>
 	<main>
 		<Nav />
+		<div class="title">Travel Tips</div>
 		<ListLayout posts={posts} basePath="travel" />
 	</main>
 	<Footer />
 </body>
+
+<style>
+    .title {
+        text-align: center;font-weight: bold;
+        color: #444;
+        margin-top: 0em;
+        margin-bottom: 0.6em; /* Giving space between the title and the posts */
+        width: 100%;
+
+		/* font-family: 'Bad Script'; */
+		/* font-family: 'Zeyada'; */
+		/* font-family: 'Dawning of a New Day'; */
+		font-family: 'Nothing You Could Do';
+		font-size: 4.2em;
+    }
+</style>
 </html>

@@ -19,7 +19,7 @@ an image on the far lef of each post section, text in bold for the title and the
 - rename articels to science/nature?
 - use same posts colelction for articles and travel tips, and travel tips just filters fro ones based on travel (e.g. with travel tag?)
 
-Add colour for current page wuth slight fade transitions
+Add colour for current page with slight fade transitions
 Turn menu icon into x while open
 Try solid white navigation page without rounded corners like along dusty roads
 Add slide in/out animation for menu - fast like along dusty roads
@@ -31,6 +31,8 @@ MASONRY LAYOUT
 
 ANALYTICS
 
+ADD TITLE IN HOMEPAGE FONT TO EVERY PAGE
+
 
 FOOTER
 - add sign up field
@@ -39,7 +41,6 @@ FOOTER
 ADD 404 pages
 - other pages? 401, 505 etc?
 
-Add fade on posts hover
 
 MONETISATION
 https://www.alongdustyroads.com/work-with-us/
