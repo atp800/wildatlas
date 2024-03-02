@@ -202,6 +202,16 @@ const highlightedPosts = posts
         color: #999;
     }
 
+    .highlighted-image-container, .post-image-container {
+        /* ... existing styles for image containers ... */
+        transition: filter 0.2s ease; /* Smooth transition for the filter effect */
+    }
+
+    .highlighted-post:hover .highlighted-image-container,
+    .list-item-link:hover .post-image-container {
+        filter: brightness(0.7); /* Darken the image on hover */
+    }
+
 
     @media (max-width: 900px) {
         .highlighted-posts-container {

@@ -39,6 +39,8 @@ FOOTER
 ADD 404 pages
 - other pages? 401, 505 etc?
 
+Add fade on posts hover
+
 MONETISATION
 https://www.alongdustyroads.com/work-with-us/
 avoid ads? - stick to affiliate links, sponsorships, colabs and services?
