@@ -37,7 +37,7 @@ const { posts, basePath }: PostGridProps = Astro.props;
     }
     .grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 columns in large screens */
+        grid-template-columns: repeat(4, 1fr); /* 3 columns in large screens */
         grid-gap: 3rem;
         list-style: none;
         padding: 0;
@@ -121,7 +121,7 @@ const { posts, basePath }: PostGridProps = Astro.props;
     /* Responsive grid columns */
     @media (max-width: 1500px) {
         .grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 columns in medium screens */
+            grid-template-columns: repeat(3, 1fr); /* 2 columns in medium screens */
         }
         .post-title {
             font-size: 1.5rem;
@@ -132,7 +132,7 @@ const { posts, basePath }: PostGridProps = Astro.props;
     }
     @media (max-width: 600px) {
         .grid {
-            grid-template-columns: repeat(1, 1fr); /* 1 column in small screens */
+            grid-template-columns: repeat(2, 1fr); /* 1 column in small screens */
         }
     }
 </style>

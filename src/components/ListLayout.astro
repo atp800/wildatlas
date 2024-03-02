@@ -7,7 +7,31 @@ interface PostListProps {
 }
 
 const { posts, basePath }: PostListProps = Astro.props;
+
+// Filter and sort the highlighted posts
+const highlightedPosts = posts
+  .filter(post => post.data.highlighted)
+  .sort((a, b) => new Date(b.data.published_at).getTime() - new Date(a.data.published_at).getTime())
+  .slice(0, 4); // Get the most recent four highlighted posts
 ---
+
+<!-- Title for highlighted posts -->
+<div class="highlights-title">FAVOURITES</div>
+
+<!-- Highlighted posts -->
+<div class="highlighted-posts-container">
+  {highlightedPosts.map((post) => (
+    <a href={`/${basePath}/${post.slug}/`} class="highlighted-post">
+      <div class="highlighted-image-container" style={`background-image: url(${post.data.image});`}></div>
+      <div class="highlighted-post-title">{post.data.title}</div>
+    </a>
+  ))}
+</div>
+
+<hr class="separator" />
+
+<div class="all-title">ALL POSTS</div>
+
 
 <ul class="list">
     {posts.map((post) => (
@@ -26,6 +50,69 @@ const { posts, basePath }: PostListProps = Astro.props;
 
 
 <style>
+    .highlights-title {
+        text-align: center;
+        font-family: 'Urbanist', sans-serif;
+        font-size: 25px; /* You can change this value to suit your preferences */
+        font-weight: bold;
+        color: #444;
+        margin-top: 2em;
+        margin-bottom: 0em; /* Giving space between the title and the posts */
+        width: 100%;
+    }
+    .highlighted-posts-container {
+        display: flex;
+        /* flex-wrap: wrap; */
+        gap: 1em;
+        justify-content: space-around; /* This will evenly space the items and center them */
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        margin-left: auto; /* Center the container */
+        margin-right: auto; /* Center the container */
+        max-width: 60%; /* Assuming each highlighted post is 180px wide with 1em gap; adjust accordingly */
+    }
+    .highlighted-post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+    .highlighted-image-container {
+        width: 180px;
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 0px;
+        margin-bottom: 0.5em;
+        margin-right: 0.55em;
+        margin-left: 0.55em;
+    }
+    .highlighted-post-title {
+        font-family: 'Urbanist', sans-serif;
+        font-weight: 600px;
+        font-size: 20px;
+        color: #444;
+        text-align: center;
+        max-width: 180px;
+    }
+    .separator {
+        width: 95%;
+        background-color: lightgrey;
+        height: 1px;
+        margin: 2em auto;
+    }
+
+    .all-title {
+        text-align: center;
+        font-family: 'Urbanist', sans-serif;
+        font-size: 25px; /* You can change this value to suit your preferences */
+        font-weight: bold;
+        color: #444;
+        margin-top: 0.5em;
+        margin-bottom: 0em; /* Giving space between the title and the posts */
+        width: 100%;
+    }
     
     main {
         display: flex;
@@ -44,14 +131,14 @@ const { posts, basePath }: PostListProps = Astro.props;
         margin: 2em auto 0 auto; /* Adjust the top margin as needed */
 
         /* For the horizontal line */
-        &::before {
+        /* &::before {
             content: "";
             display: block;
             height: 1px;
-            width: 95%; /* Adjust as needed */
+            width: 95%;
             background-color: lightgrey;
             margin-bottom: 2em;
-        }
+        } */
     }
     .list-item {
         display: flex;
@@ -79,7 +166,7 @@ const { posts, basePath }: PostListProps = Astro.props;
     } */
     .post-image-container {
         width: 350px;
-        height: 180px;
+        height: 170px;
         aspect-ratio: 1;
         margin-right: 1em;
         border-radius: 0px;
@@ -98,7 +185,7 @@ const { posts, basePath }: PostListProps = Astro.props;
     }
     .post-title {
         font-family: 'Urbanist', sans-serif;
-        font-weight: 500;
+        font-weight: 600px;
         font-size: 20px;
         color: #444;
         margin-bottom: 0em;
@@ -114,4 +201,43 @@ const { posts, basePath }: PostListProps = Astro.props;
         font-size: 13px;
         color: #999;
     }
+
+
+    @media (max-width: 900px) {
+        .highlighted-posts-container {
+            justify-content: center; /* Center the items when they wrap */
+            max-width: none; /* Allow full width on smaller screens */
+        }
+        .highlighted-post {
+            width: calc(50% - 1em); /* Each item takes half the container width minus the gap */
+        }
+        .highlighted-image-container,
+        .highlighted-post-title {
+            width: calc(100% - 1.1em); /* Adjust width to fit the new .highlighted-post width */
+            max-width: none; /* Override any max width set previously */
+        }
+    }
+
+    @media (max-width: 550px) {
+        .highlighted-posts-container {
+            justify-content: center;
+        }
+        .highlighted-post {
+            width: 100%; /* Each item takes full container width */
+            max-width: 180px; /* Maximum width of highlighted post */
+            margin: 0 auto; /* Center the highlighted post */
+        }
+        .highlighted-image-container,
+        .highlighted-post-title {
+            width: 100%; /* Full width of the highlighted post */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Hide all highlighted posts except the first two */
+        .highlighted-posts-container .highlighted-post:nth-child(n+3) {
+            display: none;
+        }
+    }
+    
 </style>

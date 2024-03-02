@@ -2,7 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Nav from '../../components/Nav.astro';
-import GridLayout from '../../components/GridLayout.astro';
+import SmallGridLayout from '../../components/SmallGridLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -40,7 +40,7 @@ const posts = (await getCollection('reviews'))
               padding: 3em 1em;
           }
       </style>
-      <GridLayout posts={posts} basePath="reviews" />
+      <SmallGridLayout posts={posts} basePath="reviews" />
     </main>
     <Footer />
 </body>
