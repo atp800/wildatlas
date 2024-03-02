@@ -1,12 +1,14 @@
 ---
 const today = new Date();
 // Here, you can import a local image or specify a URL to an online one.
-const imageUrl = '/path/to/your/image.jpg'; // Update this to your image's path
-const pageTitle = 'Travel, nature, science and sustainability';
-const pageText = `
-This is where you can add some text about you or your company.
-Include any relevant information you'd like visitors to know about.
-`;
+const imageUrl = 'public/footer-image.jpg'; // Update this to your image's path
+const pageTitle = '';//'Travel, nature, science and sustainability';
+const pageUpperText = 
+	`Hey! I'm Andreas, and this is where I blog my adventures, give travel tips (especially for on a budget backpacking), and write 
+	articles about wildlife, science and sustainable products I've tried`;
+const pageText = 
+	`You can also find EVEN MORE stuff on my TikTok, where I post mini wildlife documentaries, more travel tips and ideas, and vlogs of my journey.
+	I've got a YouTube channel too, but right now I cba to make separate videos for that too, so it'll mostly just be TikTok reposts and shorts.`;
 ---
 
 <html>
@@ -24,9 +26,13 @@ Include any relevant information you'd like visitors to know about.
 		<h1 class="page-title">{pageTitle}</h1>
 	</header>
 
+	<article>
+		<p class="page-text">{pageUpperText}</p>
+	</article>
+
 	<!-- Large centered image -->
 	<div class="image-container">
-		<img src={imageUrl} alt="Descriptive text about the image" class="centered-image"/>
+		<img src={imageUrl} alt="A silhouette standing on one leg on a rock, arms outstretched" class="centered-image"/>
 	</div>
 
 	<!-- Some text about your page (or about section) -->
@@ -37,9 +43,9 @@ Include any relevant information you'd like visitors to know about.
 
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
+	&copy; {today.getFullYear()} Wild Atlas. All rights reserved.
 	<div class="social-links">
-		<a href="https://m.webtoo.ls/@astro" target="_blank">
+		<a href="https://www.instagram.com/andreas.panay/" target="_blank">
 			<span class="sr-only">Instagram</span>
 			<svg width="48px" height="48px" aria-hidden="true" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<title>Instagram</title>
@@ -48,7 +54,7 @@ Include any relevant information you'd like visitors to know about.
 				</g>
 			</svg>
 		</a>
-		<a href="https://twitter.com/astrodotbuild" target="_blank">
+		<a href="https://www.youtube.com/@andreas-panay" target="_blank">
 			<span class="sr-only">YouTube</span>
 			<svg width="48px" height="48px" aria-hidden="true" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<title>Youtube</title>
@@ -57,7 +63,7 @@ Include any relevant information you'd like visitors to know about.
 				</g>
 			</svg>
 		</a>
-		<a href="https://github.com/withastro/astro" target="_blank">
+		<a href="https://www.tiktok.com/@andreas.panay" target="_blank">
 			<span class="sr-only">TikTok</span>
 			<svg width="48px" height="48px" aria-hidden="true" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<title>Tiktok</title>
@@ -72,7 +78,7 @@ Include any relevant information you'd like visitors to know about.
 
 	.page-title {
 		text-align: center;
-		font-size: 2.5rem; /* Large font size for the title */
+		font-size: clamp(24px, 4vw, 40px);
 		margin-top: 4rem; /* Spacing from top of the page */
 		margin-bottom: 1rem; /* Spacing before the image section */
 		font-weight: 500; /* Optional: if you want the title to be bold */
@@ -90,9 +96,10 @@ Include any relevant information you'd like visitors to know about.
 
 	/* Style for the image itself */
 	.centered-image {
-		max-width: 80%; /* Taking up to 80% of the width of its container */
+		width: 50%; /* Taking up to 80% of the width of its container */
+		max-width: 500px;
 		height: auto; /* Maintain aspect ratio */
-		border-radius: 8px; /* Rounded corners for the image */
+		border-radius: 0px; /* Rounded corners for the image */
 	}
 
 	/* Style for the page text */
@@ -109,7 +116,7 @@ Include any relevant information you'd like visitors to know about.
 	footer {
 		padding: 2em 1em 6em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
+		color: #444;
 		text-align: center;
 	}
 	.social-links {
@@ -120,10 +127,10 @@ Include any relevant information you'd like visitors to know about.
 	}
 	.social-links a {
 		text-decoration: none;
-		color: rgb(var(--gray-dark));
+		color: #111;
 	}
 	.social-links a:hover {
-		color: rgb(var(--gray));
+		color: #999;
 	}
 </style>
 
