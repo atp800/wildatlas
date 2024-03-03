@@ -9,23 +9,6 @@ interface PostSmallGridProps {
 const { posts, basePath }: PostGridProps = Astro.props;
 ---
 
-<ul class="grid">
-    {posts.map((post) => (
-        <li>
-            <a href={`/${basePath}/${post.slug}/`}>
-                <div class="post-img-container">
-                    <img src={post.data.image} alt="{post.data.title}" />
-                    <div class="post-overlay">
-                        <div class="post-title">{post.data.title}</div>
-                        <div class="post-description">{post.data.description}</div>
-                    </div>
-                </div>
-            </a>
-        </li>
-    ))}
-</ul>
-
-
 <style>
     main {
         display: flex;
@@ -136,3 +119,23 @@ const { posts, basePath }: PostGridProps = Astro.props;
         }
     }
 </style>
+
+
+<ul class="grid">
+    {posts.map((post) => (
+        <li>
+            <a href={`/${basePath}/${post.slug}/`}>
+                <div class="post-img-container">
+                    <img src={post.data.image} alt="{post.data.title}" />
+                    <div class="post-overlay">
+                        <div class="post-title">{post.data.title}</div>
+                        <div class="post-description">{post.data.description}</div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    ))}
+</ul>
+
+
+

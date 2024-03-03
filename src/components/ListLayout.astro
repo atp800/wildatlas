@@ -15,38 +15,6 @@ const highlightedPosts = posts
   .slice(0, 4); // Get the most recent four highlighted posts
 ---
 
-<!-- Title for highlighted posts -->
-<div class="highlights-title">FAVOURITES</div>
-
-<!-- Highlighted posts -->
-<div class="highlighted-posts-container">
-  {highlightedPosts.map((post) => (
-    <a href={`/${basePath}/${post.slug}/`} class="highlighted-post">
-      <div class="highlighted-image-container" style={`background-image: url(${post.data.image});`}></div>
-      <div class="highlighted-post-title">{post.data.title}</div>
-    </a>
-  ))}
-</div>
-
-<hr class="separator" />
-
-<div class="all-title">ALL POSTS</div>
-
-
-<ul class="list">
-    {posts.map((post) => (
-        <li class="list-item">
-            <a href={`/${basePath}/${post.slug}/`} class="list-item-link">
-                <div class="post-image-container" style={`background-image: url(${post.data.image});`}></div>
-                <div class="post-content">
-                    <div class="post-title">{post.data.title}</div>
-                    <div class="post-description">{post.data.description}</div>
-                    <div class="post-date"><FormattedDate date={new Date(post.data.published_at)} /></div>
-                </div>
-            </a>
-        </li>
-    ))}
-</ul>
 
 
 <style>
@@ -252,3 +220,39 @@ const highlightedPosts = posts
     }
     
 </style>
+
+
+
+<!-- Title for highlighted posts -->
+<div class="highlights-title">FAVOURITES</div>
+
+<!-- Highlighted posts -->
+<div class="highlighted-posts-container">
+  {highlightedPosts.map((post) => (
+    <a href={`/${basePath}/${post.slug}/`} class="highlighted-post">
+      <div class="highlighted-image-container" style={`background-image: url(${post.data.image});`}></div>
+      <div class="highlighted-post-title">{post.data.title}</div>
+    </a>
+  ))}
+</div>
+
+<hr class="separator" />
+
+<div class="all-title">ALL POSTS</div>
+
+
+<ul class="list">
+    {posts.map((post) => (
+        <li class="list-item">
+            <a href={`/${basePath}/${post.slug}/`} class="list-item-link">
+                <div class="post-image-container" style={`background-image: url(${post.data.image});`}></div>
+                <div class="post-content">
+                    <div class="post-title">{post.data.title}</div>
+                    <div class="post-description">{post.data.description}</div>
+                    <div class="post-date"><FormattedDate date={new Date(post.data.published_at)} /></div>
+                </div>
+            </a>
+        </li>
+    ))}
+</ul>
+

@@ -3,6 +3,30 @@ const today = new Date();
 ---
 
 <footer>
+	<style>	
+		footer {
+			padding: 2em 1em 2em 1em;
+			background: linear-gradient(var(--gray-gradient)) no-repeat;
+			color: #444;
+			font-family: 'Urbanist';
+			text-align: center;
+		}
+		.social-links {
+			display: flex;
+			justify-content: center;
+			gap: 1em;
+			margin-top: 1em;
+		}
+		.social-links a {
+			text-decoration: none;
+			color: #111;
+		}
+		.social-links a:hover {
+			color: #777;
+		}
+	</style>
+
+
 	&copy; {today.getFullYear()} Wild Atlas. All rights reserved.
 	<div class="social-links">
 		<a href="https://www.instagram.com/andreas.panay/" target="_blank">
@@ -34,26 +58,5 @@ const today = new Date();
 		</a>
 	</div>
 </footer>
-<style>	
-	footer {
-		padding: 2em 1em 2em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: #444;
-		font-family: 'Urbanist';
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: #111;
-	}
-	.social-links a:hover {
-		color: #777;
-	}
-</style>
+
 

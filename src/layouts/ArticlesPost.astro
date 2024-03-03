@@ -13,7 +13,6 @@ const posts = (await getCollection('articles')).sort(
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -53,6 +52,7 @@ const posts = (await getCollection('articles')).sort(
 				font-style: italic;
 			}
 		</style>
+		<BaseHead title={title} description={description} />
 	</head>
 
 	<body>

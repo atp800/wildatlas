@@ -9,23 +9,6 @@ interface PostMasonryProps {
 const { posts, basePath }: PostMasonryProps = Astro.props;
 ---
 
-<ul>
-    {posts.map((post) => (
-        <li>
-            <a href={`/${basePath}/${post.slug}/`}>
-                <img src={post.data.image} alt="{post.data.title}" />
-                <div class="post-overlay">
-                    <h4 class="post-title">{post.data.title}</h4>
-                    <p class="post-date">
-                        <FormattedDate date={post.data.published_at} />
-                    </p>
-                    <div class="post-description">{post.data.description}</div>
-                </div>
-            </a>
-        </li>
-    ))}
-</ul>
-
 <style>
     ul {
         margin: 0;
@@ -116,3 +99,21 @@ const { posts, basePath }: PostMasonryProps = Astro.props;
         }
     }
 </style>
+
+<ul>
+    {posts.map((post) => (
+        <li>
+            <a href={`/${basePath}/${post.slug}/`}>
+                <img src={post.data.image} alt="{post.data.title}" />
+                <div class="post-overlay">
+                    <h4 class="post-title">{post.data.title}</h4>
+                    <p class="post-date">
+                        <FormattedDate date={post.data.published_at} />
+                    </p>
+                    <div class="post-description">{post.data.description}</div>
+                </div>
+            </a>
+        </li>
+    ))}
+</ul>
+
