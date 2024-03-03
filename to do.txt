@@ -1,3 +1,57 @@
+
+WEBSITE
+1. Fix main issues with website (indent in list layout)
+2. Deploy website (render, firebase, heroku, github pages etc.)
+3. Write two-three artiles for each section - use AI ones as pal eholders for now if needed
+
+TIKTOK
+4. Make 3 travel-based tiktok drafts
+5. Update tiktok profile pic and bio with linktree
+6. Follow everyone I'm confident would follwo back on tiktok- message people if needed
+7. post first tiktok - make first one niche/funny a not basic - chloe could unfollow, it's mostly to friends (photos the make me say cant believe id id that one maybe?)
+    -but also don't want to waste a high potential tiktok which could draw lots of followers by psoting when there's no other content on page
+    -wait three hours and post second?
+8. wait 1-2 days
+9. request to follow laods of people tha tI know less well and jsut see generally and post second tiktok
+10. wait 1-2 days and psot third tiktok
+11. start posting 1-2 times a week
+12. start series with posts falling into categories with simialr formats, spaced out with occassional random/funny content
+    - wtf is/are xxxx: explain terms and things, empahsis on anmials/nature
+    - DONT USE WTF - SWEARING COULD BOMB VIDOES/ACCOUNT
+        - conjugate (gym)
+        - creatine
+        - weird animal (axolotls, or only more niche things? make axolotls et.c jst normal wildife videos?)
+    - wildlife
+        - otters
+        - axolotls
+        - jelly fish
+        - alpacas
+        - whales (fads, language, paper with 15 min conversation saying hi etc.)
+BANNED WORDS
+- swearing/swearing abbreviations (wtf)
+    - spoken or in text
+- pseudo swear words? (what the hell, bloody etc.)
+    - other videos mention hell (gay devil etc.)
+- mention of alcohol or drugs
+- blood/violence/bombs
+- sex, suck, dick etc.
+
+INSTA
+1. put linktree in bio without website
+2. Post on insta more
+    - dumps
+    - posts fromm while ago (e.g. taormina)
+    - non-time-specific posts (e.g. sunsets, sky, refelctions)
+2. use insta to promote tiktok and website
+3. add website to linktree
+
+TIKTOK SHOP
+- use to sell prints
+- start dropshipping
+
+
+
+
 HOMEPAGE
 - navigation bar is briefly visible when page is loaded and refreshed - website seems to be defaulting to displaying the menu, 
 doing a window-size check or soemthing and then closing it. COuld be fixed by switching file to svelte for speed 
