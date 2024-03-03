@@ -25,6 +25,11 @@ Try solid white navigation page without rounded corners like along dusty roads
 Add slide in/out animation for menu - fast like along dusty roads
 
 
+ORDERING
+- put CSS in head so it loads before content
+- ask chatgpt about ordering of otehr thing to make sure there isn't an instant with things out of position - move styles further up?
+
+
 MASONRY LAYOUT
 - fix to order across before ordering by column
 - upcoming inbuit support for masonry grid but not supported by browsers yet

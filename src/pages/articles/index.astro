@@ -26,20 +26,35 @@ const posts = (await getCollection('articles'))
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
 	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	<style>
+		main {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 6%;
+			padding: 3em 1em;
+		}
+		.title {
+			text-align: center;font-weight: bold;
+			color: #444;
+			margin-top: 0em;
+			margin-bottom: 0.6em; /* Giving space between the title and the posts */
+			width: 100%;
+
+			/* font-family: 'Bad Script'; */
+			/* font-family: 'Zeyada'; */
+			/* font-family: 'Dawning of a New Day'; */
+			font-family: 'Nothing You Could Do';
+			font-size: 4.2em;
+		}
+	</style>
 </head>
 <body>
     <Nav />
     <main>
-      <style>
-          main {
-              display: flex;
-              flex-direction: column;
-              width: 80%;
-              margin: 0 auto;
-              margin-top: 5%;
-              padding: 3em 1em;
-          }
-      </style>
+		<div class="title">Articles</div>
       <GridLayout posts={posts} basePath="articles" />
     </main>
     <Footer />

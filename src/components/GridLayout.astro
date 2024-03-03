@@ -1,12 +1,12 @@
 ---
 import FormattedDate from './FormattedDate.astro';
 
-interface PostSmallGridProps {
+interface PostGridProps {
   posts: any[];
   basePath: string; // the base path for linking to articles or blog posts
 }
 
-const { posts, basePath }: PostSmallGridProps = Astro.props;
+const { posts, basePath }: PostGridProps = Astro.props;
 ---
 
 <ul class="grid">
