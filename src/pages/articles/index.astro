@@ -21,7 +21,11 @@ const posts = (await getCollection('articles'))
 
 <!doctype html>
 <html lang="en">
-<head>
+<head>	
+	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
 	<style>
 		main {
 			display: flex;
@@ -46,11 +50,6 @@ const posts = (await getCollection('articles'))
 			font-size: 4.2em;
 		}
 	</style>
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
-	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 </head>
 <body>
     <Nav />
