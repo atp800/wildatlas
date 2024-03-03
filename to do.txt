@@ -29,6 +29,9 @@ ORDERING
 - put CSS in head so it loads before content
 - ask chatgpt about ordering of otehr thing to make sure there isn't an instant with things out of position - move styles further up?
 
+GRID LAYOUT
+- create text grid layout, with title and descruption underneath each image
+- experiment with slightly wider aspect images (like articles page)
 
 MASONRY LAYOUT
 - fix to order across before ordering by column
