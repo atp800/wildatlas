@@ -91,4 +91,4 @@ const travel = defineCollection({
 	}),
 });
 
-export const collections = { blog, articles };
+export const collections = { blog, articles, reviews, travel };

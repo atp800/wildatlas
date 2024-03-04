@@ -4,6 +4,8 @@ WEBSITE
 2. Deploy website (render, firebase, heroku, github pages etc.)
 3. Write two-three artiles for each section - use AI ones as pal eholders for now if needed
 
+- scrap blog section, and just have destinaitons page wher every articles are all jst places
+
 TIKTOK
 4. Make 3 travel-based tiktok drafts
 5. Update tiktok profile pic and bio with linktree

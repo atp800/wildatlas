@@ -107,16 +107,16 @@ table {
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	border-radius: 0px;
 }
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	border-radius: 0px;
 }
 pre {
 	padding: 1.5em;
-	border-radius: 8px;
+	border-radius: 0px;
 }
 pre > code {
 	all: unset;
