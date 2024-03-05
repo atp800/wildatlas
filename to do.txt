@@ -138,7 +138,11 @@ TECH website- duplicate site, but with home page just for rounded squares with t
 
 
 
-UNSTYLED LAYOUT---
+UNSTYLED LAYOUT:
+- add max width to math other post layouts?
+- use metadata to create title and date without displaying if possible
+- 
+
 import PostLayoutUnstyled from '../layouts/PostLayoutUnstyled.astro';
 
 // You could fetch and use the content from a Markdown file here.
