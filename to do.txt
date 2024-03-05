@@ -80,6 +80,9 @@ Turn menu icon into x while open
 Try solid white navigation page without rounded corners like along dusty roads
 Add slide in/out animation for menu - fast like along dusty roads
 
+POST layouts
+- move styles above layout divs
+
 
 ORDERING
 - put CSS in head so it loads before content
