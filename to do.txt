@@ -1,3 +1,15 @@
+MAIN ISSUES:
+- spacing between title and image in left post layout
+    is too small when window is maximised
+- SmallGridLayout (and likely other layouts)
+    is using wrong title for milly and sissy article
+- When description is too long it overflowsout of image
+    container. Make font slightly smaller, set rule to 
+    clip/cut off descriptions either over a certain char
+    length or when they will extend beyond image (using 
+    margin?) and add elipsis
+
+
 
 WEBSITE
 1. Fix main issues with website (indent in list layout)
