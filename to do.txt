@@ -131,3 +131,22 @@ want free tier but reasonable progression once paid - heroku might have big jump
 
 
 TECH website- duplicate site, but with home page just for rounded squares with text at the top and an icon in the middle, each for a different serves, with an almost cartoony modern art style
+
+
+
+
+UNSTYLED LAYOUT---
+import PostLayoutUnstyled from '../layouts/PostLayoutUnstyled.astro';
+
+// You could fetch and use the content from a Markdown file here.
+// For simplicity, let's say you've pasted the content directly.
+const markdownContent = `
+# My Blog Post
+
+![Image Alt Text](/path/to/image.jpg)
+
+Some text here...
+`;
+---
+
+<MarkdownLayout content={markdownContent} />

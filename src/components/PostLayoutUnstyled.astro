@@ -1,0 +1,11 @@
+---
+import { Markdown } from '@astrojs/markdown-remark';
+
+const { content } = Astro.props;
+---
+
+<article>
+  <Markdown>
+    {content}
+  </Markdown>
+</article>
