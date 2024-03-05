@@ -2,162 +2,31 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import PostLayoutLeft from '../components/PostLayoutLeft.astro';
 
 type Props = CollectionEntry<'articles'>['data'];
 
 const { title, description, published_at, updated_at, image } = Astro.props;
 ---
-
 <html lang="en">
-    <head>
-        <BaseHead title={title} description={description} />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
-        <style>
-            html, body {
-                height: 100%;
-                margin: 0;
-            }
+  <head>
+    <BaseHead title={title} description={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+    
+  </head>
+  <body>
+    <PostLayoutLeft
+      title={title}
+      description={description}
+      published_at={published_at}
+      updated_at={updated_at}
+      image={image}
+    >
+      <slot />
+    </PostLayoutLeft>
 
-            body {
-                display: flex;
-                flex-direction: column; /* Stack main and footer vertically */
-            }
-
-            main {
-                flex: 1; /* Allows the main content to expand and fill the available space */
-                display: flex;
-                flex-direction: column; /* Stack the content inside main vertically */
-                justify-content: space-between; /* Distributes the space */
-            }
-            .centered-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                max-width: 1020px; /* Maximum width for large screens */
-                width: 100%;
-                margin: 2em auto;
-            }
-            .header-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                text-align: center;
-            }
-            .text-content {
-                margin-bottom: 1em;
-            }
-            .hero-image {
-                width: 100%;
-                max-width: 600px; /* Adjust the width of the image as needed */
-                margin-bottom: 1em;
-            }
-            .hero-image img {
-                width: 100%;
-                height: auto;
-                border-radius: 0;
-                box-shadow: var(--box-shadow);
-                
-                /* margin-left: 0.5em; */
-            }
-            .prose {
-                font-family: 'Urbanist', sans-serif;
-                font-size: 20px;
-                color: #444;
-            }
-            .title h1 {
-                /* font-family: 'Urbanist', sans-serif; */
-                font-family: 'Nothing You Could Do';
-                font-size: 60px;
-                color: #444;
-                word-wrap: break-word; /* Prevents text from spilling out */
-                margin: 0;
-                margin-top: 10px;
-            }
-            .description{
-                font-family: 'Urbanist', sans-serif;
-                font-size: 20px;
-                color: #444;
-                font-style: italic;
-            }
-            .date,
-            .last-updated-on {
-                font-family: 'Urbanist', sans-serif;
-                font-size: 20px;
-                color: #999;
-            }
-            .last-updated-on {
-                font-size: 15px; /* Smaller text for the updated date */
-            }
-
-
-
-            /* ALTERNATIVE LAYOUT FOR CENTRED TITLE, DATE, DESCRIPTION AND IMAGE
-                .header-content {
-                    flex-direction: row;
-                    align-items: flex-start;
-                    text-align: left;
-                }
-                .text-content {
-                    margin-bottom: 0;
-                    margin-right: 1em;
-                }
-                .hero-image {
-                    margin-bottom: 0;
-                } 
-            */
-            @media (min-width: 1024px) {
-                .header-content {
-                    flex-direction: row;
-                    align-items: flex-start;
-                    text-align: left;
-                }
-                .text-content {
-                    margin-bottom: 0;
-                    margin-right: 1em;
-                }
-                .hero-image {
-                    margin-bottom: 0;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-            <div class="centered-container">
-                <div class="header-content">
-                    <div class="text-content">
-                        <div class="date">
-                            <FormattedDate date={published_at} />
-                            <br>
-                            <!-- {updated_at && (
-                                <span class="last-updated-on">
-                                    Last updated on <FormattedDate date={updated_at} />
-                                </span>
-                            )} -->
-                        </div>
-                        <div class="title">
-                            <h1>{title}</h1>
-                        </div>
-                        <div class="description">
-                            <p>{description}</p>
-                        </div>
-                    </div>
-                    {image && (
-                        <div class="hero-image">
-                            <img src={image} alt={title} />
-                        </div>
-                    )}
-                </div>
-                <hr />
-                <article class="prose">
-                    <slot />
-                </article>
-            </div>
-        </main>
-        <Footer />
-    </body>
+    <Footer />
+  </body>
 </html>
