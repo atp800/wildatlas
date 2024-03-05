@@ -4,7 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import PostLayoutLeft from '../components/PostLayoutLeft.astro';
 
-type Props = CollectionEntry<'Blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, published_at, updated_at, image } = Astro.props;
 ---
