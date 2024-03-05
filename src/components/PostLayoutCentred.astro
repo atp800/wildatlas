@@ -17,11 +17,11 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
       <div class="date">
         <FormattedDate date={published_at} />
         <br>
-        {updated_at && (
+        <!-- {updated_at && (
           <span class="last-updated-on">
             Last updated on <FormattedDate date={updated_at} />
           </span>
-        )}
+        )} -->
       </div>
       <div class="title">
         <h1>{title}</h1>
@@ -37,6 +37,7 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
     )}
   </div>
   <hr />
+  <div class="separator"></div>
   <article class="prose">
     <slot />
   </article>
@@ -121,6 +122,12 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
     }
     .last-updated-on {
         font-size: 15px; /* Smaller text for the updated date */
+    }
+    .separator {
+        width: 95%;
+        background-color: lightgrey;
+        height: 1px;
+        margin: 2em auto;
     }
 
 
