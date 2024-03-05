@@ -67,6 +67,7 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
         max-width: 1020px; /* Maximum width for large screens */
         width: 100%;
         margin: 2em auto;
+        
     }
     .header-content {
         display: flex;
@@ -149,8 +150,9 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
     @media (min-width: 1024px) {
         .header-content {
             flex-direction: row;
-            align-items: flex-start;
+            align-items: center;
             text-align: left;
+            max-width: 1000px;
         }
         .text-content {
             margin-bottom: 0;
@@ -158,6 +160,19 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
         }
         .hero-image {
             margin-bottom: 0;
+        }
+        /* .separator {
+            
+          margin-top: 8em;
+        } */
+        .hero-image {
+          max-height: 600px;
+          max-width: 800px;
+        }
+        .hero-image img {
+          margin-left: 2em;
+          max-height: 500px;
+          max-width: 540px
         }
     }
 </style>
