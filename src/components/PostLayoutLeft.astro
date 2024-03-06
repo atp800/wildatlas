@@ -140,6 +140,7 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
     .text-content {
         order: 1; /* Ensures text content comes first */
         margin-bottom: 0;
+        margin-right: 15px;
     }
     .hero-image {
         order: 2; /* Ensures image comes second */
@@ -147,7 +148,8 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
         max-height: 500px;
         justify-content: center; /* Center the image within the div */
         display: flex;
-        overflow: hidden;          
+        overflow: hidden;   
+        margin-left: 15px;       
     }
     .hero-image img {
         max-width: 100%; /* Ensures the image is not larger than its container */

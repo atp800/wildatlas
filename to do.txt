@@ -8,7 +8,7 @@ MAIN ISSUES:
     clip/cut off descriptions either over a certain char
     length or when they will extend beyond image (using 
     margin?) and add elipsis
-
+- add overlay to images like spotify to make wriying egible
 
 
 WEBSITE
