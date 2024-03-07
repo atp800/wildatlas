@@ -141,12 +141,14 @@ GLOBAL.CSS
 
 
 HOSTING
-- Heroku
-- Github pages
+Favourites:
 - Cloudflare pages
 - Firebase
-- Appliku
 - Render
+
+- Heroku
+- Github pages
+- Appliku
 - Webhosting UK?
 - Krystal - eco hosting
 - does cloudflare have hosting?
