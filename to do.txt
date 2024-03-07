@@ -1,27 +1,19 @@
 MAIN ISSUES:
-- SmallGridLayout (and likely other layouts)
-    is using wrong title for milly and sissy article
-    - not any more? just glitch?
-- Titles on images (grid/smallgrid) need more padding/margin to avoid being up against image edge
-    - or better font size adjustment for title and escription? em vs rem units?
-- Words in titles on images sometimes broken if theres not enough room
-- When description is too long it overflowsout of image
-    container. Make font slightly smaller, set rule to 
-    clip/cut off descriptions either over a certain char
-    length or when they will extend beyond image (using 
-    margin?) and add elipsis
 - add overlay to images like spotify to make wriying egible
 
 CREATE MANIFEST.JSON
 - apparently mandatory for lighthouse test
 
 
+
+
 DOWNLOAD FONTS AS BACKUP
 
-
-Switch to svg icon?
--higher res, more modern, can change colour with css (e.g. for a dark mode)
-
+ICON
+- Switch to svg icon?
+    -higher res, more modern, can change colour with css (e.g. for a dark mode)
+- apple mask icon
+- ico backup not working
 
 add a dark mode? - wrong aesthetic really
 
@@ -117,6 +109,7 @@ ORDERING
 GRID LAYOUT
 - create text grid layout, with title and descruption underneath each image
 - experiment with slightly wider aspect images (like articles page)
+- add ellipses if description overflows
 
 MASONRY LAYOUT
 - fix to order across before ordering by column
