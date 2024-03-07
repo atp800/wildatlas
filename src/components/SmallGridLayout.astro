@@ -55,28 +55,39 @@ const { posts, basePath }: PostGridProps = Astro.props;
     .post-description {
         display: none;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 75%;
+        top: 1%; 
+        bottom: 1%;
+        left: 1%; 
+        right: 1%; 
+        padding: 7px;
+        
+        
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
+        
         color: white;
         font-family: 'Urbanist', sans-serif;
-        font-size: 1.3rem; /* Adjust as needed */
+        font-size: 1.3rem;
+        line-height: 1.4; 
+        box-sizing: border-box;
         z-index: 2;
+        overflow: hidden;
+        /* overflow-wrap: break-word;  */
     }
 
     /* Hover styles */
     .grid li:hover img {
-        opacity: 0.7; /* Slight fade effect on image */
+        opacity: 0.7; // Slight fade effect on image
     }
 
     .grid li:hover .post-title {
-        display: none; /* Hide the title */
+        display: none; // Hide the title on hover
     }
 
     .grid li:hover .post-description {
-        display: block; /* Show the description */
+        display: flex; // Display the description using flexbox on hover
     }
 
     /* Ensure the post overlay container is positioned correctly */
@@ -89,9 +100,6 @@ const { posts, basePath }: PostGridProps = Astro.props;
         display: flex;
         justify-content: center;
         align-items: center;
-        /* opacity: 0;  */
-        /* transition: opacity 0.3s ease; */
-        /* transition: background-color 0.3s ease; */
     }
 
     .grid li:hover .post-overlay {
@@ -102,7 +110,7 @@ const { posts, basePath }: PostGridProps = Astro.props;
 
 
     /* Responsive grid columns */
-    @media (max-width: 1500px) {
+    @media (max-width: 1200px) {
         .grid {
             grid-template-columns: repeat(3, 1fr); /* 2 columns in medium screens */
         }
@@ -113,9 +121,20 @@ const { posts, basePath }: PostGridProps = Astro.props;
             font-size: 1.2rem;
         }
     }
+    @media (max-width: 745px) {
+        .post-title {
+            font-size: 1.3rem;
+        }
+        .post-description {
+            font-size: 0.95rem;
+        }
+    }
     @media (max-width: 600px) {
         .grid {
             grid-template-columns: repeat(2, 1fr); /* 1 column in small screens */
+        }
+        .post-description {
+            font-size: 1.1rem;
         }
     }
 </style>
