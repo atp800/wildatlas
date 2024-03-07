@@ -1,3 +1,21 @@
+MAIN ISSUES:
+- add overlay to images like spotify to make wriying egible
+
+CREATE MANIFEST.JSON
+- apparently mandatory for lighthouse test
+
+
+
+
+DOWNLOAD FONTS AS BACKUP
+
+ICON
+- Switch to svg icon?
+    -higher res, more modern, can change colour with css (e.g. for a dark mode)
+- apple mask icon
+- ico backup not working
+
+add a dark mode? - wrong aesthetic really
 
 WEBSITE
 1. Fix main issues with website (indent in list layout)
@@ -80,6 +98,9 @@ Turn menu icon into x while open
 Try solid white navigation page without rounded corners like along dusty roads
 Add slide in/out animation for menu - fast like along dusty roads
 
+POST layouts
+- add drop shadows to images
+
 
 ORDERING
 - put CSS in head so it loads before content
@@ -88,6 +109,7 @@ ORDERING
 GRID LAYOUT
 - create text grid layout, with title and descruption underneath each image
 - experiment with slightly wider aspect images (like articles page)
+- add ellipses if description overflows
 
 MASONRY LAYOUT
 - fix to order across before ordering by column
@@ -121,9 +143,12 @@ GLOBAL.CSS
 HOSTING
 - Heroku
 - Github pages
+- Cloudflare pages
 - Firebase
 - Appliku
 - Render
+- Webhosting UK?
+- Krystal - eco hosting
 - does cloudflare have hosting?
 
 want free tier but reasonable progression once paid - heroku might have big jump, appliku or render seem better, not sure about github and Firebase
@@ -135,7 +160,11 @@ TECH website- duplicate site, but with home page just for rounded squares with t
 
 
 
-UNSTYLED LAYOUT---
+UNSTYLED LAYOUT:
+- add max width to math other post layouts?
+- use metadata to create title and date without displaying if possible
+- 
+
 import PostLayoutUnstyled from '../layouts/PostLayoutUnstyled.astro';
 
 // You could fetch and use the content from a Markdown file here.
