@@ -146,6 +146,8 @@ HOSTING
 - Firebase
 - Appliku
 - Render
+- Webhosting UK?
+- Krystal - eco hosting
 - does cloudflare have hosting?
 
 want free tier but reasonable progression once paid - heroku might have big jump, appliku or render seem better, not sure about github and Firebase
