@@ -18,16 +18,16 @@ function createFeedItem(post, section) {
 export async function GET(context) {
   // Fetch posts from all collections
   const blogPosts = (await getCollection('blog'))
-	.filter(post => post.data.published_at) // Add this line to filter out posts without published_at
+	.filter(post => post.data.published_at && post.data.published_at !== 'null') // Add this line to filter out posts without published_at
 	.map(post => createFeedItem(post, 'blog'));
   const reviewPosts = (await getCollection('reviews'))
-	.filter(post => post.data.published_at) // Add this line to filter out posts without published_at
+	.filter(post => post.data.published_at && post.data.published_at !== 'null') // Add this line to filter out posts without published_at
 	.map(post => createFeedItem(post, 'reviews'));
   const travelPosts = (await getCollection('travel'))
-	.filter(post => post.data.published_at) // Add this line to filter out posts without published_at
+	.filter(post => post.data.published_at && post.data.published_at !== 'null') // Add this line to filter out posts without published_at
 	.map(post => createFeedItem(post, 'travel'));
   const articlePosts = (await getCollection('articles'))
-	.filter(post => post.data.published_at) // Add this line to filter out posts without published_at
+	.filter(post => post.data.published_at && post.data.published_at !== 'null') // Add this line to filter out posts without published_at
 	.map(post => createFeedItem(post, 'articles'));
 
   // Combine all posts into a single array and sort them by publication date
