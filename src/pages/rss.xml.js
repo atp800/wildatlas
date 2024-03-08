@@ -10,7 +10,6 @@ function createFeedItem(post, section) {
     link: `${SITE_URL}/${section}/${post.slug}/`,
     guid: `${SITE_URL}/${section}/${post.slug}/`,
     pubDate: new Date(post.data.published_at).toUTCString(),
-    author: post.data.author,
     categories: post.data.tags ? post.data.tags.split(',') : [], // Check if tags exist and split
   };
 }
@@ -32,7 +31,7 @@ export async function GET(context) {
 
   // Combine all posts into a single array and sort them by publication date
   const allPosts = [...blogPosts, ...reviewPosts, ...travelPosts, ...articlePosts]
-    .filter(item => item.data.status !== 'draft') // Filter out draft posts
+    .filter(item => item.status !== 'draft') // Filter out draft posts
     .sort((a, b) => new Date(b.data.published_at) - new Date(a.data.published_at)); // Sort by date, latest first
 
   return rss({
