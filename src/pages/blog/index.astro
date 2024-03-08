@@ -27,6 +27,7 @@ const posts = (await getCollection('blog'))
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+	
 	<style>
 		main {
 			display: flex;
@@ -38,11 +39,25 @@ const posts = (await getCollection('blog'))
 			margin-top: 6%;
 			padding: 3em 1em;
 		}
+		title {
+			text-align: center;font-weight: bold;
+			color: #444;
+			margin-top: 0em;
+			margin-bottom: 0.6em; /* Giving space between the title and the posts */
+			width: 100%;
+
+			/* font-family: 'Bad Script'; */
+			/* font-family: 'Zeyada'; */
+			/* font-family: 'Dawning of a New Day'; */
+			font-family: 'Nothing You Could Do';
+			font-size: 4.2em;
+		}
 	</style>
 </head>
-<body>
+<body>	
+	<Nav />
 	<main>
-		<Nav />
+		<div class="title">Blog</div>
 		<ListLayout posts={posts} basePath="blog" />
 	</main>
 	<Footer />
