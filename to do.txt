@@ -1,4 +1,5 @@
 MAIN ISSUES:
+- line on posts still overlaps with image for tall/vertical images
 - move title and description under post images in list 
     layout, with extra space undernath to separate posts
 - add overlay to images like spotify to make wriying egible
@@ -8,6 +9,8 @@ MAIN ISSUES:
 - add GTM tag and set up tracking
 - on small devices, line separting post content from image 
     on actual post page overlaps with image if image is tall
+- filter out posts where status != live
+- unformatted titles/text briefly visible on loading - hompage wild atlas text
 
 CREATE MANIFEST.JSON
 - apparently mandatory for lighthouse test
@@ -81,10 +84,8 @@ TIKTOK SHOP
 
 
 HOMEPAGE
-- navigation bar is briefly visible when page is loaded and refreshed - website seems to be defaulting to displaying the menu, 
-doing a window-size check or soemthing and then closing it. COuld be fixed by switching file to svelte for speed 
-(could aslo be done with Nav.astro component) or by changing implementation
-
+- add profits go to eco charities in about footer
+- add eco hosting in normal footer or about footer once switched
 
 BLOG
 - navigation links glitch slightly when the page is loaded/refreshed, 
