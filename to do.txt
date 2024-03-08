@@ -102,6 +102,12 @@ POST layouts
 - add drop shadows to images
 
 
+POSTS
+- update code to handle invalid dates (particularly published_at)
+    - handle where date is null, just not the 'null' string
+
+
+
 ORDERING
 - put CSS in head so it loads before content
 - ask chatgpt about ordering of otehr thing to make sure there isn't an instant with things out of position - move styles further up?
