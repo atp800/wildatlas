@@ -1,10 +1,18 @@
 MAIN ISSUES:
+- move title and description under post images in list 
+    layout, with extra space undernath to separate posts
 - add overlay to images like spotify to make wriying egible
+- add manifest
+- switch to svg icons
+- add apple mask icons
+- add GTM tag and set up tracking
+- on small devices, line separting post content from image 
+    on actual post page overlaps with image if image is tall
 
 CREATE MANIFEST.JSON
 - apparently mandatory for lighthouse test
 
-
+Add
 
 
 DOWNLOAD FONTS AS BACKUP
