@@ -1,7 +1,5 @@
 MAIN ISSUES:
-- line on posts still overlaps with image for tall/vertical images
-- move title and description under post images in list 
-    layout, with extra space undernath to separate posts
+- CONTENT - upload existing articles, set status to live, make more
 - add overlay to images like spotify to make wriying egible
 - add manifest
 - switch to svg icons
