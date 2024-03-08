@@ -4,6 +4,7 @@ MAIN ISSUES:
 - add manifest
 - switch to svg icons
 - add apple mask icons
+
 - add GTM tag and set up tracking
 - on small devices, line separting post content from image 
     on actual post page overlaps with image if image is tall
@@ -12,8 +13,6 @@ MAIN ISSUES:
 
 CREATE MANIFEST.JSON
 - apparently mandatory for lighthouse test
-
-Add
 
 
 DOWNLOAD FONTS AS BACKUP
@@ -26,12 +25,9 @@ ICON
 
 add a dark mode? - wrong aesthetic really
 
-WEBSITE
-1. Fix main issues with website (indent in list layout)
-2. Deploy website (render, firebase, heroku, github pages etc.)
-3. Write two-three artiles for each section - use AI ones as pal eholders for now if needed
 
-- scrap blog section, and just have destinaitons page wher every articles are all jst places
+
+- scrap blog section, and just have destinaitons page wher every articles are all jst places?
 
 TIKTOK
 4. Make 3 travel-based tiktok drafts
