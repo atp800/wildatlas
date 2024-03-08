@@ -217,6 +217,40 @@ const highlightedPosts = posts
         .highlighted-posts-container .highlighted-post:nth-child(n+3) {
             display: none;
         }
+
+        .list-item {
+            flex-direction: column; /* Stack image and content vertically */
+            align-items: center; /* Align items to the center */
+            margin-bottom: 3em; /* Space between list items */
+            max-width: 100%; /* Ensure list items don't exceed the width of the screen */
+        }
+        .post-image-container {
+            width: 100%; /* Full width */
+            height: auto; /* Height is adjusted automatically */
+            margin-right: 0; /* Resetting margin-right as it's no longer needed */
+            /* Optional: Set specific height if you want to maintain a particular aspect ratio */
+        }
+        .post-content {
+            align-items: center; /* Align the content in the center */
+            text-align: center; /* Center-align the text */
+            width: 100%; /* Full width */
+            padding: 0 10px; /* Add some padding on the sides */
+        }
+        .post-title,
+        .post-description,
+        .post-date {
+            width: 100%; /* Full width to align with the content */
+            margin-right: 1em; /* Reset any right margin that might be causing the shift */
+            margin-left: 0;
+        }
+
+        .list-item-link {
+            flex-direction: column; /* Stack image container and content container vertically */
+        }
+        .list {
+            padding: 0; /* Reset any padding that might affect the layout */
+            width: 100%; /* Make sure the list takes full width */
+        }
     }
     
 </style>

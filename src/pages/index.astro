@@ -25,18 +25,26 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       justify-content: space-between;
       position: relative; /* Allows absolute positioning within */
     }
-	.menu-icon {
-		display: none; /* Hide by default */
-		font-size: 30px;
-		color: white;
-		background: none;
-		border: none;
-		cursor: pointer;
-		position: absolute;
-		top: 20px;
-		right: 20px;
-		z-index: 1000;
-	}
+    .hero-text {
+      text-align: center;
+      /* font-family: 'Bad Script'; */
+      /* font-family: 'Zeyada'; */
+      /* font-family: 'Dawning of a New Day'; */
+      font-family: 'Nothing You Could Do';
+      font-size: 4.2em;
+    }
+    .menu-icon {
+      display: none; /* Hide by default */
+      font-size: 30px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
     .top-right-nav {
       display: flex !important;
       position: absolute;
@@ -58,7 +66,27 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	}
 	.hidden {
     display: none !important;
-    }
+  }
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.15); /* Black background with opacity */
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+	.logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px; /* Adjust based on desired spacing from the corners */
+	}
+	.logo-container img {
+		height: 50px; /* Adjust based on your logo's size */
+		width: auto;
+	}
 
 	@media (max-width: 768px) {
 		.menu-icon {
@@ -90,34 +118,22 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			color: white; /* Adjust if needed to ensure visibility */
 		}
 	}
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.15); /* Black background with opacity */
-      color: white;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+
+  @media (max-width: 560px) {
     .hero-text {
       text-align: center;
-	  /* font-family: 'Bad Script'; */
-	  /* font-family: 'Zeyada'; */
-	  /* font-family: 'Dawning of a New Day'; */
-	  font-family: 'Nothing You Could Do';
-      font-size: 4.2em;
-    }
-	.logo-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 20px; /* Adjust based on desired spacing from the corners */
-	}
-	.logo-container img {
-		height: 50px; /* Adjust based on your logo's size */
-		width: auto;
-	}
+      /* font-family: 'Bad Script'; */
+      /* font-family: 'Zeyada'; */
+      /* font-family: 'Dawning of a New Day'; */
+      font-family: 'Nothing You Could Do';
+      font-size: 3.8em;
+
+  }
+
+
+
+
+   
 
   </style>
 </head>
