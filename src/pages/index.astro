@@ -23,6 +23,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      filter: saturate(1.2);
       position: relative; /* Allows absolute positioning within */
     }
     .hero-text {
@@ -68,7 +69,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     display: none !important;
   }
   .overlay {
-    background-color: rgba(0, 0, 0, 0.12); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.14); /* Black background with opacity */
     color: white;
     width: 100%;
     height: 100%;
@@ -127,7 +128,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       /* font-family: 'Dawning of a New Day'; */
       font-family: 'Nothing You Could Do';
       font-size: 3.8em;
-
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .hero-text {
+      margin-bottom: 200px;
+    }
+    .hero-image {
+      background-position: 46% center;
+      filter: saturate(1.2);
+    }
   }
 
 
