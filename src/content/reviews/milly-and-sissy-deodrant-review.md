@@ -8,7 +8,7 @@ tags: "toiletries,deodrant,antiperspirant,"
 author: "Andreas"
 views: 0
 highlighted: true
-status: "draft"
+status: "live"
 created_at: "2023-12-15"
 published_at: "2024-02-27"
 updated_at: "2023-12-15"

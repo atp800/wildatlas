@@ -1,3 +1,5 @@
+USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
+
 MAIN ISSUES:
 - CONTENT - upload existing articles, set status to live, make more
 - add overlay to images like spotify to make wriying egible
@@ -10,6 +12,7 @@ MAIN ISSUES:
     on actual post page overlaps with image if image is tall
 - filter out posts where status != live
 - unformatted titles/text briefly visible on loading - hompage wild atlas text
+- make postts more interesting - add inline images and diagrams
 
 CREATE MANIFEST.JSON
 - apparently mandatory for lighthouse test
