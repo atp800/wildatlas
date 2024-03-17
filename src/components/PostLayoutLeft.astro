@@ -2,6 +2,8 @@
 // The frontmatter for BlogPostLayout component
 import FormattedDate from './FormattedDate.astro';
 import Nav from '../components/Nav.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 interface PostLayoutLeftProps {
   title: string;
@@ -12,6 +14,8 @@ interface PostLayoutLeftProps {
 }
 const { title, description, published_at, updated_at, image } = Astro.props as PostLayoutLeftProps;
 ---
+
+<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
 <style>
   html, body {
