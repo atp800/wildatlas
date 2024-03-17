@@ -6,6 +6,7 @@ import GridLayout from '../../components/GridLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 
 const posts = (await getCollection('articles'))
   // Filter out posts with no 'published_at' date.
