@@ -9,6 +9,7 @@ MAIN ISSUES:
 
 - add UTM tracking for instagram and tiktok links
 - add GTM tag and set up tracking
+- set up events for footer links
 - on small devices, line separting post content from image 
     on actual post page overlaps with image if image is tall
 - filter out posts where status != live
