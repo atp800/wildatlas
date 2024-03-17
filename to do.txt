@@ -7,6 +7,7 @@ MAIN ISSUES:
 - switch to svg icons
 - add apple mask icons
 
+- add UTM tracking for instagram and tiktok links
 - add GTM tag and set up tracking
 - on small devices, line separting post content from image 
     on actual post page overlaps with image if image is tall

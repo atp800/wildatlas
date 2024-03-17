@@ -137,6 +137,17 @@ const { posts, basePath }: PostGridProps = Astro.props;
             font-size: 1.1rem;
         }
     }
+    @media (max-width: 400px) {
+        .grid {
+            grid-template-columns: repeat(2, 1fr); /* 1 column in small screens */
+        }
+        .post-title {
+            font-size: 1.1rem;
+        }
+        .post-description {
+            font-size: 0.9rem;
+        }
+    }
 </style>
 
 
