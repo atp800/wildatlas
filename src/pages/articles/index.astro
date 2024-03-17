@@ -53,6 +53,7 @@ const posts = (await getCollection('articles'))
 </head>
 <body>
     <Nav />
+	<GTMBodyNoScript />
     <main>
 		<div class="title">Nature</div>
       <GridLayout posts={posts} basePath="articles" />

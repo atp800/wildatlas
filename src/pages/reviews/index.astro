@@ -55,6 +55,7 @@ const posts = (await getCollection('reviews'))
 </head>
 <body>
 	<Nav />
+	<GTMBodyNoScript />
 	<main>
 		<div class="title">Reviews</div>
 		<SmallGridLayout posts={posts} basePath="reviews" />

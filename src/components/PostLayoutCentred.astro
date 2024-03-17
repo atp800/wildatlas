@@ -5,7 +5,7 @@ import Nav from '../components/Nav.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
-interface PostLayoutLeftProps {
+interface PostLayoutLeftProps { //should this be PostLayoutCentred?
   title: string;
   description: string;
   published_at: Date;
@@ -14,8 +14,6 @@ interface PostLayoutLeftProps {
 }
 const { title, description, published_at, updated_at, image } = Astro.props as PostLayoutLeftProps;
 ---
-
-<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
 <style>
   html, body {

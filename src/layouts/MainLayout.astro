@@ -3,10 +3,12 @@
 import Nav from '../components/Nav.astro';
 ---
 <html>
-<head>
+<head>  
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   <!-- your head elements -->
 </head>
 <body>
+  <GTMBodyNoScript />
   <Nav />
   <slot /> <!-- Where your page content will go -->
 </body>
