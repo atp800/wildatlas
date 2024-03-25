@@ -1,20 +1,22 @@
 USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 
 MAIN ISSUES:
-- CONTENT - upload existing articles, set status to live, make more
+- CONTENT
+- filter out posts where status != live
+= linktree on insta/facebook
 - add overlay to images like spotify to make wriying egible
 - add manifest
 - switch to svg icons
 - add apple mask icons
+- check consent/disclaimer rules - add privacy policy page in footer
+    - User Data Collection Acknowledgement in GA4 = put in team gpt and check im ok
 
-- add UTM tracking for instagram and tiktok links
-- add GTM tag and set up tracking
-- set up events for footer links
-- on small devices, line separting post content from image 
-    on actual post page overlaps with image if image is tall
-- filter out posts where status != live
-- unformatted titles/text briefly visible on loading - hompage wild atlas text
+- hide UTM parameters
+    - code to clean URL - alters web history and could impact seo - possibel to do without altering web history?
+    - replace UTM with fragments and a GTM lookup table - works with GA4? - would it refire on other pages?
 - make postts more interesting - add inline images and diagrams
+- amke sure page views can track which index pages are being visited - currently registers all as wild atlas
+
 
 CREATE MANIFEST.JSON
 - apparently mandatory for lighthouse test
