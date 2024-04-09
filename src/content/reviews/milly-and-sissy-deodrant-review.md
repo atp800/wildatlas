@@ -19,7 +19,7 @@ deleted_at: "null"
 
 ### Introduction
 
-Milly and Sissy are a fairly small company that I hadn't heard of until my recent perusing for a more eco-friendly deodorant, and even then their offering is quite hard to find. There aren't really any reviews that I could find, beyond their website, and there seem to be very few mentions of them.
+Milly and Sissy (<https://millyandsissy.co.uk/>) are a fairly small company that I hadn't heard of until my recent perusing for a more eco-friendly deodorant, and even then their offering is quite hard to find. There aren't really any reviews that I could find, beyond their website, and there seem to be very few mentions of them.
 &nbsp;
 
 What sets them apart from other eco-deodorants is their refill system. Rather than a replaceable cartridge stick like most alternatives, Milly and Sissy, provide sachets of a powder which you mix with water at home to get a liquid deodorant, which goes into their roll-on bottle.

@@ -2,15 +2,15 @@ USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 
 MAIN ISSUES:
 - CONTENT
+- add whale AI, lazarus and otter articles, and icon which works on iphone, and then add linktree to tiktok/insta bio
 - reduce resolution/image size of high resolution post thumbnails (e.g. packing, suncream)
-- make post spacing consisten: eitehr add extra spacing before titles in packing article, or remove from toher articles
+- make post spacing consistent: eitehr add extra spacing before titles in packing article, or remove from toher articles
     (might actually look better more compact without extra spacing - ask other people)
 - add method for adding more images to posts, with text to the side (and add to existing posts)
 - replace amazon links with affiliate links - then with onelinks
-- update reef article to include sunscreen isntead on suncream where I swapped them in markdown post
-- filter out posts where status != live
-- linktree on insta/facebook
-- add overlay to images like spotify to make wriying egible
+- update word docs to refelct changes made to markdown (e.g. suncream swapped for suncream in suncream article, tweaks and title change to fungus article)
+- linktree on insta/facebook/tiktok
+- add overlay to images like spotify to make writing legible
 - add manifest
 - switch to svg icons
 - add apple mask icons
