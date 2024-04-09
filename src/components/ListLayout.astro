@@ -30,7 +30,7 @@ const highlightedPosts = posts
     }
     .highlighted-posts-container {
         display: flex;
-        /* flex-wrap: wrap; */
+        flex-wrap: wrap;
         gap: 1em;
         justify-content: space-around; /* This will evenly space the items and center them */
         margin-top: 1em;
@@ -181,6 +181,20 @@ const highlightedPosts = posts
         filter: brightness(0.7); /* Darken the image on hover */
     }
 
+    @media (max-width: 1850px) {
+        .highlighted-posts-container {
+            justify-content: center; /* Center the items when they wrap */
+            max-width: none; /* Allow full width on smaller screens */
+        }
+        .highlighted-post {
+            width: calc(50% - 1em); /* Each item takes half the container width minus the gap */
+        }
+        .highlighted-image-container,
+        .highlighted-post-title {
+            width: calc(100% - 1.1em); /* Adjust width to fit the new .highlighted-post width */
+            max-width: none; /* Override any max width set previously */
+        }
+    }
 
     @media (max-width: 900px) {
         .highlighted-posts-container {

@@ -2,8 +2,11 @@ USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 
 MAIN ISSUES:
 - CONTENT
+- add method for adding more images to posts, with text to the side (and add to existing posts)
+- replace amazon links with affiliate links - then with onelinks
+- update reef article to include sunscreen isntead on suncream where I swapped them in markdown post
 - filter out posts where status != live
-= linktree on insta/facebook
+- linktree on insta/facebook
 - add overlay to images like spotify to make wriying egible
 - add manifest
 - switch to svg icons
