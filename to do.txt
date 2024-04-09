@@ -2,6 +2,9 @@ USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 
 MAIN ISSUES:
 - CONTENT
+- reduce resolution/image size of high resolution post thumbnails (e.g. packing, suncream)
+- make post spacing consisten: eitehr add extra spacing before titles in packing article, or remove from toher articles
+    (might actually look better more compact without extra spacing - ask other people)
 - add method for adding more images to posts, with text to the side (and add to existing posts)
 - replace amazon links with affiliate links - then with onelinks
 - update reef article to include sunscreen isntead on suncream where I swapped them in markdown post

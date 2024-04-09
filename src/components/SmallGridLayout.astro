@@ -7,6 +7,9 @@ interface PostSmallGridProps {
 }
 
 const { posts, basePath }: PostGridProps = Astro.props;
+
+// Filter the posts to only include live posts
+const livePosts = posts.filter(post => post.data.status === 'live');
 ---
 
 <style>
@@ -152,7 +155,7 @@ const { posts, basePath }: PostGridProps = Astro.props;
 
 
 <ul class="grid">
-    {posts.map((post) => (
+    {livePosts.map((post) => (
         <li>
             <a href={`/${basePath}/${post.slug}/`}>
                 <div class="post-img-container">

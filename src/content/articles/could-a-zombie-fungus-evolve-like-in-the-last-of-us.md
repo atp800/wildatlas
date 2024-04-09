@@ -1,6 +1,6 @@
 ---
 # title: "How Possible is the Zombie Fungus in the Last of Us?"
-title: "Could Global Warming Really Cause a Fungal Zombie Apocalypse?"
+title: "Could Global Warming Cause a Fungal Zombie Apocalypse?"
 image: "/articles/could-a-zombie-fungus-evolve-like-in-the-last-of-us.jpg"
 description: "Could a zombie fungus evolve like in The Last of Us?"
 section: "articles"
@@ -18,9 +18,9 @@ deleted_at: "null"
 
 ### Could a zombie fungus evolve like in The Last of Us?
 
-If you haven't seen or played The Last of Us, both the TV series and the games it's based on are amazing. They're based around a zombie apocalypse, but with a little bit more science compared to other examples of the genre. Most zombie films have pretty similarly vague origin stories, with a plague, or contagion, or virus originating in country X, and quickly spreading across the planet until only scavengers and brain-eating monsters are left. The Last of Us gives us a few more details about the nature of its plague though, and unlike most counterparts, it's a fungal infection. The opening scene brings up the mind-altering capabilities of compounds found in several fungi species, highlighting in particular _Ophiocordyceps unilateralis_; a parasitic fungus of the _Ophiocoryceps_ genus able to control the behaviour of ants. The scene then goes on to propose that, while humans have largely avoided widespread fungal infection due to our warmer body temperatures, rising global temperatures could prompt species like this to evolve heat resistance and begin infecting us too.
+If you haven't seen or played The Last of Us, both the TV series and the games it's based on are amazing, and I'd definitely recommend them. They're based around a zombie apocalypse, but with a little bit more science compared to other examples of the genre. Most zombie films have pretty similarly vague origin stories, with a plague, or contagion, or virus originating in country X, and quickly spreading across the planet until only scavengers and brain-eating monsters are left. The Last of Us gives us a few more details about the nature of its plague though, and unlike most counterparts, it's a fungal infection.
 
-Unfortunately, while the Last of Us certainly takes this to the extreme, this scenario isn't entirely as wild as it might seem. But exactly how possible is it?
+The opening scene brings up the mind-altering capabilities of compounds found in several fungi species, highlighting in particular _Ophiocordyceps unilateralis_; a parasitic fungus of the _Ophiocoryceps_ genus able to control the behaviour of ants. The scene then goes on to propose that, while humans have largely avoided widespread fungal infection due to our warmer body temperatures, rising global temperatures could prompt species like this to evolve heat resistance and begin infecting us too. Unfortunately, while the Last of Us certainly takes this to the extreme, this scenario isn't entirely as wild as it might seem. But exactly how possible is it?
 &nbsp;
 
 We can break this into two parts:

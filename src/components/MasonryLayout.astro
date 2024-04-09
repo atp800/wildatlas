@@ -7,6 +7,9 @@ interface PostMasonryProps {
 }
 
 const { posts, basePath }: PostMasonryProps = Astro.props;
+
+// Filter the posts to only include live posts
+const livePosts = posts.filter(post => post.data.status === 'live');
 ---
 
 <style>
@@ -101,7 +104,7 @@ const { posts, basePath }: PostMasonryProps = Astro.props;
 </style>
 
 <ul>
-    {posts.map((post) => (
+    {livePosts.map((post) => (
         <li>
             <a href={`/${basePath}/${post.slug}/`}>
                 <img src={post.data.image} alt="{post.data.title}" />

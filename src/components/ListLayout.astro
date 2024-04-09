@@ -10,9 +10,12 @@ const { posts, basePath }: PostListProps = Astro.props;
 
 // Filter and sort the highlighted posts
 const highlightedPosts = posts
-  .filter(post => post.data.highlighted)
+  .filter(post => post.data.highlighted && post.data.status === 'live')
   .sort((a, b) => new Date(b.data.published_at).getTime() - new Date(a.data.published_at).getTime())
   .slice(0, 4); // Get the most recent four highlighted posts
+
+// Filter the posts to only include live posts
+const livePosts = posts.filter(post => post.data.status === 'live');
 ---
 
 
@@ -290,7 +293,7 @@ const highlightedPosts = posts
 
 
 <ul class="list">
-    {posts.map((post) => (
+    {livePosts.map((post) => (
         <li class="list-item">
             <a href={`/${basePath}/${post.slug}/`} class="list-item-link">
                 <div class="post-image-container" style={`background-image: url(${post.data.image});`}></div>
