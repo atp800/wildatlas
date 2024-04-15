@@ -3,7 +3,7 @@ USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 MAIN ISSUES:
 - CONTENT
 - add whale AI, lazarus and otter articles, and icon which works on iphone, and then add linktree to tiktok/insta bio
-- reduce resolution/image size of high resolution post thumbnails (e.g. packing, suncream)
+- reduce resolution/image size of high resolution post thumbnails
 - make post spacing consistent: eitehr add extra spacing before titles in packing article, or remove from toher articles
     (might actually look better more compact without extra spacing - ask other people)
 - add method for adding more images to posts, with text to the side (and add to existing posts)
@@ -16,6 +16,13 @@ MAIN ISSUES:
 - add apple mask icons
 - check consent/disclaimer rules - add privacy policy page in footer
     - User Data Collection Acknowledgement in GA4 = put in team gpt and check im ok
+- check usage rights of images used, get milly and sissy affiliate links
+- can't hover on phones to see description - way around this?
+- implement lighthouse performance improvements, run on other pages
+- make sure images have alt text
+- create sitemap and add to search console
+- check website is indexed
+- check search terms leading to organic traffic
 
 - hide UTM parameters
     - code to clean URL - alters web history and could impact seo - possibel to do without altering web history?
