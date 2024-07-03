@@ -17,14 +17,24 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#49ce9e">
+<meta name="msapplication-TileColor" content="#ff0000">
+<meta name="theme-color" content="#000000">
+<meta name="generator" content={Astro.generator} />
+
+<!-- <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/atlas2.png"> 
-<!-- <link rel="icon" href="favicon.svg" color="#ffffffff"> -->
 <link rel="mask-icon" href="/favicon.svg" color="#ffffffff">
 <link rel="apple-touch-icon" href="/atlas2.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="generator" content={Astro.generator} />
+<link rel="manifest" href="/manifest.json"> -->
+
+<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+<!-- <link rel="icon" href="favicon.svg" color="#ffffffff"> -->
+
 
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
