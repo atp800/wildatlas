@@ -25,7 +25,7 @@ Despite common misconception, there is basically no difference:
 
 **Sunblock** is usually used to refer to mineral-based suncreams, on the basis that they works as a physical barrier, scattering the sun's rays. In reality, though, they also they also absorb UV like chemical sunscreens. They typically contains minerals like zinc oxide or titanium dioxide.
 
-Ultimately, these terms are often used interchangeably, and personally I just called them all sunscreens. In terms of effectiveness, neither chemical or mineral-based options have a real advantage. If you’re interested in the science though, take a look at this article: <https://labmuffin.com/how-do-sunscreens-work-the-science-with-video/>
+Ultimately though, these terms are often used interchangeably, and personally I just called them all sunscreens. In terms of effectiveness, neither chemical or mineral-based options have a real advantage. If you’re interested in the science behind each of them, take a look at this article: <https://labmuffin.com/how-do-sunscreens-work-the-science-with-video/>
 
 &nbsp;
 
@@ -46,7 +46,7 @@ Other ingredients to avoid are:
 
 ### Safe sunscreen ingredients
 
-Ideally, use mineral-based sunscreens (as opposed to chemical-based), with things **like zinc oxide** and **titanium dioxide** in a non-nano form. If it doesn’t specify that they are micro or non-nano, they probably aren’t, although nano-mineral sunscreens are still preferable to chemical ones.
+Ideally, use mineral-based sunscreens (as opposed to chemical-based), with things **like zinc oxide** and **titanium dioxide** in a non-nano form. If it doesn’t specify that they are micro or non-nano, they probably aren’t; although nano-mineral sunscreens are still preferable to chemical ones.
 
 There are also some newer chemical UV filters that are more photostable and hopefully less harmful though, like **Tinosorb S** (Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine), **Tinosorb M** (Methylene Bis-Benzotriazolyl Tetramethylbutylphenol), **Methylene Blue** (an antioxidant previously used as a medicine and laboratory dye), but these aren’t as widely available.
 
@@ -55,7 +55,7 @@ And Methylene Blue here: <https://www.news-medical.net/news/20210528/Methylene-B
 
 Stick to these options if you can, but if not, oxybenzone, octinoxate and octocrylene, and probably PABA, are the main ingredients to avoid. The others haven’t been researched as extensively and some, like octisalate, may be less harmful. However, that doesn’t mean that they aren’t doing damage, and this lack of research means they could actually be just as bad – or potentially even worse.
 
-Unfortunately, many people dislike completely reef-safe mineral-based sunscreens, because they generally have a thicker consistency that doesn’t rub in as well and can leave a white cast, and tend to be more expensive. Having said that, there are good options put there that minimise these issues, which are linked below.
+Unfortunately, many people dislike completely reef-safe mineral-based sunscreens, because they generally have a thicker consistency that doesn’t rub in as well and can leave a white cast, and tend to be more expensive. Having said that, there are good options out there that minimise these issues, which are linked below.
 
 &nbsp;
 
@@ -64,11 +64,11 @@ Unfortunately, many people dislike completely reef-safe mineral-based sunscreens
 Some good reef-safe sunscreens include:
 
 **Best All-Round Sunscreen:** Hawaiian Tropic Mineral Skin Milk  
-  Hawaiian Tropic is not generally known for being a reef-safe brand, but their mineral sun lotion has surprisingly few damaging ingredients, favouring Zinc Oxide over more harmful alternatives. It doesn’t specify if this is in nanoparticle form, so it likely is, but it’s effective and doesn’t leave a white cast once it’s rubbed in. It also smells GREAT, and is apparently a good base for foundation.  
+  Hawaiian Tropic is not generally known for being a reef-safe brand, but their mineral sun lotion has surprisingly few damaging ingredients, favouring zinc oxide over more harmful alternatives. It doesn’t specify if this is in nanoparticle form, so it likely is, but it’s effective and doesn’t leave a white cast once it’s rubbed in. It also smells GREAT, and is apparently a good base for foundation.  
   Available at: <https://amzn.eu/d/1Xzo1oA>
 
-**Best Non-Nano SUnscreen:** Odylique sunscreen  
-  This comes in both a plastic tube or a glass pot, and I’d recommend tha ltter, both because it’s more eco friendly, and the tube can be a bit hard to squeeze suncream out of. Since it doesn’t use nanoparticles, it is thicker in consistency than alternatives, but safer for marine life and it does a good job of avoiding a white residue on the skin.  
+**Best Non-Nano Sunscreen:** Odylique sunscreen  
+  This comes in both a plastic tube or a glass pot, and I’d recommend the latter, both because it’s more eco-friendly, and the tube can be a bit hard to squeeze suncream out of. Since it doesn’t use nanoparticles, it is thicker in consistency than alternatives, but safer for marine life and it does a good job of avoiding a white residue on the skin.  
   Available at: <https://odylique.co.uk/natural-sun-screen.html?ref=duszyd4a1lzt>
 
 **Best Non-Nano Alternative:** Organii Sun Milk Cream with SPF 50 125 ml  
@@ -85,17 +85,15 @@ Some good reef-safe sunscreens include:
   Available at: <https://amzn.eu/d/cR61HnA>
 
 **Best Sunscreen for Dark Skin:** Black Girl Sunscreen  
-  With standard, matter, hybrid and child specific options, these mineral sunscreens were formulated by and for people with darker skin tones to avoid a white cast.  
+  With standard, matt, hybrid and child specific options, these mineral sunscreens were formulated by and for people with darker skin tones to avoid a white cast.  
   Available at: <https://www.naturalisticproducts.co.uk/collections/black-girl-sunscreen>
-
-
 
 **Best Face Sunscreen:** CeraVe Moisturizing Mineral Sunscreen Face Sheer Tint  
   The tint in this does a great job at preventing any white residue, and it has TONS of great reviews. It’s particularly good for dry skin, but is lightweight and works well on oily and combination faces too. There is a body version but I struggled to find anywhere to buy it, annoyingly. There’s nothing stopping you using this all over other than cost though.  
   Available at: <hhttps://amzn.eu/d/57wtyHe>
 
 **Best Premium Sunscreen:** Paula’s Choice Super-Light Wrinkle Defense SPF 30  
-  Again, this is mineral-based option is more a face-specific one. It says for combination to oily skin, but honestly it’s great for all skin types. It leaves a really nice matte finish and aims to reduce the appearance of existing wrinkles too. It _is_ a bit expensive though.  
+  Again, this mineral-based option is more a face-specific one. It says for combination to oily skin, but honestly it’s great for all skin types. It leaves a really nice matt finish and also aims to reduce the appearance of existing wrinkles too. It _is_ a bit expensive though.  
   Available at: <https://amzn.eu/d/2iLfS6X>
 
 **Best Next Generation Sunscreen (and if you don’t like mineral sunscreens):** Bioderma Photoderm Aquafluide SPF 50+  
@@ -126,9 +124,9 @@ Also do bear in mind differences in skin tone. While I’ve tried to pick out su
 
 While sunscreen is the main skincare product people tend to think about as potentially harmful to ocean life, I think a lot of people forget about other things like moisturisers and makeup. These also wash off you into the water, and it’s important to do your research into whatever you use to make sure it’s not damaging.
 
-Also, while coral reefs are known for being very vulnerable, other aquatic environments are also susceptible to damage from chemicals in toiletries, including fresh water habitats like lakes and rivers. And don’t forget your own health! This article is focused on reef damage, but there’s evidence to suggest chemicals in sunscreams can be absorbed into the bloodstream. While not necessarily unsafe, it’s worth bearing in mind for long-term use.
+Also, while coral reefs are known for being very vulnerable, other aquatic environments are also susceptible to damage from chemicals in toiletries, including fresh water habitats like lakes and rivers. And don’t forget your own health! This article is focused on reef damage, but there’s evidence to suggest chemicals in sunscreams can be absorbed into the bloodstream. While not necessarily dangerous, it’s worth bearing in mind for long-term use.
 
-And lastly, I’ve tried to cover the main chemicals known or suspected to be damaging, but most toiletries contain tons of ingredients, and it’s hard to way up the risk of every single one. A lot of them likely haven’t even been studied much in this context. The safety of some ingredients is also dependent on the m being properly processed, and other things like ‘parfum’ or ‘fragrance’ are quite ambiguous, and it’s not clear just form the ingredients list what they actually are.
+And lastly, I’ve tried to cover the main chemicals known or suspected to be damaging, but most toiletries contain tons of ingredients, and it’s hard to weigh up the risks of every single one. A lot of them likely haven’t even been studied much in this context. The safety of some ingredients is also dependent on them being properly processed, and other things like ‘parfum’ or ‘fragrance’ are quite ambiguous, and ultimately it’s not clear just from the ingredients list what they actually are.
 
 &nbsp;
 
