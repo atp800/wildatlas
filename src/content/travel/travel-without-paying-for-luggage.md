@@ -98,4 +98,4 @@ Another great way to minimise costs but get extra space is to share with someone
 
 I haven’t covered toiletries or electronics much here because they vary so much between people. I’ll just remind you that you are going to a country. Even if your destination is somewhere remote, the airport you land at will have shops, or at least shops nearby, and you can buy almost any toiletries abroad; so save your liquid allowance for things where you like specific products or brands, like makeup.
 
-Lastly, don't stress too much. There's a lot of luck involved, but I've found it actually pretty rare that bags are measured, even by budget airlines, and I've never seen on get weighed. Often there isn't even a weight limit fro personal items, only a size limit can get away with a lot of the staff aren't being overly rigid.
+Lastly, don't stress too much. There's a lot of luck involved, but I've found it actually pretty rare that bags are measured, even by budget airlines, and I've never seen one get weighed. Often there isn't even a weight limit for personal items; only a size limit. You can honestly get away with a lot if the staff aren't being overly rigid.
