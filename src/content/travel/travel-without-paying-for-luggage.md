@@ -12,7 +12,7 @@ highlighted: true
 status: "live"
 created_at: "2024-04-09"
 published_at: "2024-04-09"
-updated_at: "2024-04-09"
+updated_at: "2024-09-21"
 deleted_at: "null"
 ---
 
@@ -40,6 +40,8 @@ One thing that a lot of people are unaware of is that you can almost always get 
 But no one will actually check if you bought something at the airport – you could just ask for a bag from any shop in the terminal and fill it with your own stuff. Or even just bring your own bag from home. Most check-in officers aren’t going to know (or care) exactly which shops are at the airport; although I would try to use a bag from one that is just to be on the safe side, or at least one that is fairly low-key. Wasabi or WHSmith’s? Great pick. Giant Ikea bag or a woven bag for life? Not so much.
 
 Once you’ve got your carrier bag, there’s nothing stopping you putting your water bottle in it, or a jumper, or a book, or basically anything. I always try to put things in that I could’ve been wearing or might have bought at the airport, just to feel on the safe side, but I’ve never been questioned or had even a second glance at my sneaky extra bag, and I’m pretty sure you could get away with pretty much anything. Just try to keep it fairly inconspicuous. If it looks like shopping that you’ve thrown a jumper into, you should be ok. If it starts to look more like luggage, you might start running into issues.
+
+On top of a plastic bag, you can also oten get away with a smaller shoulder bag or bum bag. I almost always carry a Uniqlo round mini shoulder bag, and it's never been picked up as an extra item. If you're feeling nervous, you can have it on the opposite side of your body to the boarding staff and wear a bulky hoodie or coat over it to cover it, and it's a great way to get actually quite a lot more stuff on board. There's also the pillow trick I've seen a few times on TikTok, where you fill a neck (or even just a normal) pillow with clothes. I've never used it myself, but my friends have without any issues.
 
 ### Use Your Pockets
 
@@ -95,3 +97,5 @@ You _could_ just pay for extra luggage for the return flight though. You still s
 Another great way to minimise costs but get extra space is to share with someone. Splitting an extra carry-on, or even hold bag, with one or two other people slashes the cost for each of you, but adds a lot of extra space. Especially if you go for checked-in luggage, which then allows you to take more liquids too. If you’ll be comfortable taking turns carrying it, this is a really nice option, but bear in mind the extra time you’ll need at airports if you go for a check-in bag.
 
 I haven’t covered toiletries or electronics much here because they vary so much between people. I’ll just remind you that you are going to a country. Even if your destination is somewhere remote, the airport you land at will have shops, or at least shops nearby, and you can buy almost any toiletries abroad; so save your liquid allowance for things where you like specific products or brands, like makeup.
+
+Lastly, don't stress too much. There's a lot of luck involved, but I've found it actually pretty rare that bags are measured, even by budget airlines, and I've never seen on get weighed. Often there isn't even a weight limit fro personal items, only a size limit can get away with a lot of the staff aren't being overly rigid.
