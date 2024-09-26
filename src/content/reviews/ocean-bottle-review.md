@@ -15,7 +15,8 @@ updated_at: "2024-09-22"
 deleted_at: "null"
 ---
 
-_Disclosure: I paid full price for all products I reviewed and this article isn't sponsored in any way, but it does contain affiliate links, which I earn a small commission from if you buy something using them. There is no additional cost to you, and I will never include affiliate links to products I don't genuinely recommend. Unless I'm running low on funds for my next superyacht, then I'll write whatever biased shit I need for that sweet cash._
+_Disclosure: I paid full price for all products I reviewed and this article isn't sponsored in any way, but it does contain affiliate links, which I earn a small commission from if you buy something using them. There is no additional cost to you, and I will never include affiliate links to products I don't genuinely recommend.
+Unless I'm running low on funds for my next superyacht - then I'll write whatever biased shit I need for that sweet cash ;)_
 &nbsp;
 
 ### Design
