@@ -23,8 +23,8 @@ export async function GET(context) {
     .map(post => createFeedItem(post, 'blog'))
     .filter(item => item !== null); // Filter out null items after mapping
 
-  const reviewPosts = (await getCollection('reviews'))
-    .map(post => createFeedItem(post, 'reviews'))
+  const reviewPosts = (await getCollection('eco'))
+    .map(post => createFeedItem(post, 'eco'))
     .filter(item => item !== null); // Filter out null items after mapping
 
   const travelPosts = (await getCollection('travel'))

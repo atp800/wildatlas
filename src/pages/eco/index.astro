@@ -9,7 +9,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import GTMBodyNoScript from '../../components/GTMBodyNoScript.astro';
 
-const posts = (await getCollection('reviews'))
+const posts = (await getCollection('eco'))
   // Filter out posts with no 'published_at' date.
   .filter(post => post.data.published_at != null)
   // Sort remaining posts by 'published_at' date.
@@ -58,8 +58,8 @@ const posts = (await getCollection('reviews'))
 	<Nav />
 	<GTMBodyNoScript />
 	<main>
-		<div class="title">Reviews</div>
-		<SmallGridLayout posts={posts} basePath="reviews" />
+		<div class="title">Eco</div>
+		<SmallGridLayout posts={posts} basePath="eco" />
 	</main>
 	<Footer />
 </body>

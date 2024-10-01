@@ -1,9 +1,9 @@
 ---
 title: "Ocean Bottle Review"
-image: "/reviews/ocean-bottle-review/ocean-bottle-main.png"
+image: "/eco/ocean-bottle-review/ocean-bottle-main.png"
 description: "Likely the most eco-friendly insulated water bottle in the world"
-section: "reviews"
-topic: "lifestyle"
+section: "eco"
+topic: "review"
 tags: "lifestyle,water,bottle,"
 author: "Andreas"
 views: 0
@@ -23,7 +23,7 @@ Unless I'm running low on funds for my next superyacht - then I'll write whateve
 
 My first thought when I saw the [1L Ocean Bottle](https://www.awin1.com/cread.php?awinmid=39288&awinaffid=1595444&ued=https%3A%2F%2Foceanbottle.co%2Fproducts%2Fbig-ocean-bottle-obsidian-black) in person was ‘that is BIG’. Admittedly, my Chilly’s series 2 wasn’t loooads smaller, but the difference is noticeable and there are other slimmer options out there. Having said that, it is actually lighter than the Chilly’s at 443g, or 230g for the [500ml version](https://www.awin1.com/cread.php?awinmid=39288&awinaffid=1595444&ued=https%3A%2F%2Foceanbottle.co%2Fproducts%2Focean-bottle-ocean-blue). It’s sleek, comfortable to hold, and there's a variety of matt colour options; some with contrasting coloured bases that I’m a big fan of. The 500ml version is less notably chunky, and there is also a cheaper, uninsulated, [620ml Lite version](https://www.awin1.com/cread.php?awinmid=39288&awinaffid=1595444&ued=https%3A%2F%2Foceanbottle.co%2Fproducts%2Fob-lite-lavender-haze) which is slimmer still, although a bit less premium-looking. I recently discovered there’s actually an older [750ml Ocean Bottle Original](https://www.awin1.com/cread.php?awinmid=39288&awinaffid=1595444&ued=https%3A%2F%2Foceanbottle.co%2Fproducts%2Focean-bottle-obsidian-black-750) too, giving a nice array of capacities, but I’m not 100% sure what makes it different, and why it isn’t just listed as another size.
 
-![A group of different coloured Ocean Bottles on a stool](/reviews/ocean-bottle-review/ocean-bottle-colours.png)
+![A group of different coloured Ocean Bottles on a stool](/eco/ocean-bottle-review/ocean-bottle-colours.png)
 
 &nbsp;
 
@@ -35,7 +35,7 @@ It's similarly good at keeping liquids cool and, unlike most rivals, is dishwash
 
 The bottle can also be bought with a variety of lids, including a standard screw top, a sports straw, and a 360 ‘brew’ lid design for coffee, but great for any drink really. This gives it a nice level of flexibility, and makes it better at replacing a coffee cup or flask as well as just a water bottle.
 
-![A pair of light blue Ocean Bottles with different lids on a table on the beach](/reviews/ocean-bottle-review/ocean-bottle-lids.png)
+![A pair of light blue Ocean Bottles with different lids on a table on the beach](/eco/ocean-bottle-review/ocean-bottle-lids.png)
 
 &nbsp;
 
@@ -49,7 +49,7 @@ Another big thing to note is their 10 year warranty, which not only covers manuf
 
 Ocean Bottle are also seeing a lot of positive impact through partnerships with brands, helping them to also get involved in funding environmental schemes, and although I’d be wary of whether they are simply helping companies greenwash, interviews like [this one](https://www.thedrum.com/news/2023/12/05/how-ocean-bottle-uses-corporate-partnerships-grow-without-greenwashing), where they specifically discuss this, do reassure me.
 
-![A person collecting plastic from the beach](/reviews/ocean-bottle-review/ocean-bottle-plastic-collection.png)
+![A person collecting plastic from the beach](/eco/ocean-bottle-review/ocean-bottle-plastic-collection.png)
 
 &nbsp;
 

@@ -1,10 +1,10 @@
 ---
 title: "Milly and Sissy Deodorant Review"
-image: "/reviews/milly-and-sissy-deodrant-review.png"
+image: "/eco/milly-and-sissy-deodrant-review.png"
 description: "A natural, refillable deodrant, and the most sustainable I've seen"
-section: "reviews"
-topic: "toiletries"
-tags: "toiletries,deodrant,antiperspirant,"
+section: "eco"
+topic: "review"
+tags: "liifestyle,toiletries,deodrant,antiperspirant,"
 author: "Andreas"
 views: 0
 highlighted: true

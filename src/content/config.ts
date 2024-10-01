@@ -46,7 +46,7 @@ const articles = defineCollection({
 });
 
 
-const reviews = defineCollection({
+const eco = defineCollection({
 	type: 'content',
 	// Type-check frontmatter using a schema
 	schema: z.object({
@@ -91,4 +91,4 @@ const travel = defineCollection({
 	}),
 });
 
-export const collections = { blog, articles, reviews, travel };
+export const collections = { blog, articles, eco, travel };
