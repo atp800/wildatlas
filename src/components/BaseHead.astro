@@ -40,6 +40,10 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
 
+<!-- Preconnect to Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
@@ -48,12 +52,110 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-NVLX56RN');</script>
+<!-- Critical CSS for above-the-fold content -->
+<style>
+  /* Critical styles for initial render */
+  body {
+    font-family: 'Atkinson', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgba(251, 252, 250, 1);
+    color: rgb(34, 41, 57);
+    font-size: 20px;
+    line-height: 1.7;
+  }
+  
+  /* Hero section critical styles */
+  .hero-image {
+    background-image: url('/homepage-image.webp');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    filter: saturate(1.2);
+    position: relative;
+  }
+  
+  .hero-text {
+    text-align: center;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 4.2em;
+    color: white;
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.14);
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Navigation critical styles */
+  .logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+  }
+  
+  .logo-container img {
+    height: 50px;
+    width: auto;
+  }
+  
+  .top-right-nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin: 20px;
+    color: white;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 500;
+  }
+  
+  .top-right-nav a {
+    margin-left: 40px;
+    text-decoration: none;
+    color: white;
+  }
+</style>
+
+<!-- Google Tag Manager - Ultra-optimized loading -->
+<script>
+  // Initialize dataLayer immediately but defer GTM script loading
+  window.dataLayer = window.dataLayer || [];
+  
+  // Defer GTM loading until user interaction or 3 seconds after page load
+  function loadGTM() {
+    if (window.gtmLoaded) return;
+    window.gtmLoaded = true;
+    
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVLX56RN');
+  }
+  
+  // Load GTM on user interaction
+  ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'].forEach(function(event) {
+    window.addEventListener(event, loadGTM, {once: true, passive: true});
+  });
+  
+  // Fallback: load after 3 seconds
+  setTimeout(loadGTM, 3000);
+</script>
 <!-- End Google Tag Manager -->
 
 <!-- Open Graph / Facebook -->

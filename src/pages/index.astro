@@ -10,13 +10,18 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 <html lang="en">
 <head>
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical images -->
+  <link rel="preload" as="image" href="/homepage-image.webp" type="image/webp">
+  <link rel="preload" as="image" href="/atlas2.webp" type="image/webp">
+  
+	<!-- Optimized Google Fonts loading -->
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet"></noscript>
   <style>
     .hero-image {
-      /* Adjust the path to your hero image accordingly */
-      background-image: url('/homepage-image.jpg');
+      /* Use WebP format for better compression */
+      background-image: url('/homepage-image.webp');
       height: 100vh; /* Make hero image cover the full screen */
       background-position: center;
       background-repeat: no-repeat;
@@ -26,6 +31,11 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
       justify-content: space-between;
       filter: saturate(1.2);
       position: relative; /* Allows absolute positioning within */
+    }
+    
+    /* Fallback for browsers that don't support WebP */
+    .no-webp .hero-image {
+      background-image: url('/homepage-image.jpg');
     }
     .hero-text {
       text-align: center;
@@ -156,7 +166,7 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 
 	<!-- Logo -->
 	<div class="logo-container">
-        <a href="/"><img src="/atlas2.png" alt="Logo" /></a>
+        <a href="/"><img src="/atlas2.webp" alt="Logo" width="50" height="50" loading="eager" /></a>
     </div>
 	<!-- Menu Icon -->
     <button class="menu-icon" aria-label="Open navigation menu">

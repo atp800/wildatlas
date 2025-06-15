@@ -2,6 +2,7 @@
 // The frontmatter for BlogPostLayout component
 import FormattedDate from './FormattedDate.astro';
 import Nav from '../components/Nav.astro';
+import OptimizedImage from './OptimizedImage.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 interface PostLayoutLeftProps {
@@ -192,7 +193,14 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
     </div>
     {image && (
       <div class="hero-image">
-        <img src={image} alt={title} />
+        <OptimizedImage 
+          src={image} 
+          alt={title} 
+          width={600} 
+          height={400} 
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+        />
       </div>
     )}
   </div>
@@ -202,4 +210,3 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
     <slot />
   </article>
 </div>
-

@@ -1,8 +1,9 @@
 ---
+import OptimizedImage from './OptimizedImage.astro';
+
 const today = new Date();
 // Here, you can import a local image or specify a URL to an online one.
 const imageUrl = '/about-image - edit1.jpg'; // Update this to your image's path
-const pageTitle = '';//'Travel, nature, science and sustainability';
 const pageUpperText = 
 	`Hey! I'm Andreas, and this is where I blog my adventures, give travel tips (particularly for budget backpacking), and write 
 	articles about wildlife, nature and sustainable products I've tried.`;
@@ -14,102 +15,83 @@ const pageText2 =
 	`I've got a YouTube channel too, but right now I'm not making separate videos for that, so it'll mostly just be TikTok reposts and shorts.`;
 ---
 
-<html>
-<head>
-	<style>	
+<style>	
+	/* Style for the image container */
+	.image-container {
+		display: flex;
+		justify-content: center; /* Center the image horizontally */
+		margin: 2rem 0; /* Vertical spacing around the image */
+	}
 
-		.page-title {
-			text-align: center;
-			font-size: clamp(24px, 4vw, 40px);
-			margin-top: 4rem; /* Spacing from top of the page */
-			margin-bottom: 1rem; /* Spacing before the image section */
-			font-weight: 500; /* Optional: if you want the title to be bold */
-			font-style: italic;
-			font-family: 'Urbanist';
-			color: #444; /* Dark text color for the title */
-		}
-	
-		/* Style for the image container */
-		.image-container {
-			display: flex;
-			justify-content: center; /* Center the image horizontally */
-			margin: 2rem 0; /* Vertical spacing around the image */
-		}
-	
-		/* Style for the image itself */
-		.centered-image {
-			width: 50%; /* Taking up to 80% of the width of its container */
-			max-width: 500px;
-			height: auto; /* Maintain aspect ratio */
-			border-radius: 0px; /* Rounded corners for the image */
-		}
-	
-		/* Style for the page text */
-		.page-text {
-			text-align: center; /* Center-align the text */
-			max-width: 600px; /* Maximum width for readability */
-			margin: 0 auto 2rem; /* Center the block with automatic horizontal margins, add margin at the bottom */
-			font-size: 1.125rem; /* Slightly larger font size for the text */
-			line-height: 1.6; /* Line height for better readability */
-			font-family: 'Urbanist';
-			color: #666; /* Medium-dark text color for readability */
-			padding: 0 1rem; /* Padding on the sides if the screen is small */
-		}
-		footer {
-			padding: 2em 1em 2em 1em;
-			background: linear-gradient(var(--gray-gradient)) no-repeat;
-			color: #444;
-			font-family: 'Urbanist';
-			text-align: center;
-		}
-		.social-links {
-			display: flex;
-			justify-content: center;
-			gap: 1em;
-			margin-top: 1em;
-		}
-		.social-links a {
-			text-decoration: none;
-			color: #111;
-		}
-		.social-links a:hover {
-			color: #777;
-		}
-	</style>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
-	<!-- Add any head information you need, like a title, meta tags, etc. -->
-	<title>{pageTitle}</title>
-</head>
+	/* Style for the image itself */
+	.centered-image {
+		width: 50%; /* Taking up to 80% of the width of its container */
+		max-width: 500px;
+		height: auto; /* Maintain aspect ratio */
+		border-radius: 0px; /* Rounded corners for the image */
+	}
 
-<body>
-	<!-- Centered title for the about page -->
-	<header>
-		<h1 class="page-title">{pageTitle}</h1>
-	</header>
+	/* Style for the page text */
+	.page-text {
+		text-align: center; /* Center-align the text */
+		max-width: 600px; /* Maximum width for readability */
+		margin: 0 auto 2rem; /* Center the block with automatic horizontal margins, add margin at the bottom */
+		font-size: 1.125rem; /* Slightly larger font size for the text */
+		line-height: 1.6; /* Line height for better readability */
+		font-family: 'Urbanist', sans-serif;
+		color: #666; /* Medium-dark text color for readability */
+		padding: 0 1rem; /* Padding on the sides if the screen is small */
+	}
+	footer {
+		padding: 2em 1em 2em 1em;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: #444;
+		font-family: 'Urbanist', sans-serif;
+		text-align: center;
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: #111;
+	}
+	.social-links a:hover {
+		color: #777;
+	}
+</style>
 
-	<article>
-		<p class="page-text">{pageUpperText}</p>
-	</article>
-	<article>
-		<p class="page-text">{pageUpperText2}</p>
-	</article>
+<!-- About section content -->
+<article>
+	<p class="page-text">{pageUpperText}</p>
+</article>
+<article>
+	<p class="page-text">{pageUpperText2}</p>
+</article>
 
-	<!-- Large centered image -->
-	<div class="image-container">
-		<img src={imageUrl} alt="A picture of the website's author, Andreas, leaning against a low stone wall in Italy" class="centered-image"/>
-	</div>
+<!-- Large centered image -->
+<div class="image-container">
+	<OptimizedImage 
+		src={imageUrl} 
+		alt="A picture of the website's author, Andreas, leaning against a low stone wall in Italy" 
+		width={500} 
+		height={400} 
+		loading="lazy"
+		class="centered-image"
+		sizes="(max-width: 768px) 90vw, 500px"
+	/>
+</div>
 
-	<!-- Some text about your page (or about section) -->
-	<article>
-		<p class="page-text">{pageText}</p>
-	</article>
-	<article>
-		<p class="page-text">{pageText2}</p>
-	</article>
-
-
+<!-- Some text about your page (or about section) -->
+<article>
+	<p class="page-text">{pageText}</p>
+</article>
+<article>
+	<p class="page-text">{pageText2}</p>
+</article>
 
 <footer>
 	&copy; {today.getFullYear()} Wild Atlas. All rights reserved.
@@ -143,7 +125,3 @@ const pageText2 =
 		</a>
 	</div>
 </footer>
-
-
-</body>
-</html>
