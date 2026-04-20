@@ -158,7 +158,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
 <ul class="grid">
     {livePosts.map((post) => (
         <li>
-            <a href={`/${basePath}/${post.slug}/`}>
+            <a href={`/${basePath}/${post.id}/`}>
                 <div class="post-img-container">
                     <img src={post.data.image} alt="{post.data.title}" />
                     <div class="post-overlay">

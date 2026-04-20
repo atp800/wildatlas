@@ -136,7 +136,7 @@ const posts = (await getCollection('articles')).sort(
 			<ul class="grid">
 				{posts.map((post) => (
 					<li>
-						<a href={`/blog/${post.slug}/`}>
+						<a href={`/blog/${post.id}/`}>
 							<div class="post-img-container">
 								<img src={post.data.image} alt="{post.data.title}" />
 								<div class="post-overlay">

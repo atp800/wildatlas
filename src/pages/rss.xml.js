@@ -10,8 +10,8 @@ function createFeedItem(post, section) {
 	return {
 		title: post.data.title,
 		description: post.data.description,
-		link: `${SITE_URL}/${section}/${post.slug}/`,
-		guid: `${SITE_URL}/${section}/${post.slug}/`,
+		link: `${SITE_URL}/${section}/${post.id}/`,
+		guid: `${SITE_URL}/${section}/${post.id}/`,
 		pubDate: new Date(post.data.published_at).toUTCString(),
 		categories: post.data.tags ? post.data.tags.split(',') : [], // Check if tags exist and split
 	};

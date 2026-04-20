@@ -1,0 +1,83 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
+
+// Import all of your distinct layout components
+import GridLayout from '../components/GridLayout.astro';
+import SmallGridLayout from '../components/SmallGridLayout.astro';
+import ListLayout from '../components/ListLayout.astro';
+
+// 1. Define the categories, their UI titles, and which layout they should use
+export async function getStaticPaths() {
+  return[
+    { params: { category: 'nature' }, props: { title: 'Nature', Layout: GridLayout } },
+    { params: { category: 'eco' }, props: { title: 'Eco', Layout: SmallGridLayout } },
+    { params: { category: 'travel' }, props: { title: 'Travel', Layout: ListLayout } },
+  ];
+}
+
+const { category } = Astro.params;
+const { title, Layout } = Astro.props;
+
+// 2. Fetch the unified "articles" collection
+const allPosts = await getCollection('articles');
+
+// 3. Filter by subfolder (category) and date, then sort
+const posts = allPosts
+  .filter(post => {
+    // In recent Astro versions, use `post.id` to read the file path (e.g., 'eco/post.md')
+    // If you are using legacy collections, this might be `post.slug`
+    const identifier = post.id || post.slug; 
+    return identifier.startsWith(`${category}/`) && post.data.published_at != null;
+  })
+  .sort((a, b) => {
+    const dateA = new Date(a.data.published_at).valueOf();
+    const dateB = new Date(b.data.published_at).valueOf();
+    return dateB - dateA;
+  });
+---
+
+<!doctype html>
+<html lang="en">
+<head>	
+	<BaseHead title={`${title} | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet">
+	<style>
+		main {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 6%;
+			padding: 3em 1em;
+		}
+		.title {
+			text-align: center;
+			font-weight: bold;
+			color: #444;
+			margin-top: 0em;
+			margin-bottom: 0.6em;
+			width: 100%;
+			font-family: 'Nothing You Could Do';
+			font-size: 4.2em;
+		}
+	</style>
+</head>
+<body>
+    <Nav />
+	<GTMBodyNoScript />
+    <main>
+		<div class="title">{title}</div>
+		<!-- 4. Dynamically render the correct layout component -->
+		<Layout posts={posts} basePath={category} />
+    </main>
+    <Footer />
+</body>
+</html>
