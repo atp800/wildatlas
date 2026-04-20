@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticlesPost from '../layouts/ArticlesPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articles');
+  return posts.map(post => {
+    // This allows URLs like /eco/my-post, /travel/my-post
+    const slug = post.id || post.slug; 
+    return {
+      params: { slug }, 
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+
+<ArticlesPost {...post.data}>
+	<Content />
+</ArticlesPost>

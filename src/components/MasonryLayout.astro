@@ -3,10 +3,9 @@ import FormattedDate from './FormattedDate.astro';
 
 interface PostMasonryProps {
   posts: any[];
-  basePath: string; // the base path for linking to articles or blog posts
 }
 
-const { posts, basePath }: PostMasonryProps = Astro.props;
+const { posts }: PostMasonryProps = Astro.props;
 
 // Filter the posts to only include live posts
 const livePosts = posts.filter(post => post.data.status === 'live');
@@ -106,7 +105,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
 <ul>
     {livePosts.map((post) => (
         <li>
-            <a href={`/${basePath}/${post.id}/`}>
+            <a href={`/${post.id || post.slug}/`}>
                 <img src={post.data.image} alt="{post.data.title}" />
                 <div class="post-overlay">
                     <h4 class="post-title">{post.data.title}</h4>

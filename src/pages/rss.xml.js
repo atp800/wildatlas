@@ -31,8 +31,8 @@ export async function GET(context) {
     .map(post => createFeedItem(post, 'travel'))
     .filter(item => item !== null); // Filter out null items after mapping
 
-  const articlePosts = (await getCollection('articles'))
-    .map(post => createFeedItem(post, 'articles'))
+  const articlePosts = (await getCollection('nature'))
+    .map(post => createFeedItem(post, 'nature'))
     .filter(item => item !== null);
 
   // Combine all posts into a single array and sort them by publication date

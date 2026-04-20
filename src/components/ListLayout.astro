@@ -3,10 +3,9 @@ import FormattedDate from './FormattedDate.astro';
 
 interface PostListProps {
   posts: any[];
-  basePath: string; // the base path for linking to articles or blog posts
 }
 
-const { posts, basePath }: PostListProps = Astro.props;
+const { posts }: PostListProps = Astro.props;
 
 // Filter and sort the highlighted posts
 const highlightedPosts = posts
@@ -280,7 +279,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
 <!-- Highlighted posts -->
 <div class="highlighted-posts-container">
   {highlightedPosts.map((post) => (
-    <a href={`/${basePath}/${post.id}/`} class="highlighted-post">
+    <a href={`/${post.id || post.slug}/`} class="highlighted-post">
       <div class="highlighted-image-container" style={`background-image: url(${post.data.image});`}></div>
       <div class="highlighted-post-title">{post.data.title}</div>
     </a>
@@ -295,7 +294,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
 <ul class="list">
     {livePosts.map((post) => (
         <li class="list-item">
-            <a href={`/${basePath}/${post.id}/`} class="list-item-link">
+            <a href={`/${post.id || post.slug}/`} class="list-item-link">
                 <div class="post-image-container" style={`background-image: url(${post.data.image});`}></div>
                 <div class="post-content">
                     <div class="post-title">{post.data.title}</div>
