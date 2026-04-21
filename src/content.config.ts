@@ -8,9 +8,9 @@ const articles = defineCollection({
 		base: "./src/content/articles", 
 		// generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''), 
 	}),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),		
-		image: z.string(),
+		image: image(),
 		description: z.string(),
 		section: z.string(),
 		topic: z.string().optional().nullable(),

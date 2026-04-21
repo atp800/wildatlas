@@ -1,3 +1,9 @@
+/*
+Looks through the public directory, 
+finds any images and generates versions 
+at multiple resolutions in both .jpg and .webp
+*/
+
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
