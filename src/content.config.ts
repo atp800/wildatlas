@@ -6,7 +6,8 @@ const articles = defineCollection({
 	loader: glob({ 
 		pattern: "**/*.{md,mdx}", 
 		base: "./src/content/articles", 
-		generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''), }),
+		// generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''), 
+	}),
 	schema: z.object({
 		title: z.string(),		
 		image: z.string(),

@@ -2,39 +2,36 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../consts';
 
-
-function createFeedItem(post, section) {
-	if (isNaN(new Date(post.data.published_at).getTime())) {
-		return null;
-	}
-	return {
-		title: post.data.title,
-		description: post.data.description,
-		link: `${SITE_URL}/${section}/${post.id}/`,
-		guid: `${SITE_URL}/${section}/${post.id}/`,
-		pubDate: new Date(post.data.published_at).toUTCString(),
-		categories: post.data.tags ? post.data.tags.split(',') : [], // Check if tags exist and split
-	};
+function createFeedItem(post) {
+  // Catch invalid dates before processing
+  if (!post.data.published_at || isNaN(new Date(post.data.published_at).getTime())) {
+    return null;
+  }
+  
+  return {
+    title: post.data.title,
+    description: post.data.description,
+    // post.id is already formatted as "category/slug" (e.g. "travel/reef-safe-sunscreens")
+    link: `${SITE_URL}/${post.id}/`,
+    guid: `${SITE_URL}/${post.id}/`,
+    pubDate: new Date(post.data.published_at).toUTCString(),
+    categories: post.data.tags ? post.data.tags.split(',') :[],
+  };
 }
 
 export async function GET(context) {
-  // Fetch posts from all collections
-  const reviewPosts = (await getCollection('eco'))
-    .map(post => createFeedItem(post, 'eco'))
-    .filter(item => item !== null); // Filter out null items after mapping
+  // Fetch the unified Articles collection (includes nature, eco, and travel folders)
+  const articlesRaw = await getCollection('articles');
+  
+  const allPosts = articlesRaw
+    ? articlesRaw
+        .filter(post => post.data.status !== 'draft') // Filter out drafts natively
+        .map(post => createFeedItem(post))
+        .filter(item => item !== null) // Remove any null items from mapping
+    :[];
 
-  const travelPosts = (await getCollection('travel'))
-    .map(post => createFeedItem(post, 'travel'))
-    .filter(item => item !== null); // Filter out null items after mapping
-
-  const articlePosts = (await getCollection('nature'))
-    .map(post => createFeedItem(post, 'nature'))
-    .filter(item => item !== null);
-
-  // Combine all posts into a single array and sort them by publication date
-  const allPosts = [...articlePosts]
-    .filter(item => item.status !== 'draft') // Filter out draft posts
-    .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  // Sort by publication date descending (newest first)
+  allPosts.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
   return rss({
     title: SITE_TITLE,

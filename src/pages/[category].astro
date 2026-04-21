@@ -32,7 +32,7 @@ const posts = allPosts
     // In recent Astro versions, use `post.id` to read the file path (e.g., 'eco/post.md')
     // If you are using legacy collections, this might be `post.slug`
     const identifier = post.id || post.slug; 
-    return identifier.startsWith(`${category}/`) && post.data.published_at != null;
+	return identifier.startsWith(`${category}/`) && post.data.published_at != null;
   })
   .sort((a, b) => {
     const dateA = new Date(a.data.published_at).valueOf();
