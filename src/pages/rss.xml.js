@@ -19,10 +19,6 @@ function createFeedItem(post, section) {
 
 export async function GET(context) {
   // Fetch posts from all collections
-  const blogPosts = (await getCollection('blog'))
-    .map(post => createFeedItem(post, 'blog'))
-    .filter(item => item !== null); // Filter out null items after mapping
-
   const reviewPosts = (await getCollection('eco'))
     .map(post => createFeedItem(post, 'eco'))
     .filter(item => item !== null); // Filter out null items after mapping
@@ -36,7 +32,7 @@ export async function GET(context) {
     .filter(item => item !== null);
 
   // Combine all posts into a single array and sort them by publication date
-  const allPosts = [...blogPosts, ...reviewPosts, ...travelPosts, ...articlePosts]
+  const allPosts = [...articlePosts]
     .filter(item => item.status !== 'draft') // Filter out draft posts
     .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
