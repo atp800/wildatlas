@@ -2,16 +2,19 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
 	title: string;
 	description: string;
-	image?: string;
+	image?: string | ImageMetadata; // 1. Allow string OR ImageMetadata
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const { title, description, image = '../assets/general/homepage-image.jpg' } = Astro.props;
+
+const imageSrc = typeof image === 'string' ? image : image.src;
 ---
 
 <!-- Global Metadata -->
@@ -21,16 +24,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1" />
 <meta name="apple-mobile-web-app-title" content="Wild Atlas" />
 <link rel="manifest" href="/site.webmanifest?v=1" />
-
-<!-- <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="/atlas2.png"> 
-<link rel="mask-icon" href="/favicon.svg" color="#ffffffff">
-<link rel="apple-touch-icon" href="/atlas2.png">
-<link rel="manifest" href="/manifest.json"> -->
-
-<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-<!-- <link rel="icon" href="favicon.svg" color="#ffffffff"> -->
-
 
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
@@ -63,7 +56,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
   
   /* Hero section critical styles */
   .hero-image {
-    background-image: url('/homepage-image.webp');
+    background-image: url('../assets/general/homepage-image.jpg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -159,11 +152,11 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(imageSrc, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={new URL(imageSrc, Astro.url)} />

@@ -1,9 +1,18 @@
 ---
 // Importing necessary components
 import BaseHead from '../components/BaseHead.astro';
-import AboutFooter from '../components/AboutFooter.astro';
+import AboutContent from '../components/AboutContent.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
+import { Image, getImage } from 'astro:assets';
+
+import atlasLogo from '../assets/general/atlas.png'; 
+import heroImageFile from '../assets/general/homepage-image.jpg';
+
+const optimisedHomepageImage = await getImage({ 
+  src: heroImageFile, 
+  format: 'webp' 
+});
 ---
 
 <!doctype html>
@@ -12,8 +21,8 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   
   <!-- Preload critical images -->
-  <link rel="preload" as="image" href="/homepage-image.webp" type="image/webp">
-  <link rel="preload" as="image" href="/atlas2.webp" type="image/webp">
+  <link rel="preload" as="image" href={optimisedHomepageImage.src} type="image/webp">
+  <!-- <link rel="preload" as="image" href="../assets/general/atlas.png" type="image/webp"> -->
   
 	<!-- Optimized Google Fonts loading -->
 	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -21,7 +30,7 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
   <style>
     .hero-image {
       /* Use WebP format for better compression */
-      background-image: url('/homepage-image.webp');
+      /* background-image: url('../assets/general/homepage-image.jpg'); */
       height: 100vh; /* Make hero image cover the full screen */
       background-position: center;
       background-repeat: no-repeat;
@@ -34,9 +43,9 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
     }
     
     /* Fallback for browsers that don't support WebP */
-    .no-webp .hero-image {
-      background-image: url('/homepage-image.jpg');
-    }
+    /* .no-webp .hero-image {
+      background-image: url('../assets/general/homepage-image.jpg');
+    } */
     .hero-text {
       text-align: center;
       /* font-family: 'Bad Script'; */
@@ -162,11 +171,13 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 <body>
   <GTMBodyNoScript />
 	
-  <div class="hero-image">
+  <div class="hero-image" style={`background-image: url('${optimisedHomepageImage.src}');`}>
 
 	<!-- Logo -->
 	<div class="logo-container">
-        <a href="/"><img src="/atlas2.webp" alt="Logo" width="50" height="50" loading="eager" /></a>
+        <a href="/">
+          <Image src={atlasLogo} alt="Logo" loading="eager" />
+        </a>
     </div>
 	<!-- Menu Icon -->
     <button class="menu-icon" aria-label="Open navigation menu">
@@ -188,7 +199,7 @@ import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
     </div>
   </div>
 
-  <AboutFooter />
+  <AboutContent />
 
   <script>
 	document.addEventListener('DOMContentLoaded', () => {

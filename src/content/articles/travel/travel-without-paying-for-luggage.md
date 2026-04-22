@@ -1,7 +1,7 @@
 ---
 title: "Travel Without Paying For Luggage"
 # slug: "template"
-image: "/travel/travel-without-paying-for-luggage.jpg"
+image: "../../../assets/travel/travel-without-paying-for-luggage/travel-without-paying-for-luggage.jpg"
 description: "Tricks to travel with just a personal item under 7kg"
 section: "travel"
 topic: "tips"

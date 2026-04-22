@@ -1,7 +1,7 @@
 ---
 # title: "How Possible is the Zombie Fungus in the Last of Us?"
 title: "Could Global Warming Cause a Fungal Zombie Apocalypse?"
-image: "/articles/could-a-zombie-fungus-evolve-like-in-the-last-of-us.jpg"
+image: "../../../assets/nature/could-a-zombie-fungus-evolve-like-in-the-last-of-us/could-a-zombie-fungus-evolve-like-in-the-last-of-us.jpg"
 description: "Could a zombie fungus evolve like in The Last of Us?"
 section: "articles"
 topic: "fungi"

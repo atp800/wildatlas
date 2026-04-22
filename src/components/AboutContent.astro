@@ -1,0 +1,79 @@
+---
+import { Picture } from 'astro:assets';
+import aboutImage from '../assets/general/about-image.jpg';
+import Footer from './Footer.astro';
+
+const today = new Date();
+// Here, you can import a local image or specify a URL to an online one.
+const imageUrl = aboutImage; // Update this to your image's path
+const pageUpperText = 
+	`Hey! I'm Andreas, and this is where I blog my adventures, give travel tips (particularly for budget backpacking), and write 
+	articles about wildlife, nature and sustainable products I've tried.`;
+const pageUpperText2 = 
+	`Right now I'm just starting out, so there aren't many posts up yet, but I've got tons of plans and am making content every day.`;
+const pageText = 
+	`Soon you'll be able to find even more stuff on my TikTok, where I'll be posting mini wildlife documentaries and videos about animals, as well as travel tips and ideas.`;
+const pageText2 = 
+	`I've got a YouTube channel too, but right now I'm not making separate videos for that, so it'll mostly just be TikTok reposts and shorts.`;
+---
+
+<style>	
+	/* Style for the image container */
+	.image-container {
+		display: flex;
+		justify-content: center; /* Center the image horizontally */
+		margin: 2rem 0; /* Vertical spacing around the image */
+	}
+
+	/* Style for the image itself */
+	.centered-image {
+		width: 50%; /* Taking up to 80% of the width of its container */
+		max-width: 500px;
+		height: auto; /* Maintain aspect ratio */
+		border-radius: 0px; /* Rounded corners for the image */
+	}
+
+	/* Style for the page text */
+	.page-text {
+		text-align: center; /* Center-align the text */
+		max-width: 600px; /* Maximum width for readability */
+		margin: 0 auto 2rem; /* Center the block with automatic horizontal margins, add margin at the bottom */
+		font-size: 1.125rem; /* Slightly larger font size for the text */
+		line-height: 1.6; /* Line height for better readability */
+		font-family: 'Urbanist', sans-serif;
+		color: #666; /* Medium-dark text color for readability */
+		padding: 0 1rem; /* Padding on the sides if the screen is small */
+	}
+</style>
+
+<!-- About section content -->
+<article>
+	<p class="page-text">{pageUpperText}</p>
+</article>
+<article>
+	<p class="page-text">{pageUpperText2}</p>
+</article>
+
+<!-- Large centered image -->
+<div class="image-container">
+	<Picture 
+		src={aboutImage} 
+		alt="A picture of the website's author, Andreas, leaning against a low stone wall in Italy" 
+		widths={[320, 500, 768]} 
+		sizes="(max-width: 768px) 90vw, 500px"
+		formats={['avif', 'webp']}
+		fallbackFormat="jpg"
+		class="centered-image"
+	/>
+</div>
+
+<!-- Some text about your page (or about section) -->
+<article>
+	<p class="page-text">{pageText}</p>
+</article>
+<article>
+	<p class="page-text">{pageText2}</p>
+</article>
+
+
+<Footer />

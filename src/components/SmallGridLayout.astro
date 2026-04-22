@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import { Image } from 'astro:assets';
 
 interface PostSmallGridProps {
   posts: any[];
@@ -159,7 +160,12 @@ const livePosts = posts.filter(post => post.data.status === 'live');
         <li>
             <a href={`/${post.id || post.slug}/`}>
                 <div class="post-img-container">
-                    <img src={post.data.image} alt="{post.data.title}" />
+                    <Image 
+                        src={post.data.image} 
+                        alt={post.data.title} 
+                        width={400} 
+                        height={250} 
+                    />
                     <div class="post-overlay">
                         <div class="post-title">{post.data.title}</div>
                         <div class="post-description">{post.data.description}</div>

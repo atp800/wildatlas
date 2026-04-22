@@ -36,7 +36,7 @@ async function main() {
     // 2. Prompt for metadata
     const title = await prompt('Enter title: ');
     const description = await prompt('Enter description: ');
-    const image = await prompt('Enter image path (e.g., "/articles/nature/image.jpg"): ');
+    const image = await prompt('Enter image path (e.g., "/assets/nature/image.jpg"): ');
     
     // Schema needs string, RSS does .split(',')
     const tagsInput = await prompt('Enter tags (comma-separated): ');

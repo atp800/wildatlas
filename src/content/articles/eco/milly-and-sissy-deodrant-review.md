@@ -1,6 +1,6 @@
 ---
 title: "Milly and Sissy Deodorant Review"
-image: "/eco/milly-and-sissy-deodrant-review.png"
+image: "../../../assets/eco/milly-and-sissy-deodrant-review/milly-and-sissy-deodrant-review.png"
 description: "A natural, refillable deodrant, and the most sustainable I've seen"
 section: "eco"
 topic: "review"

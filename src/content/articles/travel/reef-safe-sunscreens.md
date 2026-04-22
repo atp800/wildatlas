@@ -1,7 +1,7 @@
 ---
 title: "Reef Safe Sunscreens"
 # slug: "template"
-image: '/travel/reef-safe-suncreens.jpg'
+image: '../../../assets/travel/reef-safe-sunscreens/reef-safe-sunscreens.jpg'
 description: "Why you should be using them, and which ones to get"
 section: "travel"
 topic: "sunscreen"

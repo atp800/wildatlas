@@ -10,10 +10,6 @@ MAIN ISSUES:
 - replace amazon links with affiliate links - then with onelinks
 - update word docs to refelct changes made to markdown (e.g. suncream swapped for suncream in suncream article, tweaks and title change to fungus article)
 - linktree on insta/facebook/tiktok
-- add overlay to images like spotify to make writing legible
-- add manifest
-- switch to svg icons
-- add apple mask icons
 - check consent/disclaimer rules - add privacy policy page in footer
     - User Data Collection Acknowledgement in GA4 = put in team gpt and check im ok
 - check usage rights of images used, get milly and sissy affiliate links
@@ -36,12 +32,6 @@ CREATE MANIFEST.JSON
 
 
 DOWNLOAD FONTS AS BACKUP
-
-ICON
-- Switch to svg icon?
-    -higher res, more modern, can change colour with css (e.g. for a dark mode)
-- apple mask icon
-- ico backup not working
 
 add a dark mode? - wrong aesthetic really
 

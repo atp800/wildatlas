@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import { Image } from 'astro:assets';
 
 interface PostMasonryProps {
   posts: any[];
@@ -106,7 +107,10 @@ const livePosts = posts.filter(post => post.data.status === 'live');
     {livePosts.map((post) => (
         <li>
             <a href={`/${post.id || post.slug}/`}>
-                <img src={post.data.image} alt="{post.data.title}" />
+                <Image 
+                    src={post.data.image} 
+                    alt={post.data.title} 
+                />
                 <div class="post-overlay">
                     <h4 class="post-title">{post.data.title}</h4>
                     <p class="post-date">

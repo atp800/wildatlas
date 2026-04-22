@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import { Image } from 'astro:assets';
 
 interface PostListProps {
   posts: any[];
@@ -51,12 +52,13 @@ const livePosts = posts.filter(post => post.data.status === 'live');
     .highlighted-image-container {
         width: 180px;
         height: 180px;
-        background-size: cover;
-        background-position: center;
+        /* background-size: cover;
+        background-position: center; */
         border-radius: 0px;
         margin-bottom: 0.5em;
         margin-right: 0.55em;
         margin-left: 0.55em;
+        overflow: hidden;
     }
     .highlighted-post-title {
         font-family: 'Urbanist', sans-serif;
@@ -141,10 +143,22 @@ const livePosts = posts.filter(post => post.data.status === 'live');
         aspect-ratio: 1;
         margin-right: 1em;
         border-radius: 0px;
-        background-size: cover;
+        /* background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
+        background-repeat: no-repeat; */
+        overflow: hidden;
         /* filter: sepia(0.4) contrast(1.2) saturate(0.9); */
+    }
+    .highlighted-image-container img, 
+    .post-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter 0.2s ease;
+    }
+    .highlighted-post:hover .highlighted-image-container img,
+    .list-item-link:hover .post-image-container img {
+        filter: brightness(0.7);
     }
     .post-content {
         display: flex;
@@ -280,7 +294,9 @@ const livePosts = posts.filter(post => post.data.status === 'live');
 <div class="highlighted-posts-container">
   {highlightedPosts.map((post) => (
     <a href={`/${post.id || post.slug}/`} class="highlighted-post">
-      <div class="highlighted-image-container" style={`background-image: url(${post.data.image});`}></div>
+      <div class="highlighted-image-container">
+        <Image src={post.data.image} alt={post.data.title} width={180} height={180} />
+      </div>
       <div class="highlighted-post-title">{post.data.title}</div>
     </a>
   ))}
@@ -295,7 +311,9 @@ const livePosts = posts.filter(post => post.data.status === 'live');
     {livePosts.map((post) => (
         <li class="list-item">
             <a href={`/${post.id || post.slug}/`} class="list-item-link">
-                <div class="post-image-container" style={`background-image: url(${post.data.image});`}></div>
+                <div class="post-image-container">
+                    <Image src={post.data.image} alt={post.data.title} width={350} height={350} />
+                </div>
                 <div class="post-content">
                     <div class="post-title">{post.data.title}</div>
                     <div class="post-description">{post.data.description}</div>

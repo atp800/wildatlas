@@ -1,7 +1,7 @@
 ---
 title: "Learning to Talk to Whales Using AI"
 # slug: "template"
-image: '/articles/learning-to-talk-to-whales-using-ai.jpg'
+image: '../../../assets/nature/learning-to-talk-to-whales-using-ai/learning-to-talk-to-whales-using-ai.jpg'
 description: "How artificial intelliegence is breaking the species language barrier"
 section: "articles"
 topic: "whales"
@@ -21,7 +21,7 @@ You may or may not have heard of SETI. The Search for Extra-Terrestrial Life (i.
 
 The interaction was started by playing a pre-recorded contact call from a boat in south-east Alaska, and after three attempts, a 38 year old female humpback whale called Twain approached the boat and began to reply. The team continued playing the contact call over 20 minutes (the maximum time allowed by the team’s research permit), and Twain responded 33 times over that period, occasionally pausing to go to the surface and breathe. The contact calls were varied to match Twain’s timing, and she adjusted her own vocalisations in response. 
 
-![Twain Fluke Image](/articles/whale-ai-twain-fluke.jpg)
+![Twain Fluke Image](../../../assets/nature/learning-to-talk-to-whales-using-ai/whale-ai-twain-fluke.jpg)
 _A photograph of Twain’s fluke (the end of a whale’s tail), taken by the Whale-SETI group (NMFS Permit #19703)_
 
 Observers who couldn’t hear the conversation itself identified three behavioural phases in the conversation: engagement, agitation and disengagement. These coincided with changes in both the latency of Twain’s responses, and her level of adjustment to the team’s varying contact calls. The agitation phase, for example, was characterized by what the research team described as ‘wheezy or reverse forced surface blows’, which appear to be indicative of excitement or agitation ([Thompson, Cummings & Ha, 1986](https://doi.org/10.1121%2F1.393947); [Watkins, 1977](https://doi.org/10.2307%2F1377580)). Meanwhile, the disengagement phase began when Twain began moving away from the research vessel following two more typical blows.
@@ -29,7 +29,7 @@ Observers who couldn’t hear the conversation itself identified three behaviour
 Ultimately, it wasn’t the most complex conversation; they basically just said ‘hi’ backwards and forwards for a while, but it demonstrates a foundational understanding of whale communication, our ability to engage them in a conversation (however simplistic), and our ability to broadcast whale sounds in a way that appears to be understandable to humpback whales. It should be highlighted that the broadcasted calls were recorded from a group of humpback whales the previous day, in which Twain was present. This choice of signal and its familiarity to Twain may very well be tied to its salience to her, and her resulting engagement. Raw footage of the interaction can be found here: <https://www.youtube.com/watch?v=yHCBJ1rWfqQ>.
 
 
-![Research Vessel Image](/articles/whale-ai-boat.jpg)
+![Research Vessel Image](../../../assets/nature/learning-to-talk-to-whales-using-ai/whale-ai-boat.jpg)
 _The Glacier Seal – the vessel used by the Whale-SETI group for their communication with Twain (NMFS Permit #19703)._
 
 But as exciting as this was, the confusingly similarly named [Project CETI](https://www.projectceti.org/) may be even closer to fully understanding whales, having published several papers regarding hypothesised whale linguistic systems and machine learning techniques for translating their speech. And while Whale-SETI is using whales as a proxy for developing alien communication methods (which is silly, because talking to whales is way more exciting), CETI has understanding cetacean languages as their chief end goal. They recently analysed over a decade of sperm whale ‘speech’ data in collaboration with MIT’s Computer Science & Artificial Intelligence Laboratory using artificial intelligence.
@@ -37,8 +37,8 @@ But as exciting as this was, the confusingly similarly named [Project CETI](http
 The results, [published in Nature Communications](https://www.nature.com/articles/s41467-024-47221-8), dissect the tempo (overall speed), rhythm, ornamentation (embellishment) and rubato (length variation or rate of delivery) of the whale’s communication. See the diagram below from their article for more clarity on these terms:
 
 
-![Figure 1 - Communication Time Plot 1](/articles/whale-ai-diagram1.png)
-![Figure 1 - Communication Time Plot 2](/articles/whale-ai-diagram2.png)
+![Figure 1 - Communication Time Plot 1](../../../assets/nature/learning-to-talk-to-whales-using-ai/whale-ai-diagram1.png)
+![Figure 1 - Communication Time Plot 2](../../../assets/nature/learning-to-talk-to-whales-using-ai/whale-ai-diagram2.png)
 
 **Figure 1** **\-** _A two minute exchange between whales, broken down by time-time plot B (illustrating the time in exchange of a click, and its duration), and a second time-time plot, A (visualising the connections between matching clicks in adjacent phrases). Source: Sharma, P., Gero, S., Payne, R. et al. Contextual and combinatorial structure in sperm whale vocalisations. Nat Commun_ **_15_**_, 3617 (2024). <https://doi.org/10.1038/s41467-024-47221-8>._
 
@@ -47,7 +47,7 @@ This research led to a proposed phonetic alphabet, describing the underlying bui
 Data was captured using acoustic tags attached to whales, called ‘D-tags’, which are non-invasive detectors with a variety of sensors, attached using silicon suction cups modelled on suckerfish, and released automatically when recording completes (with built-in beacons for recovery). Machine learning and various statistical analyses were then used to identify and cluster recurring linguistic features of whale communication, and make predictions about what codas might come next, and ultimately producing a sperm whale phonetic alphabet:
 
 
-![Figure 2 - SPerm Whale Phonetic Alphabet](/articles/whale-ai-diagram3.png)
+![Figure 2 - SPerm Whale Phonetic Alphabet](../../../assets/nature/learning-to-talk-to-whales-using-ai/whale-ai-diagram3.png)
 
 **Figure 2 –** _Sperm Whale Phonetic Alphabet. Source: Sharma, P., Gero, S., Payne, R. et al. Contextual and combinatorial structure in sperm whale vocalisations. Nat Commun_ **_15_**_, 3617 (2024). <https://doi.org/10.1038/s41467-024-47221-8>._
 
