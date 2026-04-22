@@ -1,17 +1,18 @@
 ---
-// Importing necessary components
 import BaseHead from '../components/BaseHead.astro';
 import AboutContent from '../components/AboutContent.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 import { Image, getImage } from 'astro:assets';
+import '../styles/global.css';
 
 import atlasLogo from '../assets/general/atlas.png'; 
 import heroImageFile from '../assets/general/homepage-image.jpg';
 
 const optimisedHomepageImage = await getImage({ 
   src: heroImageFile, 
-  format: 'webp' 
+  format: 'webp',
+  width: 1920 
 });
 ---
 
@@ -19,217 +20,142 @@ const optimisedHomepageImage = await getImage({
 <html lang="en">
 <head>
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  
-  <!-- Preload critical images -->
   <link rel="preload" as="image" href={optimisedHomepageImage.src} type="image/webp">
-  <!-- <link rel="preload" as="image" href="../assets/general/atlas.png" type="image/webp"> -->
-  
-	<!-- Optimized Google Fonts loading -->
-	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bad+Script&family=Dawning+of+a+New+Day&family=Julius+Sans+One&family=Junge&family=Montserrat&family=Neucha&family=Nothing+You+Could+Do&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Zeyada&display=swap" rel="stylesheet"></noscript>
+
   <style>
     .hero-image {
-      /* Use WebP format for better compression */
-      /* background-image: url('../assets/general/homepage-image.jpg'); */
-      height: 100vh; /* Make hero image cover the full screen */
+      height: 100vh;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       filter: saturate(1.2);
-      position: relative; /* Allows absolute positioning within */
+      position: relative;
     }
     
-    /* Fallback for browsers that don't support WebP */
-    /* .no-webp .hero-image {
-      background-image: url('../assets/general/homepage-image.jpg');
-    } */
     .hero-text {
       text-align: center;
-      /* font-family: 'Bad Script'; */
-      /* font-family: 'Zeyada'; */
-      /* font-family: 'Dawning of a New Day'; */
-      font-family: 'Nothing You Could Do';
-      font-size: 4.2em;
-    }
-    .menu-icon {
-      display: none; /* Hide by default */
-      font-size: 30px;
+      font-family: 'Nothing You Could Do', cursive;
+      font-size: 7rem; /* Using rem for better scaling */
       color: white;
+      font-weight: 400; 
+      font-style: normal;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      line-height: 1.1; 
+    }
+
+  .hero-break {
+    display: none;
+  }
+
+    .top-right-nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+      gap: 40px;
+      z-index: 500;
+    }
+
+    .top-right-nav a {
+      text-decoration: none;
+      color: white;
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.15);
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 500;
+    }
+
+    .menu-icon {
+      display: none;
       background: none;
       border: none;
-      cursor: pointer;
+      color: white;
+      font-size: 2rem;
       position: absolute;
       top: 20px;
       right: 20px;
       z-index: 1000;
+      cursor: pointer;
     }
-    .top-right-nav {
-      display: flex !important;
-      position: absolute;
-      top: 0;
-      right: 10px;
-      margin: 20px; /* Adjust based on desired spacing from the corners */
-      color: white;
-      font-family: 'Urbanist';
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-	    z-index: 500;
+
+    @media (max-width: 768px) {
+      .menu-icon { display: block; }
+      .top-right-nav {
+        display: none; /* Logic handled by JS */
+        flex-direction: column;
+        position: fixed;
+        top: 0; right: 0;
+        background: rgba(0,0,0,0.95);
+        width: 200px;
+        height: 100vh;
+        padding: 80px 20px;
+      }
+      .top-right-nav.active { display: flex; }
+      .hero-text { font-size: 7rem; line-height: 1.1;}
+      .hero-break { display: block; }
     }
-	.top-right-nav a {
-		margin-left: 40px; /* Space between links */
-		text-decoration: none;
-		color: white; /* Adjust if needed to ensure visibility */
-	}
-	.hidden {
-    display: none !important;
-  }
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.14); /* Black background with opacity */
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-	.logo-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 20px; /* Adjust based on desired spacing from the corners */
-	}
-	.logo-container img {
-		height: 50px; /* Adjust based on your logo's size */
-		width: auto;
-	}
-
-	@media (max-width: 768px) {
-		.menu-icon {
-			display: block; /* Show menu icon */
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-		}
-		.top-right-nav {
-			display: none; /* Hide navigation links */
-			flex-direction: column; /* Stack the links vertically */
-			position: fixed; /* Fixed position */
-			top: 0; right: 0; /* Positioning */
-			background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
-			width: 150px; /* Width of the sidebar */
-			height: 95.2vh;
-			justify-content: flex-start; /* Align links to the top */
-			padding-top: 50px; /* Space for the menu icon */
-			margin-right: 0;
-			margin-top: 0;
-			border-radius: 15px 0px 0px 15px; /* Rounded corners on the bottom-left */
-		}
-		.top-right-nav a {
-			margin-left: 0px; /* Space between links */
-			margin-top: 30px;
-			text-decoration: none;
-			padding: 0 10px; /* Padding around links for better touch targets on touchscreens */
-			color: white; /* Adjust if needed to ensure visibility */
-		}
-	}
-
-  @media (max-width: 560px) {
-    .hero-text {
-      text-align: center;
-      /* font-family: 'Bad Script'; */
-      /* font-family: 'Zeyada'; */
-      /* font-family: 'Dawning of a New Day'; */
-      font-family: 'Nothing You Could Do';
-      font-size: 3.8em;
+    @media (max-width: 480px) {
+      .hero-text { font-size: 4rem; }
+      .hero-break { display: block; }
     }
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-    .hero-text {
-      margin-bottom: 200px;
-    }
-    .hero-image {
-      background-position: 46% center;
-      filter: saturate(1.2);
-    }
-  }
-
-
-
-
-   
-
+  
+    
+    /* Utility class for JS */
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
   <GTMBodyNoScript />
 	
-  <div class="hero-image" style={`background-image: url('${optimisedHomepageImage.src}');`}>
-
-	<!-- Logo -->
-	<div class="logo-container">
-        <a href="/">
-          <Image src={atlasLogo} alt="Logo" loading="eager" />
-        </a>
+  <header class="hero-image" style={`background-image: url('${optimisedHomepageImage.src}');`}>
+    <div class="logo-container">
+      <a href="/">
+        <Image src={atlasLogo} alt="Wild Atlas Logo" height={50} loading="eager" />
+      </a>
     </div>
-	<!-- Menu Icon -->
-    <button class="menu-icon" aria-label="Open navigation menu">
-        ☰
-    </button>
-	<!-- Navigation -->
+
+    <button class="menu-icon" aria-label="Menu">☰</button>
+
     <nav class="top-right-nav">
-        <!-- <a href="/blog">BLOG</a>  -->
         <a href="/travel">TRAVEL</a> 
-        <!-- <a href="/travel">TRAVEL TIPS</a>  -->
         <a href="/nature">NATURE</a> 
         <a href="/eco">ECO</a> 
-        <!-- <a href="/about">ABOUT</a> -->
     </nav>
-    <div class="overlay">
-        <div class="hero-text">
-            Wild Atlas
-        </div>
-    </div>
-  </div>
 
-  <AboutContent />
+    <div class="overlay">
+      <h1 class="hero-text">
+        Wild <br class="hero-break" /> Atlas
+      </h1>
+    </div>
+  </header>
+
+  <main>
+    <AboutContent />
+  </main>
 
   <script>
-	document.addEventListener('DOMContentLoaded', () => {
-        const menuIcon = document.querySelector('.menu-icon');
-        const topRightNav = document.querySelector('.top-right-nav');
+    const menuIcon = document.querySelector('.menu-icon');
+    const nav = document.querySelector('.top-right-nav');
 
-        // Function to toggle the top-right navigation
-        function toggleNavigation() {
-            topRightNav.classList.toggle('hidden');
-        }
-
-        // Function to set the default state of the navigation menu
-        function setDefaultNavState() {
-            if (window.innerWidth <= 768) {
-                topRightNav.classList.add('hidden');
-            } else {
-                topRightNav.classList.remove('hidden');
-            }
-        }
-
-        // Set the initial state on DOMContentLoaded
-        setDefaultNavState();
-
-        // Event listener for the menu icon click
-        menuIcon.addEventListener('click', toggleNavigation);
-
-        // Event listener to handle window resize
-        window.addEventListener('resize', () => {
-            setDefaultNavState();
-        });
+    menuIcon?.addEventListener('click', () => {
+      nav?.classList.toggle('active');
     });
   </script>
 </body>
