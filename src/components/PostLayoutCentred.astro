@@ -26,10 +26,6 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
       display: flex;
       flex-direction: column; /* Stack main and footer vertically */
   }
-  .nav-wrapper {
-      width: 100%; /* Ensure the wrapper spans the full width */
-      margin-bottom: 5em; /* Adjust the bottom margin as needed for separation */
-  }
 
   main {
       flex: 1; /* Allows the main content to expand and fill the available space */
@@ -137,9 +133,8 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
 </style>
 
 
-<div class="nav-wrapper">
-  <Nav />
-</div>
+<Nav />
+
 <div class="centered-container">
   <div class="header-content">
     <div class="text-content">

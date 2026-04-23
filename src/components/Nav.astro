@@ -1,117 +1,140 @@
-<!-- src/components/Nav.astro -->
+---
+import { Image } from 'astro:assets';
+import atlasLogo from '../assets/general/atlas.png';
+
+// Logic to check if we are on the homepage
+const pathname = new URL(Astro.url).pathname;
+const isHome = pathname === '/' || pathname === '/index.html';
+---
+
+<!-- class:list dynamically adds the 'home-header' class ONLY if we are on the homepage -->
+<header class:list={["site-header", { "home-header": isHome }]}>
+    
+    <div class="logo">
+        <a href="/">
+            <!-- Render at 100px (2x resolution) for crisp Retina displays, styled to 50px in CSS -->
+            <Image src={atlasLogo} alt="Wild Atlas Logo" height={100} loading="eager" class="logo-img" />
+        </a>
+    </div>
+
+    <button class="menu-icon" aria-label="Menu">☰</button>
+
+    <nav class="top-right-nav">
+        <!-- The link only renders if we are NOT on the homepage -->
+        {!isHome && <a href="/">HOME</a>}
+        <a href="/travel">TRAVEL</a> 
+        <a href="/nature">NATURE</a> 
+        <a href="/eco">ECO</a> 
+    </nav>
+
+</header>
+
 <style>
+    /* STANDARD LAYOUT (For all pages except Homepage) */
+    .site-header {
+        display: flex;
+        justify-content: space-between; /* Pushes Logo to left, Nav to right */
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px 30px; /* Consistent spacing everywhere */
+        color: #444; /* Dark text for standard pages */
+        z-index: 1000;
+        position: relative;
+    }
+
+    /* HOMEPAGE LAYOUT (Overlays on top of the hero image) */
+    .home-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white; /* White text to stand out over the image */
+    }
+
+    .logo a {
+        display: block;
+    }
+
+    /* Fixes the blurry logo & invisible bottom spacing */
+    .logo-img {
+        height: 50px; /* Forces the 100px image to visually display at 50px */
+        width: auto;
+        display: block; /* Removes the default inline gap that throws off vertical centering */
+    }
+
     .menu-icon {
-            display: none; /* Show menu icon */
-            font-size: 30px;
-            color: black;
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+        display: none;
+        font-size: 30px;
+        color: inherit;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001; /* Keeps the burger icon above the mobile menu */
     }
+
     .top-right-nav {
-      display: flex !important;
-      position: absolute;
-      top: 0;
-      right: 10px;
-      margin: 20px; /* Adjust based on desired spacing from the corners */
-      color: black;
-	  font-family: 'Urbanist';
-	  font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-	  z-index: 500;
+        display: flex;
+        gap: 40px;
+        font-family: 'Urbanist', sans-serif;
+        font-size: 18px;
+        align-items: center;
+        
+        /* Optical nudge: pulls the text up just slightly to perfectly match the logo */
+        margin-top: -15px; 
     }
-	.top-right-nav a {
-		margin-left: 40px; /* Space between links */
-		text-decoration: none;
-		color: black; /* Adjust if needed to ensure visibility */
-	}
-    .hidden {
-    display: none !important;
+
+    .top-right-nav a {
+        text-decoration: none;
+        color: inherit; /* Automatically takes white on homepage, dark grey on others */
+        transition: opacity 0.2s;
+    }
+
+    .top-right-nav a:hover {
+        opacity: 0.7;
     }
 
     @media (max-width: 768px) {
+        .site-header {
+            padding: 20px 15px; /* Slightly tighter spacing on mobile screens */
+        }
+
         .menu-icon {
-            display: block; /* Show menu icon */
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+            display: block; 
         }
+
         .top-right-nav {
-            display: none; /* Hide navigation links */
-            flex-direction: column; /* Stack the links vertically */
-            position: fixed; /* Fixed position */
-            top: 0; right: 0; /* Positioning */
-            background-color: var(--background);   /*rgba(255, 255, 255, 1); set last value (alpha) as 0.9 for semi-transparent background */
-            width: 150px;
-            height: 100vh; /* set as 95.3vh to just touch bottom of screen and show bottom rounded corner*/
-            justify-content: flex-start; /* Align links to the top */
-            padding-top: 50px; /* Space for the menu icon */
-            margin-right: 0;
-            margin-top: 0;
-            border-radius: 0px 0px 0px 0px; /* set first and last values as 15px for rounded corners on the bottom-left */
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-top: 0; /* Reset our optical nudge for mobile */
+            position: fixed;
+            top: 0; 
+            right: 0;
+            background-color: #111;
+            width: 200px;
+            height: 100vh;
+            padding: 80px 20px;
+            z-index: 999;
         }
+
+        .top-right-nav.active {
+            display: flex;
+        }
+
         .top-right-nav a {
-            margin-left: 0px; /* Space between links */
-            margin-top: 30px;
-            text-decoration: none;
-            padding: 0 10px; /* Padding around links for better touch targets on touchscreens */
-            color: black; /* Adjust if needed to ensure visibility */
+            color: white; 
+            font-size: 24px;
         }
     }  
 </style>
 
-
-<button class="menu-icon" aria-label="Open navigation menu">
-    ☰
-</button>
-  
-
-<nav class="top-right-nav">
-    <a href="/">HOME</a>
-    <!-- <a href="/blog">BLOG</a>  -->
-    <a href="/travel">TRAVEL</a> 
-    <!-- <a href="/travel">TRAVEL TIPS</a>  -->
-    <a href="/nature">NATURE</a> 
-    <a href="/eco">ECO</a> 
-    <!-- <a href="/about">ABOUT</a> -->
-</nav>
-
-
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
         const menuIcon = document.querySelector('.menu-icon');
-        const topRightNav = document.querySelector('.top-right-nav');
+        const nav = document.querySelector('.top-right-nav');
 
-        // Function to toggle the top-right navigation
-        function toggleNavigation() {
-            topRightNav.classList.toggle('hidden');
-        }
-
-        // Function to set the default state of the navigation menu
-        function setDefaultNavState() {
-            if (window.innerWidth <= 768) {
-                topRightNav.classList.add('hidden');
-            } else {
-                topRightNav.classList.remove('hidden');
-            }
-        }
-
-        // Set the initial state on DOMContentLoaded
-        setDefaultNavState();
-
-        // Event listener for the menu icon click
-        menuIcon.addEventListener('click', toggleNavigation);
-
-        // Event listener to handle window resize
-        window.addEventListener('resize', () => {
-            setDefaultNavState();
+        menuIcon?.addEventListener('click', () => {
+            nav?.classList.toggle('active');
         });
     });
 </script>

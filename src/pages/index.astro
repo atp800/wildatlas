@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import AboutContent from '../components/AboutContent.astro';
+import Nav from '../components/Nav.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 import { Image, getImage } from 'astro:assets';
@@ -32,39 +33,23 @@ const optimisedHomepageImage = await getImage({
       flex-direction: column;
       filter: saturate(1.2);
       position: relative;
+      color: white; /* Forces the Nav component items to be white here */
     }
     
     .hero-text {
       text-align: center;
       font-family: 'Nothing You Could Do', cursive;
-      font-size: 7rem; /* Using rem for better scaling */
+      font-size: clamp(4rem, 15vw, 8rem); /* Fluid typography: adjusts size automatically */
       color: white;
       font-weight: 400; 
-      font-style: normal;
       letter-spacing: 2px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      line-height: 1.1; 
+      line-height: 1.1;
+      margin: 0;
     }
 
-  .hero-break {
-    display: none;
-  }
-
-    .top-right-nav {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      display: flex;
-      gap: 40px;
-      z-index: 500;
-    }
-
-    .top-right-nav a {
-      text-decoration: none;
-      color: white;
-      font-family: 'Urbanist', sans-serif;
-      font-weight: 400;
-      letter-spacing: 1px;
+    .hero-break {
+      display: none;
     }
 
     .overlay {
@@ -73,71 +58,22 @@ const optimisedHomepageImage = await getImage({
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .logo-container {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 500;
-    }
-
-    .menu-icon {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 2rem;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      cursor: pointer;
+      padding: 20px;
     }
 
     @media (max-width: 768px) {
-      .menu-icon { display: block; }
-      .top-right-nav {
-        display: none; /* Logic handled by JS */
-        flex-direction: column;
-        position: fixed;
-        top: 0; right: 0;
-        background: rgba(0,0,0,0.95);
-        width: 200px;
-        height: 100vh;
-        padding: 80px 20px;
+      .hero-break {
+        display: block;
       }
-      .top-right-nav.active { display: flex; }
-      .hero-text { font-size: 7rem; line-height: 1.1;}
-      .hero-break { display: block; }
     }
-    @media (max-width: 480px) {
-      .hero-text { font-size: 4rem; }
-      .hero-break { display: block; }
-    }
-  
-    
-    /* Utility class for JS */
-    .hidden { display: none !important; }
   </style>
 </head>
 <body>
   <GTMBodyNoScript />
 	
   <header class="hero-image" style={`background-image: url('${optimisedHomepageImage.src}');`}>
-    <div class="logo-container">
-      <a href="/">
-        <Image src={atlasLogo} alt="Wild Atlas Logo" height={50} loading="eager" />
-      </a>
-    </div>
-
-    <button class="menu-icon" aria-label="Menu">☰</button>
-
-    <nav class="top-right-nav">
-        <a href="/travel">TRAVEL</a> 
-        <a href="/nature">NATURE</a> 
-        <a href="/eco">ECO</a> 
-    </nav>
+    
+    <Nav />
 
     <div class="overlay">
       <h1 class="hero-text">
@@ -149,14 +85,5 @@ const optimisedHomepageImage = await getImage({
   <main>
     <AboutContent />
   </main>
-
-  <script>
-    const menuIcon = document.querySelector('.menu-icon');
-    const nav = document.querySelector('.top-right-nav');
-
-    menuIcon?.addEventListener('click', () => {
-      nav?.classList.toggle('active');
-    });
-  </script>
 </body>
 </html>
