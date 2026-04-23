@@ -65,8 +65,8 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
   .hero-image img {
       width: 100%; /* Will take up to 100% of the .hero-image width */
       height: auto; /* Height will scale automatically */
-      max-height: 400px; /* Maximum height for the image */
-      object-fit: contain; /* Maintains aspect ratio within the container */
+      aspect-ratio: 3 / 2;
+      object-fit: cover; /* Maintains aspect ratio within the container */
       object-position: center center;
       border-radius: 0;
       box-shadow: var(--box-shadow);
@@ -159,9 +159,10 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
         margin-left: 15px;       
     }
     .hero-image img {
-        max-width: 100%; /* Ensures the image is not larger than its container */
-        max-height: 100%;
-        object-fit: cover; /* Ensures the image maintains its aspect ratio */
+        width: 100%; /* Ensures the image is not larger than its container */
+        height: auto;
+        aspect-ratio: 8 / 7; 
+        object-fit: cover; 
     }
   }
 </style>

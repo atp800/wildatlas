@@ -28,6 +28,7 @@
 	--white: 255, 255, 255; /* Added this because it was missing but used below */
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
+	--grey-medium: #444;
 	--gray-dark: 34, 41, 57;
 	--light-beige: 251, 252, 250;
 	--background: var(--light-beige);
@@ -57,9 +58,9 @@ main {
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black)); /* Changed from --white so headings are visible on light-beige */
+	color: rgb(var(--gray-medium)); /* Changed from --white so headings are visible on light-beige */
 	line-height: 1.2;
-	font-weight: 800; /* Urbanist looks great bold */
+	font-weight: 700; /* Urbanist looks great bold */
 }
 
 h1 { font-size: 3.052em; }

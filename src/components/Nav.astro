@@ -12,8 +12,15 @@ const isHome = pathname === '/' || pathname === '/index.html';
     
     <div class="logo">
         <a href="/">
-            <!-- Render at 100px (2x resolution) for crisp Retina displays, styled to 50px in CSS -->
-            <Image src={atlasLogo} alt="Wild Atlas Logo" height={100} loading="eager" class="logo-img" />
+            <!-- Logo rendered at max resolution, then styled to 50px -->
+            <Image 
+            src={atlasLogo} 
+            alt="Wild Atlas Logo" 
+            height={400}
+            format="png"
+            quality="max"
+            loading="eager" 
+            class="logo-img" />
         </a>
     </div>
 
@@ -57,9 +64,13 @@ const isHome = pathname === '/' || pathname === '/index.html';
 
     /* Fixes the blurry logo & invisible bottom spacing */
     .logo-img {
-        height: 50px; /* Forces the 100px image to visually display at 50px */
+        height: 60px; /* Forces the 100px image to visually display at 50px */
         width: auto;
         display: block; /* Removes the default inline gap that throws off vertical centering */
+        filter: brightness(0.2);  /* 0.27 matches gray-medium text colour */
+    }
+    .home-header .logo-img {
+        filter: none;
     }
 
     .menu-icon {
