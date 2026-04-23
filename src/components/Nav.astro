@@ -69,14 +69,17 @@ const isHome = pathname === '/' || pathname === '/index.html';
         background: none;
         border: none;
         cursor: pointer;
-        z-index: 1001; /* Keeps the burger icon above the mobile menu */
+        
+        /* ADD THIS: Allows z-index to work so the icon stays above the open menu */
+        position: relative; 
+        z-index: 1001; 
     }
 
     .top-right-nav {
         display: flex;
         gap: 40px;
         font-family: 'Urbanist', sans-serif;
-        font-size: 18px;
+        font-size: 20.5px;
         align-items: center;
         
         /* Optical nudge: pulls the text up just slightly to perfectly match the logo */
@@ -90,7 +93,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
     }
 
     .top-right-nav a:hover {
-        opacity: 0.7;
+        opacity: 0.5;
     }
 
     @media (max-width: 768px) {
@@ -129,12 +132,21 @@ const isHome = pathname === '/' || pathname === '/index.html';
 </style>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
+    const initMobileNav = () => {
         const menuIcon = document.querySelector('.menu-icon');
         const nav = document.querySelector('.top-right-nav');
 
-        menuIcon?.addEventListener('click', () => {
-            nav?.classList.toggle('active');
-        });
-    });
+        if (menuIcon && nav) {
+            // Using .onclick prevents duplicate event listeners
+            menuIcon.onclick = () => {
+                nav.classList.toggle('active');
+            };
+        }
+    };
+
+    // 1. Run immediately on standard page loads
+    initMobileNav();
+
+    // 2. Re-run if you ever decide to enable Astro View Transitions later
+    document.addEventListener('astro:after-swap', initMobileNav);
 </script>
