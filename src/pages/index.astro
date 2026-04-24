@@ -1,4 +1,5 @@
 ---
+// import { ClientRouter } from 'astro:transitions';
 import BaseHead from '../components/BaseHead.astro';
 import AboutContent from '../components/AboutContent.astro';
 import Nav from '../components/Nav.astro';
@@ -20,6 +21,7 @@ const optimisedHomepageImage = await getImage({
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- <ClientRouter /> -->
   <link rel="preload" as="image" href={optimisedHomepageImage.src} type="image/webp">
   <link 
     rel="preload" 
