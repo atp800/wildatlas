@@ -1,0 +1,323 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseHead from '../../components/BaseHead.astro';
+import Nav from '../../components/Nav.astro';
+
+// 1. Generate pages for all LIVE products
+export async function getStaticPaths() {
+  const allProducts = await getCollection('products');
+  const liveProducts = allProducts.filter(p => p.data.live === true);
+
+  return liveProducts.map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+// 2. Extract product data
+const { product } = Astro.props;
+const { Content } = await render(product);
+
+// 3. Fallback to just the main image if no gallery is provided
+const galleryImages = product.data.gallery && product.data.gallery.length > 0 
+  ? product.data.gallery 
+  :[product.data.image];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={`${product.data.title} | Wild Atlas`} 
+      description={product.data.description} 
+    />
+  </head>
+  <body>
+    <Nav />
+
+    <main class="product-page-container">
+      <div class="product-layout">
+        
+        <!-- ✨ LEFT SIDE: IMAGE GALLERY ✨ -->
+        <div class="gallery-section">
+          <!-- Main Image Display -->
+          <div class="main-image-wrapper">
+            {galleryImages.map((img, index) => (
+              <Image 
+                src={img} 
+                alt={`${product.data.title} view ${index + 1}`} 
+                width={800} 
+                height={800} 
+                class={`main-gallery-img ${index === 0 ? 'active' : ''}`}
+                id={`gallery-img-${index}`}
+              />
+            ))}
+          </div>
+
+          <!-- Thumbnails (Only show if > 1 image) -->
+          {galleryImages.length > 1 && (
+            <div class="thumbnails-container">
+              {galleryImages.map((img, index) => (
+                <button 
+                  class={`thumbnail-btn ${index === 0 ? 'active-thumb' : ''}`} 
+                  data-target={`gallery-img-${index}`}
+                >
+                  <Image 
+                    src={img} 
+                    alt={`Thumbnail ${index + 1}`} 
+                    width={150} 
+                    height={150} 
+                    class="thumbnail-img"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- ✨ RIGHT SIDE: PRODUCT DETAILS ✨ -->
+        <div class="details-section">
+          <p class="breadcrumbs">
+            <a href="/store">Store</a> / {product.data.category} / <span>{product.data.type}</span>
+          </p>
+
+          <h1 class="product-title">{product.data.title}</h1>
+          <p class="product-price">${product.data.price.toFixed(2)}</p>
+          
+          <div class="product-description">
+            <Content />
+          </div>
+
+          {product.data.features && product.data.features.length > 0 && (
+            <ul class="features-list">
+              {product.data.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          )}
+
+          <button 
+            class="btn add-to-cart-btn" 
+            id="add-to-cart-btn"
+            disabled={!product.data.inStock}
+            data-id={product.id}
+            data-name={product.data.title}
+            data-price-id={product.data.stripePriceId}
+            data-price={product.data.price}
+            data-image={product.data.image.src}
+            data-physical={product.data.physical ? "true" : "false"}
+          >
+            {product.data.inStock ? 'Add to Cart' : 'Sold Out'}
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <style is:global>
+      .product-page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        font-family: 'Urbanist', sans-serif;
+      }
+
+      .product-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      /* Gallery Styles */
+      .gallery-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .main-image-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: #f4f4f4;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .main-gallery-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+      }
+
+      .main-gallery-img.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .thumbnails-container {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto; /* Scrollable if many thumbnails */
+        padding-bottom: 10px;
+      }
+
+      .thumbnail-btn {
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+        padding: 0;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        background: none;
+        transition: border-color 0.2s;
+      }
+
+      .thumbnail-btn.active-thumb {
+        border-color: #222939;
+      }
+
+      .thumbnail-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Details Styles */
+      .breadcrumbs {
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .breadcrumbs a {
+        color: #888;
+        text-decoration: none;
+      }
+      .breadcrumbs a:hover {
+        text-decoration: underline;
+      }
+      .breadcrumbs span {
+        color: #222939;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+
+      .product-title {
+        font-size: 2.5em;
+        margin: 0 0 15px 0;
+        line-height: 1.2;
+        color: #222939;
+      }
+
+      .product-price {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #444;
+        margin: 0 0 30px 0;
+      }
+
+      .product-description {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        font-size: 1.1em;
+      }
+
+      .features-list {
+        margin: 0 0 40px 0;
+        padding-left: 20px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 18px;
+        font-size: 18px;
+        background: #222939;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+      }
+
+      .btn:hover:not(:disabled) {
+        background: #444;
+      }
+
+      .btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      @media (max-width: 900px) {
+        .product-layout {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+    </style>
+
+    <script>
+      import { addToCart } from '../../store/cart.ts';
+
+      function initProductPage() {
+        // 1. GALLERY LOGIC
+        const thumbnails = document.querySelectorAll('.thumbnail-btn');
+        const mainImages = document.querySelectorAll('.main-gallery-img');
+
+        thumbnails.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const targetId = (e.currentTarget as HTMLElement).dataset.target;
+            
+            // Remove active classes
+            thumbnails.forEach(t => t.classList.remove('active-thumb'));
+            mainImages.forEach(img => img.classList.remove('active'));
+
+            // Add active class to clicked thumb and associated image
+            (e.currentTarget as HTMLElement).classList.add('active-thumb');
+            document.getElementById(targetId!)?.classList.add('active');
+          });
+        });
+
+        // 2. ADD TO CART LOGIC
+        const addToCartBtn = document.getElementById('add-to-cart-btn') as HTMLButtonElement;
+        
+        if (addToCartBtn) {
+          addToCartBtn.addEventListener('click', () => {
+            const id = addToCartBtn.dataset.id!;
+            const name = addToCartBtn.dataset.name!;
+            const priceId = addToCartBtn.dataset.priceId!;
+            const price = parseFloat(addToCartBtn.dataset.price!); 
+            const image = addToCartBtn.dataset.image!;
+            const physical = addToCartBtn.dataset.physical === "true";             
+
+            addToCart({ id, name, priceId, price, image, physical });
+
+            const originalText = addToCartBtn.innerText;
+            addToCartBtn.innerText = "Added to Cart!";
+            addToCartBtn.style.backgroundColor = "#2e7d32";
+            
+            setTimeout(() => {
+              addToCartBtn.innerText = originalText;
+              addToCartBtn.style.backgroundColor = "";
+            }, 1500);
+          });
+        }
+      }
+
+      initProductPage();
+      document.addEventListener('astro:after-swap', initProductPage);
+    </script>
+  </body>
+</html>

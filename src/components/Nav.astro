@@ -12,7 +12,6 @@ const isHome = pathname === '/' || pathname === '/index.html';
     
     <div class="logo">
         <a href="/">
-            <!-- Logo rendered at max resolution, then styled to 50px -->
             <Image 
             src={atlasLogo} 
             alt="Wild Atlas Logo" 
@@ -32,42 +31,62 @@ const isHome = pathname === '/' || pathname === '/index.html';
         <a href="/travel">TRAVEL</a> 
         <a href="/nature">NATURE</a> 
         <a href="/eco">ECO</a> 
-    </nav>
+        <a href="/store">STORE</a> <!-- Added Store Link -->
 
+        <!-- Cart Link with SVG Icon -->
+        <a href="/cart" class="cart-link" aria-label="Shopping Cart">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="26" 
+              height="26" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              class="cart-icon"
+            >
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="cart-badge" class="cart-badge">0</span>
+        </a>
+    </nav>
 </header>
 
 <style>
     /* STANDARD LAYOUT (For all pages except Homepage) */
     .site-header {
         display: flex;
-        justify-content: space-between; /* Pushes Logo to left, Nav to right */
+        justify-content: space-between;
         align-items: center;
         width: 100%;
         box-sizing: border-box;
-        padding: 20px 30px; /* Consistent spacing everywhere */
-        color: #444; /* Dark text for standard pages */
+        padding: 20px 30px;
+        color: #444; 
         z-index: 1000;
         position: relative;
     }
 
-    /* HOMEPAGE LAYOUT (Overlays on top of the hero image) */
+    /* HOMEPAGE LAYOUT */
     .home-header {
         position: absolute;
         top: 0;
         left: 0;
-        color: white; /* White text to stand out over the image */
+        color: white; 
     }
 
     .logo a {
         display: block;
     }
 
-    /* Fixes the blurry logo & invisible bottom spacing */
     .logo-img {
-        height: 60px; /* Forces the 100px image to visually display at 50px */
+        height: 60px; 
         width: auto;
-        display: block; /* Removes the default inline gap that throws off vertical centering */
-        filter: brightness(0.2);  /* 0.27 matches gray-medium text colour */
+        display: block; 
+        filter: brightness(0.2); 
     }
     .home-header .logo-img {
         filter: none;
@@ -80,8 +99,6 @@ const isHome = pathname === '/' || pathname === '/index.html';
         background: none;
         border: none;
         cursor: pointer;
-        
-        /* ADD THIS: Allows z-index to work so the icon stays above the open menu */
         position: relative; 
         z-index: 1001; 
     }
@@ -92,14 +109,12 @@ const isHome = pathname === '/' || pathname === '/index.html';
         font-family: 'Urbanist', sans-serif;
         font-size: 20.5px;
         align-items: center;
-        
-        /* Optical nudge: pulls the text up just slightly to perfectly match the logo */
         margin-top: -15px; 
     }
 
     .top-right-nav a {
         text-decoration: none;
-        color: inherit; /* Automatically takes white on homepage, dark grey on others */
+        color: inherit; 
         transition: opacity 0.2s;
     }
 
@@ -107,9 +122,45 @@ const isHome = pathname === '/' || pathname === '/index.html';
         opacity: 0.5;
     }
 
+    /* New Cart Link Styling */
+    .cart-link {
+        position: relative; /* This allows the badge to position itself relative to the icon */
+        display: flex;
+        align-items: center;
+        padding-top: 5px; /* Aligns visually with text links */
+    }
+
+    .cart-icon {
+        /* On standard pages, stroke inherits the dark grey. On home, it inherits white. */
+        stroke: currentColor; 
+    }
+
+    .cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: #444; /* Dark grey */
+        color: white;
+        font-size: 12px;
+        min-width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: bold;
+        display: none; /* Hidden by default */
+        font-family: sans-serif;
+    }
+    
+    .home-header .cart-badge {
+        background-color: white;
+        color: #111;
+    }
+
     @media (max-width: 768px) {
         .site-header {
-            padding: 20px 15px; /* Slightly tighter spacing on mobile screens */
+            padding: 20px 15px; 
         }
 
         .menu-icon {
@@ -120,7 +171,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
             display: none;
             flex-direction: column;
             justify-content: flex-start;
-            margin-top: 0; /* Reset our optical nudge for mobile */
+            margin-top: 0; 
             position: fixed;
             top: 0; 
             right: 0;
@@ -139,25 +190,52 @@ const isHome = pathname === '/' || pathname === '/index.html';
             color: white; 
             font-size: 24px;
         }
+        
+        /* Adjust cart for mobile menu */
+        .cart-link {
+            width: max-content;
+        }
+
+        .cart-badge {
+            background-color: white;
+            color: #111;
+        }
     }  
 </style>
 
 <script>
-    const initMobileNav = () => {
+    import { cart } from '../store/cart.ts';
+
+    const initNav = () => {
         const menuIcon = document.querySelector('.menu-icon');
         const nav = document.querySelector('.top-right-nav');
 
         if (menuIcon && nav) {
-            // Using .onclick prevents duplicate event listeners
             menuIcon.onclick = () => {
                 nav.classList.toggle('active');
             };
         }
+
+        const cartBadge = document.getElementById('cart-badge');
+        
+        if (cartBadge) {
+            cart.subscribe((cartItems) => {
+                const totalItems = Object.values(cartItems).reduce(
+                    (sum, item) => sum + item.quantity, 
+                    0
+                );
+
+                cartBadge.innerText = totalItems.toString();
+                
+                if (totalItems > 0) {
+                    cartBadge.style.display = 'flex'; // Uses flex to perfectly center the number
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            });
+        }
     };
 
-    // 1. Run immediately on standard page loads
-    initMobileNav();
-
-    // 2. Re-run if you ever decide to enable Astro View Transitions later
-    document.addEventListener('astro:after-swap', initMobileNav);
+    initNav();
+    document.addEventListener('astro:after-swap', initNav);
 </script>

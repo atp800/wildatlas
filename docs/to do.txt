@@ -1,5 +1,15 @@
 USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 
+
+add scroll images to products
+prevent more than one quantity of digital downloads
+charity page/where does my money go
+map of world with animals and info for each place
+
+business bank account
+refund and delivery info
+support email
+
 MAIN ISSUES:
 - CONTENT
 - add life supplies, whale AI, lazarus and otter articles, and icon which works on iphone, and then add linktree to tiktok/insta bio

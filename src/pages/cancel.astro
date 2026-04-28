@@ -1,0 +1,53 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="Checkout Cancelled | Wild Atlas" description="Your checkout was cancelled." />
+  </head>
+  <body>
+    <Nav />
+    <main class="message-container">
+      <div class="icon-wrapper cancel-icon">✕</div>
+      <h1>Checkout Cancelled</h1>
+      <p>Your payment process was cancelled. Your cart is safe and you have not been charged.</p>
+      <a href="/cart" class="btn">Return to Cart</a>
+    </main>
+
+    <style is:global>
+      .message-container {
+        text-align: center;
+        padding: 100px 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: 'Urbanist', sans-serif;
+      }
+      .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        margin: 0 auto 20px;
+        color: white;
+      }
+      .cancel-icon { background-color: #d32f2f; }
+      h1 { color: #222939; margin-bottom: 15px; }
+      p { color: #666; margin-bottom: 30px; line-height: 1.6; }
+      .btn {
+        display: inline-block;
+        background: #222939;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .btn:hover { background: #444; }
+    </style>
+  </body>
+</html>

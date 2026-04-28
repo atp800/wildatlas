@@ -1,0 +1,396 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="Your Cart | Wild Atlas" description="Review your eco-friendly products before checkout." />
+  </head>
+  <body>
+    <Nav />
+
+    <main class="cart-container">
+      <h1 class="cart-title">Your Cart</h1>
+
+      <!-- Empty Cart State -->
+      <div id="empty-cart-msg" class="empty-cart" style="display: none;">
+        <p>Your cart is currently empty.</p>
+        <a href="/store" class="btn outline-btn">Continue Shopping</a>
+      </div>
+
+      <!-- Active Cart State -->
+      <div id="cart-content" class="cart-layout" style="display: none;">
+        
+        <!-- Left Side: List of Items -->
+        <div class="cart-items-list" id="cart-items-container">
+          <!-- JS will inject items here -->
+        </div>
+
+        <!-- Right Side: Order Summary -->
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal-amount">$0.00</span>
+          </div>
+          
+          <p class="shipping-note">Taxes and shipping calculated at checkout.</p>
+          
+          <button id="checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
+        </div>
+
+      </div>
+    </main>
+
+    <style is:global>
+      .cart-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .cart-title {
+        text-align: center;
+        font-family: 'Nothing You Could Do', cursive;
+        font-size: 3em;
+        margin-bottom: 40px;
+        color: #222939;
+      }
+
+      /* Layout */
+      .cart-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 50px;
+        align-items: start;
+      }
+
+      /* Cart Items */
+      .cart-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 25px 0;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .cart-item:first-child {
+        padding-top: 0;
+      }
+
+      .cart-item-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        background: #f4f4f4;
+      }
+
+      .cart-item-info {
+        flex-grow: 1;
+      }
+
+      .cart-item-title {
+        margin: 0 0 5px 0;
+        font-size: 1.3em;
+        font-family: 'Urbanist', sans-serif;
+      }
+
+      .cart-item-price {
+        margin: 0;
+        color: #666;
+        font-weight: bold;
+      }
+
+      /* ✨ UPGRADED: Quantity & Actions Styling ✨ */
+      .cart-item-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+      }
+
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        background: #f8f8f8;
+        border: 1px solid #e0e0e0;
+        border-radius: 50px; /* Creates the modern pill shape */
+        padding: 4px;
+      }
+
+      .qty-btn {
+        background: white;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #444;
+        transition: all 0.2s ease;
+      }
+
+      .qty-btn:hover {
+        background: #222939;
+        color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .qty-display {
+        padding: 0 12px;
+        font-weight: 600;
+        font-size: 16px;
+        min-width: 20px;
+        text-align: center;
+        font-family: 'Urbanist', sans-serif;
+      }
+
+      .remove-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: none;
+        border: none;
+        color: #888;
+        cursor: pointer;
+        font-size: 14px;
+        font-family: 'Urbanist', sans-serif;
+        transition: color 0.2s;
+        padding: 5px;
+      }
+
+      .remove-btn:hover {
+        color: #d32f2f; /* Turns red on hover */
+      }
+
+      /* Summary Box */
+      .order-summary {
+        background: #f9f9f9;
+        padding: 30px;
+        border-radius: 12px;
+      }
+
+      .order-summary h2 {
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-family: 'Urbanist', sans-serif;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .shipping-note {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 25px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: #222939;
+        color: white;
+        border: none;
+        padding: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Urbanist', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+
+      .btn:hover:not(:disabled) {
+        background: #444;
+      }
+
+      .outline-btn {
+        background: transparent;
+        color: #222939;
+        border: 2px solid #222939;
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .outline-btn:hover {
+        background: #222939;
+        color: white;
+      }
+
+      .empty-cart {
+        text-align: center;
+        padding: 60px 0;
+      }
+
+      .empty-cart p {
+        font-size: 1.3em;
+        margin-bottom: 30px;
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
+        .cart-layout {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .cart-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        .cart-item-actions {
+          flex-direction: row;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    </style>
+
+    <script>
+      import { cart, removeFromCart } from '../store/cart.ts';
+
+      function initCartPage() {
+        const container = document.getElementById('cart-items-container')!;
+        const emptyMsg = document.getElementById('empty-cart-msg')!;
+        const content = document.getElementById('cart-content')!;
+        const subtotalEl = document.getElementById('subtotal-amount')!;
+        const checkoutBtn = document.getElementById('checkout-btn') as HTMLButtonElement;
+
+        // 1. Subscribe to Store Changes
+        cart.subscribe((cartData) => {
+          const items = Object.values(cartData);
+
+          if (items.length === 0) {
+            emptyMsg.style.display = 'block';
+            content.style.display = 'none';
+            return;
+          }
+
+          emptyMsg.style.display = 'none';
+          content.style.display = 'grid';
+
+          let subtotal = 0;
+          container.innerHTML = ''; 
+
+          items.forEach(item => {
+            subtotal += item.price * item.quantity;
+
+            const itemEl = document.createElement('div');
+            itemEl.className = 'cart-item';
+            
+            // ✨ Render beautiful SVG icons inside the buttons
+            itemEl.innerHTML = `
+              <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.style.display='none'" />
+              <div class="cart-item-info">
+                <h3 class="cart-item-title">${item.name}</h3>
+                <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+              </div>
+              <div class="cart-item-actions">
+                <div class="qty-controls">
+                  <button class="qty-btn minus" data-id="${item.id}" aria-label="Decrease quantity">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>
+                  </button>
+                  <span class="qty-display">${item.quantity}</span>
+                  <button class="qty-btn plus" data-id="${item.id}" aria-label="Increase quantity">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+                <button class="remove-btn" data-id="${item.id}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/></svg>
+                  <span>Remove</span>
+                </button>
+              </div>
+            `;
+            container.appendChild(itemEl);
+          });
+
+          subtotalEl.innerText = `£${subtotal.toFixed(2)}`;
+        });
+
+        // 2. PERFECTED EVENT DELEGATION
+        // We attach ONE listener to the container. This guarantees clicks work 
+        // even after innerHTML re-renders the buttons!
+        container.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          
+          // Use .closest() to ensure we click the button even if we click the SVG inside it
+          const plusBtn = target.closest('.plus') as HTMLElement;
+          const minusBtn = target.closest('.minus') as HTMLElement;
+          const removeBtn = target.closest('.remove-btn') as HTMLElement;
+
+          if (plusBtn) {
+            const id = plusBtn.dataset.id!;
+            const item = cart.get()[id];
+            cart.setKey(id, { ...item, quantity: item.quantity + 1 });
+          }
+
+          if (minusBtn) {
+            const id = minusBtn.dataset.id!;
+            const item = cart.get()[id];
+            if (item.quantity > 1) {
+              cart.setKey(id, { ...item, quantity: item.quantity - 1 });
+            } else {
+              removeFromCart(id); // Instantly removes item when reducing to 0
+            }
+          }
+
+          if (removeBtn) {
+            const id = removeBtn.dataset.id!;
+            removeFromCart(id);
+          }
+        });
+
+        // 3. Checkout Redirect
+        checkoutBtn?.addEventListener('click', async () => {
+          const items = Object.values(cart.get());
+          if (items.length === 0) return alert("Cart is empty!");
+
+          const originalText = checkoutBtn.innerText;
+          checkoutBtn.innerText = "Redirecting to Stripe...";
+          checkoutBtn.disabled = true;
+
+          try {
+            const res = await fetch('/api/checkout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ items })
+            });
+            
+            const data = await res.json();
+            
+            if (data.error) {
+              alert("Error: " + data.error);
+              checkoutBtn.innerText = originalText;
+              checkoutBtn.disabled = false;
+            } else if (data.url) {
+              window.location.href = data.url; 
+            }
+          } catch(err) {
+            alert("Checkout failed. Please check your connection and try again.");
+            checkoutBtn.innerText = originalText;
+            checkoutBtn.disabled = false;
+          }
+        });
+      }
+
+      initCartPage();
+      document.addEventListener('astro:after-swap', initCartPage);
+    </script>
+  </body>
+</html>
