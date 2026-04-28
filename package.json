@@ -12,6 +12,7 @@
     "build:optimized": "npm run optimize-images && astro build"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.2.1",
     "@astrojs/mdx": "^5.0.3",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
@@ -24,5 +25,4 @@
   "engines": {
     "node": ">=22.12.0"
   }
-
 }
