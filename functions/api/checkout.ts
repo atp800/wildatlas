@@ -58,7 +58,7 @@ export const ALLOWED_COUNTRIES = [
 
 export async function onRequestPost({ request, env }) {
   try {
-    const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+    const stripe = new Stripe(env.STRIPE_SECRET_KEY.trim(), {
       apiVersion: '2023-10-16',
       httpClient: Stripe.createFetchHttpClient()
     });

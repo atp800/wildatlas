@@ -3,11 +3,11 @@ import { Resend } from 'resend';
 
 export async function onRequestPost({ request, env }) {
   // Initialize Stripe and Resend using Cloudflare's env variables (not import.meta.env)
-  const stripe = new Stripe(env.STRIPE_SECRET_KEY, { 
+  const stripe = new Stripe(env.STRIPE_SECRET_KEY.trim(), { 
     apiVersion: '2023-10-16',
     httpClient: Stripe.createFetchHttpClient() 
   });
-  const resend = new Resend(env.RESEND_API_KEY);
+  const resend = new Resend(env.RESEND_API_KEY.trim());
   const signature = request.headers.get('stripe-signature');
   
   if (!signature) return new Response('No signature', { status: 400 });
