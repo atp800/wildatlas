@@ -14,7 +14,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response('Missing Stripe or Resend Configuration', { status: 500 });
   }
 
-  const stripe = new Stripe(stripeKey, { apiVersion: '2023-10-16' });
+  const stripe = new Stripe(stripeKey, { apiVersion: '2023-10-16', httpClient: Stripe.createFetchHttpClient() });
   const resend = new Resend(resendKey);
   const signature = request.headers.get('stripe-signature');
   

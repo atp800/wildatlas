@@ -6,6 +6,7 @@ import Stripe from 'stripe';
 // Initialize Stripe (You'll add STRIPE_SECRET_KEY to Cloudflare Pages environment variables)
 const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, {
   apiVersion: '2023-10-16',
+  httpClient: Stripe.createFetchHttpClient()
 });
 
 export const ALLOWED_COUNTRIES = [

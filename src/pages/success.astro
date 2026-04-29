@@ -16,7 +16,7 @@ let customerName = '';
 
 if (sessionId) {
   try {
-    const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, { apiVersion: '2023-10-16' });
+    const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, { apiVersion: '2023-10-16', httpClient: Stripe.createFetchHttpClient() });
     
     // Retrieve the session and expand line_items
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
