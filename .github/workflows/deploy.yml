@@ -1,0 +1,18 @@
+name: Deploy Astro to Cloudflare Workers
+on:
+  push:
+    branches:
+      - main # change this if your default branch is called 'master'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Astro
+        run: npm run build
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
