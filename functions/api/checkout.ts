@@ -1,13 +1,4 @@
-export const prerender = false; // Extremely important! Tells Astro this is a serverless function, not a static page.
-
-import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
-
-// Initialize Stripe (You'll add STRIPE_SECRET_KEY to Cloudflare Pages environment variables)
-const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2023-10-16',
-  httpClient: Stripe.createFetchHttpClient()
-});
 
 export const ALLOWED_COUNTRIES = [
   // Anglosphere
@@ -64,30 +55,34 @@ export const ALLOWED_COUNTRIES = [
 // QA - Qatar
 // KR - South Korea
 
-export const POST: APIRoute = async ({ request, url }) => {
-  try {
-    const body = await request.json();
-    const items = body.items; // This will come from your Nano Store
 
-    // Check if ANY item in the cart is physical
+export async function onRequestPost({ request, env }) {
+  try {
+    const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+      apiVersion: '2023-10-16',
+      httpClient: Stripe.createFetchHttpClient()
+    });
+
+    const body = await request.json();
+    const items = body.items;
+
     const requiresShipping = items.some((item: any) => item.physical === true);
 
-    // Format items for Stripe
     const lineItems = items.map((item: any) => ({
-      price: item.priceId, // Trusting the Stripe Price ID, not a client-side price number!
+      price: item.priceId,
       quantity: item.quantity,
     }));
 
-    // Base session config
+    const url = new URL(request.url);
+
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${url.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${url.origin}/cart`, // Better to redirect back to cart than a blank cancel page
+      success_url: `${url.origin}/success`, // Simplified!
+      cancel_url: `${url.origin}/cart`,
     };
 
-    // Only ask for shipping address if there's a physical product
     if (requiresShipping) {
       sessionConfig.shipping_address_collection = {
         allowed_countries: ALLOWED_COUNTRIES as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[],
@@ -100,4 +95,4 @@ export const POST: APIRoute = async ({ request, url }) => {
   } catch (error: any) {
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
-};
+}

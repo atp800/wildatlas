@@ -1,52 +1,10 @@
 ---
 // success.astro
-export const prerender = false; // Required for reading URL parameters and fetching from Stripe
-
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import Stripe from 'stripe';
 import { getCollection } from 'astro:content';
 
-const sessionId = Astro.url.searchParams.get('session_id');
-
-let digitalDownloads: {name: string, url: string}[] =[];
-let hasPhysicalItems = false;
-let orderValid = false;
-let customerName = '';
-
-if (sessionId) {
-  try {
-    const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY, { apiVersion: '2023-10-16', httpClient: Stripe.createFetchHttpClient() });
-    
-    // Retrieve the session and expand line_items
-    const session = await stripe.checkout.sessions.retrieve(sessionId, {
-      expand: ['line_items']
-    });
-
-    if (session.payment_status === 'paid') {
-      orderValid = true;
-      customerName = session.customer_details?.name || '';
-      
-      const products = await getCollection('products');
-
-      session.line_items?.data.forEach(item => {
-        const matchedProduct = products.find(p => p.data.stripePriceId === item.price?.id);
-        if (matchedProduct) {
-          if (!matchedProduct.data.physical && matchedProduct.data.downloadURL) {
-            digitalDownloads.push({
-              name: matchedProduct.data.title,
-              url: matchedProduct.data.downloadURL
-            });
-          } else if (matchedProduct.data.physical) {
-            hasPhysicalItems = true;
-          }
-        }
-      });
-    }
-  } catch (error) {
-    console.error("Error retrieving Stripe session:", error);
-  }
-}
 ---
 
 <html lang="en">
@@ -57,42 +15,12 @@ if (sessionId) {
     <Nav />
     <main class="message-container">
       <div class="icon-wrapper success-icon">✓</div>
-      
-      {orderValid ? (
-        <>
+
           <h1>Payment Successful! 🌊</h1>
-          <p>Thank you for supporting Wild Atlas, {customerName}. We've sent a confirmation email with your order details.</p>
-
-          {/* <!-- Digital Downloads Section --> */}
-          {digitalDownloads.length > 0 && (
-            <div class="downloads-card">
-              <h2>Your Digital Purchases</h2>
-              <p>Your files are ready to download:</p>
-              <ul class="download-list">
-                {digitalDownloads.map(dl => (
-                  <li>
-                    <span class="file-name">{dl.name}</span>
-                    {/* <!-- download attribute prompts the browser to save the file --> */}
-                    <a href={dl.url} download class="btn download-btn">Download File</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* <!-- Physical Items Notice Section --> */}
-          {hasPhysicalItems && (
-            <div class="shipping-notice">
-              <p>📦 <strong>Items included:</strong> We're preparing your items for shipment. Keep an eye on your email for tracking details.</p>
-            </div>
-          )}
+          <p>Thank you for supporting Wild Atlas! We've sent a confirmation email with your order details.</p>
+          <p>If you ordered any digital items, you'll receive links to download in your email shortly. Be sure to check your spam/junk folder if thsi doesn't come through.</p>
         </>
-      ) : (
-        <>
-          <h1>Processing Order...</h1>
-          <p>If you just made a payment, it might take a moment to confirm. Please check your email for the receipt!</p>
-        </>
-      )}
+
 
       <a href="/store" class="btn outline-btn mt-4">Return to Store</a>
     </main>
