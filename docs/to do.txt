@@ -2,6 +2,8 @@ USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
 
 
 images in checkout basket too high quality
+Images in travel section too low quality and cropped
+
 prevent more than one quantity of digital downloads
 charity page/where does my money go
 map of world with animals and info for each place
