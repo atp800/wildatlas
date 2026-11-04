@@ -88,7 +88,7 @@ const types =['all', ...new Set(liveProducts.map((p) => p.data.type))];
               <a href={`/product/${product.id}`} class="product-title-link">
                 <h2 class="product-title">{product.data.title}</h2>
               </a>
-              <p class="product-price">${product.data.price.toFixed(2)}</p>
+              <p class="product-price">£{product.data.price.toFixed(2)}</p>
               
               <button 
                 class="add-to-cart-btn" 

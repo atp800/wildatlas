@@ -59,7 +59,7 @@ export async function onRequestPost({ request, env }) {
 
         if (customerEmail) {
           let emailHtml = `<h1>Thank you for your order, ${customerName}! 🌊</h1>`;
-          emailHtml += `<p>Your payment of ${(session.amount_total! / 100).toFixed(2)} was successful.</p>`;
+          emailHtml += `<p>Your payment of £${(session.amount_total! / 100).toFixed(2)} was successful.</p>`;
           
           if (digitalDownloads.length > 0) {
             emailHtml += `<h2>Your Digital Downloads:</h2><ul>`;
@@ -73,14 +73,20 @@ export async function onRequestPost({ request, env }) {
             emailHtml += `<p>We are currently preparing the physical items in your order. We'll send another email as soon as they ship!</p>`;
           }
 
-          await resend.emails.send({
+          const { data: emailData, error: emailError } = await resend.emails.send({
             from: 'Wild Atlas <orders@wildatlas.org>',
             to: customerEmail,
             subject: 'Order Confirmation & Downloads - Wild Atlas',
             html: emailHtml,
           });
           
-          console.log(`✅ Email sent to ${customerEmail}`);
+          if (emailError) {
+            console.error(`❌ Resend delivery failed for ${customerEmail}: ${emailError.name}: ${emailError.message}`);
+            // Non-2xx makes Stripe retry the webhook, so the delivery email isn't silently lost
+            return new Response(JSON.stringify({ error: 'Order email delivery failed' }), { status: 500 });
+          }
+
+          console.log(`✅ Email sent to ${customerEmail} (id: ${emailData?.id})`);
         }
       }
     } 
