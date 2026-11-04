@@ -71,6 +71,62 @@ const PRODUCTS = catalog as Record<string, CatalogProduct>;
 const MAX_QUANTITY_PER_ITEM = 10;
 const MAX_DISTINCT_ITEMS = 20;
 
+// Shipping is charged in pence (GBP). Adjust these values to your real rates.
+const SHIPPING_RATES = {
+  uk: { amount: 400, label: 'UK delivery', minDays: 2, maxDays: 4 },
+  international: { amount: 1000, label: 'International delivery', minDays: 5, maxDays: 10 },
+};
+
+export function buildShippingOptions(): Stripe.Checkout.SessionCreateParams.ShippingOption[] {
+  return [
+    {
+      shipping_rate_data: {
+        type: 'fixed_amount',
+        display_name: SHIPPING_RATES.uk.label,
+        fixed_amount: { amount: SHIPPING_RATES.uk.amount, currency: 'gbp' },
+        delivery_estimate: {
+          minimum: { unit: 'business_day', value: SHIPPING_RATES.uk.minDays },
+          maximum: { unit: 'business_day', value: SHIPPING_RATES.uk.maxDays },
+        },
+      },
+    },
+    {
+      shipping_rate_data: {
+        type: 'fixed_amount',
+        display_name: SHIPPING_RATES.international.label,
+        fixed_amount: { amount: SHIPPING_RATES.international.amount, currency: 'gbp' },
+        delivery_estimate: {
+          minimum: { unit: 'business_day', value: SHIPPING_RATES.international.minDays },
+          maximum: { unit: 'business_day', value: SHIPPING_RATES.international.maxDays },
+        },
+      },
+    },
+  ];
+}
+
+export function buildSessionConfig(
+  origin: string,
+  lineItems: Stripe.Checkout.SessionCreateParams.LineItem[],
+  requiresShipping: boolean
+): Stripe.Checkout.SessionCreateParams {
+  const sessionConfig: Stripe.Checkout.SessionCreateParams = {
+    payment_method_types: ['card'],
+    line_items: lineItems,
+    mode: 'payment',
+    success_url: `${origin}/success`, // Simplified!
+    cancel_url: `${origin}/cart`,
+  };
+
+  if (requiresShipping) {
+    sessionConfig.shipping_address_collection = {
+      allowed_countries: ALLOWED_COUNTRIES as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[],
+    };
+    sessionConfig.shipping_options = buildShippingOptions();
+  }
+
+  return sessionConfig;
+}
+
 function jsonResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -186,20 +242,7 @@ export async function onRequestPost({ request, env }) {
     const requiresShipping = Array.from(quantities.keys()).some((id) => PRODUCTS[id].physical);
 
     const url = new URL(request.url);
-
-    const sessionConfig: Stripe.Checkout.SessionCreateParams = {
-      payment_method_types: ['card'],
-      line_items: lineItems,
-      mode: 'payment',
-      success_url: `${url.origin}/success`, // Simplified!
-      cancel_url: `${url.origin}/cart`,
-    };
-
-    if (requiresShipping) {
-      sessionConfig.shipping_address_collection = {
-        allowed_countries: ALLOWED_COUNTRIES as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[],
-      };
-    }
+    const sessionConfig = buildSessionConfig(url.origin, lineItems, requiresShipping);
 
     const session = await stripe.checkout.sessions.create(sessionConfig);
 
