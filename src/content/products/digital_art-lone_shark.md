@@ -2,7 +2,7 @@
 title: "Ocean Collection - Lone Shark Digital Print"
 description: "A digital art print of the painting Lone Shark, by artist Panay"
 price: 3.00
-stripePriceId: "price_1TPgkvEV07gy7tTCXlpKsD1z"
+stripePriceId: "price_1UYBE2Ig76PczlPMNYDg24NO"
 physical: false
 downloadURL: "/downloads/lone-shark-digital-print-qdvaeeq1x5.jpg"
 category: "art"

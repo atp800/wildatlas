@@ -2,7 +2,7 @@
 title: "Ocean Collection - Whale Tail Digital Print"
 description: "A digital art print of the painting Whale Tail, by artist Panay"
 price: 3.00
-stripePriceId: "price_1TQoXEEV07gy7tTCU91xXkwf"
+stripePriceId: "price_1UYBBIIg76PczlPMiO4pCcJJ"
 physical: false
 downloadURL: "/downloads/whale-tail-digital-print-7o3vp8buu0.jpg"
 category: "art"

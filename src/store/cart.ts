@@ -11,9 +11,10 @@ export type CartItem = {
   physical: boolean;
 };
 
-// 'cart' is the localStorage key prefix
+// localStorage key prefix. Bump the version when Stripe price IDs change so
+// returning visitors don't check out with stale (deleted) price IDs.
 export const cart = persistentMap<Record<string, CartItem>>(
-  'cart:',
+  'cart:v2:',
   {},
   {
     encode: JSON.stringify,
