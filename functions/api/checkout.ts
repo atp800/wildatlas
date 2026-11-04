@@ -110,7 +110,7 @@ export function buildSessionConfig(
   requiresShipping: boolean
 ): Stripe.Checkout.SessionCreateParams {
   const sessionConfig: Stripe.Checkout.SessionCreateParams = {
-    payment_method_types: ['card'],
+    automatic_payment_methods: { enabled: true },
     line_items: lineItems,
     mode: 'payment',
     success_url: `${origin}/success`, // Simplified!

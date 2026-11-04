@@ -1,20 +1,41 @@
 import Stripe from 'stripe';
 import { Resend } from 'resend';
 
+function requireEnv(env: any, name: string) {
+  const value = env?.[name];
+  const trimmed = typeof value === 'string' ? value.trim() : '';
+  if (!trimmed) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return trimmed;
+}
+
+export function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export async function onRequestPost({ request, env }) {
-  // Initialize Stripe and Resend using Cloudflare's env variables (not import.meta.env)
-  const stripe = new Stripe(env.STRIPE_SECRET_KEY.trim(), { 
-    apiVersion: '2023-10-16',
-    httpClient: Stripe.createFetchHttpClient() 
-  });
-  const resend = new Resend(env.RESEND_API_KEY.trim());
   const signature = request.headers.get('stripe-signature');
-  
+
   if (!signature) return new Response('No signature', { status: 400 });
-  
+
   try {
+    // Initialized inside the try so a missing variable returns a readable error
+    // instead of throwing before the error handling is set up.
+    const stripe = new Stripe(requireEnv(env, 'STRIPE_SECRET_KEY'), {
+      apiVersion: '2023-10-16',
+      httpClient: Stripe.createFetchHttpClient()
+    });
+    const resend = new Resend(requireEnv(env, 'RESEND_API_KEY'));
+    const webhookSecret = requireEnv(env, 'STRIPE_WEBHOOK_SECRET');
+
     const body = await request.text();
-    const event = await stripe.webhooks.constructEventAsync(body, signature, env.STRIPE_WEBHOOK_SECRET);
+    const event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
 
     if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
       const session = event.data.object as Stripe.Checkout.Session;
@@ -55,7 +76,7 @@ export async function onRequestPost({ request, env }) {
         });
 
         const customerEmail = session.customer_details?.email;
-        const customerName = session.customer_details?.name || 'there';
+        const customerName = escapeHtml(session.customer_details?.name || 'there');
 
         if (customerEmail) {
           let emailHtml = `<h1>Thank you for your order, ${customerName}! 🌊</h1>`;
