@@ -1,0 +1,30 @@
+
+- switch logo to true svg
+footer extends all the way up
+whole site just shrinking on mobile instead of adapting
+bold subtitle text at top of articles
+add ripple animation and curver corners to burger navigation panel
+- travel articles images broken
+
+add cart page
+add store
+add stripe payments and orders database
+
+
+Step 7: Order Tracking & Customer Portal (The Cheap Way)
+- Building a custom dashboard for order tracking requires a database (Supabase/Firebase), user authentication, and heavy API work. Skip this.
+- Instead, use Stripe Customer Portal (which is completely free):
+- Go to your Stripe Dashboard -> Settings -> Customer Portal.
+- Enable it so customers can view their past orders, download invoices, and see tracking info.
+- Add a link in your Nav.astro or footer: href="https://billing.stripe.com/p/login/YOUR_PORTAL_LINK".
+- When you fulfill orders, you can add tracking numbers directly inside the Stripe Dashboard. Stripe will automatically email the tracking updates to the customer.
+
+
+
+syripe once live:
+- Add your domain
+- verify phone number
+- add google pay and apple pay
+- review head office
+- add tax registration
+- configure tax on transactions
