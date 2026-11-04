@@ -1,18 +1,24 @@
 {
   "clothing-shark-sweatshirt": {
     "priceId": "price_1TPf4sEV07gy7tTCx2Mt6LMw",
+    "unitAmount": 3500,
+    "currency": "gbp",
     "physical": true,
     "inStock": false,
     "live": false
   },
   "digital_art-lone_shark": {
     "priceId": "price_1UYBE2Ig76PczlPMNYDg24NO",
+    "unitAmount": 300,
+    "currency": "gbp",
     "physical": false,
     "inStock": true,
     "live": true
   },
   "digital_art-whale_tail": {
     "priceId": "price_1UYBBIIg76PczlPMiO4pCcJJ",
+    "unitAmount": 300,
+    "currency": "gbp",
     "physical": false,
     "inStock": true,
     "live": true

@@ -58,6 +58,8 @@ export const ALLOWED_COUNTRIES = [
 
 type CatalogProduct = {
   priceId: string;
+  unitAmount: number;
+  currency: string;
   physical: boolean;
   inStock: boolean;
   live: boolean;
@@ -74,6 +76,44 @@ function jsonResponse(body: unknown, status = 200) {
     status,
     headers: { 'Content-Type': 'application/json' },
   });
+}
+
+export class PriceCheckError extends Error {
+  productId: string;
+
+  constructor(productId: string, message: string) {
+    super(message);
+    this.productId = productId;
+  }
+}
+
+export async function verifyStripePrice(stripe: Stripe, id: string, product: CatalogProduct) {
+  let price: Stripe.Price;
+  try {
+    price = await stripe.prices.retrieve(product.priceId);
+  } catch (error: any) {
+    if (error?.type === 'StripeInvalidRequestError' && error?.code === 'resource_missing') {
+      throw new PriceCheckError(id, `Stripe price ${product.priceId} no longer exists`);
+    }
+    throw error;
+  }
+
+  const expected = `${product.currency} ${product.unitAmount}`;
+
+  if (!price.active) {
+    throw new PriceCheckError(id, `Stripe price ${product.priceId} is inactive, expected ${expected}`);
+  }
+  if (price.type !== 'one_time') {
+    throw new PriceCheckError(id, `Stripe price ${product.priceId} is ${price.type}, expected one_time`);
+  }
+  if (price.currency !== product.currency || price.unit_amount !== product.unitAmount) {
+    throw new PriceCheckError(
+      id,
+      `Stripe price ${product.priceId} is ${price.currency} ${price.unit_amount}, catalog expects ${expected}`
+    );
+  }
+
+  return price;
 }
 
 export async function onRequestPost({ request, env }) {
@@ -124,6 +164,18 @@ export async function onRequestPost({ request, env }) {
       }
 
       quantities.set(id, total);
+    }
+
+    // Confirm Stripe still charges exactly what the product pages show.
+    const ids = Array.from(quantities.keys());
+    try {
+      await Promise.all(ids.map((id) => verifyStripePrice(stripe, id, PRODUCTS[id])));
+    } catch (error) {
+      if (error instanceof PriceCheckError) {
+        console.error(`❌ Price check failed for ${error.productId}: ${error.message}`);
+        return jsonResponse({ error: 'One of the items in your cart is temporarily unavailable. Please try again later.' }, 409);
+      }
+      throw error;
     }
 
     const lineItems = Array.from(quantities, ([id, quantity]) => ({

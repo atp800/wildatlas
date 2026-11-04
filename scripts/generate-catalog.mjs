@@ -9,6 +9,10 @@ const root = process.cwd();
 const productsDir = path.join(root, 'src', 'content', 'products');
 const outputPath = path.join(root, 'functions', '_data', 'catalog.json');
 
+// Everything in the store is priced in pounds; the checkout Function checks
+// that Stripe still agrees before it creates a session.
+const CURRENCY = 'gbp';
+
 function fail(message) {
   console.error(`✖ catalog: ${message}`);
   process.exit(1);
@@ -59,9 +63,19 @@ for (const file of files) {
   }
   priceOwners.set(priceId, file);
 
+  const price = readValue(frontmatter, 'price');
+  if (!price) fail(`${file} is missing "price"`);
+  if (!/^\d+(\.\d{1,2})?$/.test(price)) fail(`${file} has an invalid "price": ${price}`);
+  const unitAmount = Math.round(Number(price) * 100);
+  if (!Number.isInteger(unitAmount) || unitAmount <= 0) {
+    fail(`${file} has a price that is not a positive amount: ${price}`);
+  }
+
   entries.push({
     id,
     priceId,
+    unitAmount,
+    currency: CURRENCY,
     physical: readBoolean(frontmatter, 'physical', file),
     inStock: readBoolean(frontmatter, 'inStock', file, true),
     live: readBoolean(frontmatter, 'live', file, false),

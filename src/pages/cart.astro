@@ -1,6 +1,10 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
+import { getCollection } from 'astro:content';
+
+const products = await getCollection('products');
+const priceMap = Object.fromEntries(products.map((product) => [product.id, product.data.price]));
 ---
 
 <html lang="en">
@@ -9,6 +13,8 @@ import Nav from '../components/Nav.astro';
   </head>
   <body>
     <Nav />
+
+    <script is:inline type="application/json" id="product-prices" set:html={JSON.stringify(priceMap)}></script>
 
     <main class="cart-container">
       <h1 class="cart-title">Your Cart</h1>
@@ -272,6 +278,15 @@ import Nav from '../components/Nav.astro';
         const subtotalEl = document.getElementById('subtotal-amount')!;
         const checkoutBtn = document.getElementById('checkout-btn') as HTMLButtonElement;
 
+        // Re-price the cart from the current build instead of the price cached
+        // in localStorage when the item was added.
+        let currentPrices: Record<string, number> = {};
+        try {
+          currentPrices = JSON.parse(document.getElementById('product-prices')?.textContent || '{}');
+        } catch {
+          currentPrices = {};
+        }
+
         // 1. Subscribe to Store Changes
         cart.subscribe((cartData) => {
           const items = Object.values(cartData);
@@ -289,7 +304,8 @@ import Nav from '../components/Nav.astro';
           container.innerHTML = ''; 
 
           items.forEach(item => {
-            subtotal += item.price * item.quantity;
+            const currentPrice = currentPrices[item.id] ?? item.price;
+            subtotal += currentPrice * item.quantity;
 
             const itemEl = document.createElement('div');
             itemEl.className = 'cart-item';
@@ -299,7 +315,7 @@ import Nav from '../components/Nav.astro';
               <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.style.display='none'" />
               <div class="cart-item-info">
                 <h3 class="cart-item-title">${item.name}</h3>
-                <p class="cart-item-price">£${item.price.toFixed(2)}</p>
+                <p class="cart-item-price">£${currentPrice.toFixed(2)}</p>
               </div>
               <div class="cart-item-actions">
                 <div class="qty-controls">
