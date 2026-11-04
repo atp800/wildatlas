@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import catalog from '../_data/catalog.json';
 
 export const ALLOWED_COUNTRIES = [
   // Anglosphere
@@ -55,6 +56,25 @@ export const ALLOWED_COUNTRIES = [
 // QA - Qatar
 // KR - South Korea
 
+type CatalogProduct = {
+  priceId: string;
+  physical: boolean;
+  inStock: boolean;
+  live: boolean;
+};
+
+// Written by scripts/generate-catalog.mjs from src/content/products on every build.
+const PRODUCTS = catalog as Record<string, CatalogProduct>;
+
+const MAX_QUANTITY_PER_ITEM = 10;
+const MAX_DISTINCT_ITEMS = 20;
+
+function jsonResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
 
 export async function onRequestPost({ request, env }) {
   try {
@@ -63,15 +83,55 @@ export async function onRequestPost({ request, env }) {
       httpClient: Stripe.createFetchHttpClient()
     });
 
-    const body = await request.json();
-    const items = body.items;
+    let body: any;
+    try {
+      body = await request.json();
+    } catch {
+      return jsonResponse({ error: 'Invalid checkout request.' }, 400);
+    }
 
-    const requiresShipping = items.some((item: any) => item.physical === true);
+    const rawItems = body?.items;
+    if (!Array.isArray(rawItems) || rawItems.length === 0) {
+      return jsonResponse({ error: 'Your cart is empty.' }, 400);
+    }
+    if (rawItems.length > MAX_DISTINCT_ITEMS) {
+      return jsonResponse({ error: 'Your cart contains too many items.' }, 400);
+    }
 
-    const lineItems = items.map((item: any) => ({
-      price: item.priceId,
-      quantity: item.quantity,
+    // The browser is only trusted for product ids and quantities. Prices,
+    // availability and shipping requirements all come from the catalog.
+    const quantities = new Map<string, number>();
+
+    for (const raw of rawItems) {
+      const id = raw?.id;
+      if (typeof id !== 'string') {
+        return jsonResponse({ error: 'Invalid item in cart.' }, 400);
+      }
+
+      const product = PRODUCTS[id];
+      if (!product || !product.live || !product.inStock) {
+        return jsonResponse({ error: 'One of the items in your cart is no longer available.' }, 400);
+      }
+
+      const quantity = raw?.quantity;
+      if (!Number.isInteger(quantity) || quantity < 1) {
+        return jsonResponse({ error: 'Invalid quantity in cart.' }, 400);
+      }
+
+      const total = (quantities.get(id) ?? 0) + quantity;
+      if (total > MAX_QUANTITY_PER_ITEM) {
+        return jsonResponse({ error: `You can order at most ${MAX_QUANTITY_PER_ITEM} of each item.` }, 400);
+      }
+
+      quantities.set(id, total);
+    }
+
+    const lineItems = Array.from(quantities, ([id, quantity]) => ({
+      price: PRODUCTS[id].priceId,
+      quantity,
     }));
+
+    const requiresShipping = Array.from(quantities.keys()).some((id) => PRODUCTS[id].physical);
 
     const url = new URL(request.url);
 
@@ -91,8 +151,16 @@ export async function onRequestPost({ request, env }) {
 
     const session = await stripe.checkout.sessions.create(sessionConfig);
 
-    return new Response(JSON.stringify({ url: session.url }), { status: 200 });
+    if (!session.url) {
+      console.error(`❌ Stripe session ${session.id} returned no checkout URL`);
+      return jsonResponse({ error: 'We could not start checkout. Please try again.' }, 502);
+    }
+
+    return jsonResponse({ url: session.url });
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    // Log the real cause (e.g. a deleted Stripe price) for the site owner,
+    // but don't leak Stripe internals to the browser.
+    console.error(`❌ Checkout error: ${error?.message ?? error}`);
+    return jsonResponse({ error: 'We could not start checkout. Please try again.' }, 500);
   }
 }

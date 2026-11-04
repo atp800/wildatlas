@@ -369,7 +369,8 @@ import Nav from '../components/Nav.astro';
             const res = await fetch('/api/checkout', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ items })
+              // Only ids and quantities: the server resolves prices and shipping
+              body: JSON.stringify({ items: items.map(({ id, quantity }) => ({ id, quantity })) })
             });
             
             const data = await res.json();

@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "catalog": "node scripts/generate-catalog.mjs",
+    "predev": "npm run catalog",
+    "prebuild": "npm run catalog",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "optimize-images": "node scripts/optimize-images.js",
-    "build:optimized": "npm run optimize-images && astro build"
+    "build:optimized": "npm run catalog && npm run optimize-images && astro build"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
