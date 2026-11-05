@@ -110,7 +110,9 @@ export function buildSessionConfig(
   requiresShipping: boolean
 ): Stripe.Checkout.SessionCreateParams {
   const sessionConfig: Stripe.Checkout.SessionCreateParams = {
-    automatic_payment_methods: { enabled: true },
+    // Checkout Sessions select payment methods from the Dashboard by default.
+    // `automatic_payment_methods` is a PaymentIntent/SetupIntent parameter,
+    // not a Checkout Session parameter.
     line_items: lineItems,
     mode: 'payment',
     success_url: `${origin}/success`, // Simplified!
