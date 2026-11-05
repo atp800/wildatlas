@@ -14,6 +14,11 @@ export const siteConfig = {
       'Sorry, the store is not currently live. Please check back soon!',
   },
 
+  home: {
+    // When false, the About section is removed from the homepage.
+    showAbout: false,
+  },
+
   // Add future site-wide settings here, for example:
   // social: { instagram: '...', tiktok: '...' },
 };

@@ -2,8 +2,10 @@
 // import { ClientRouter } from 'astro:transitions';
 import BaseHead from '../components/BaseHead.astro';
 import AboutContent from '../components/AboutContent.astro';
+import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { siteConfig } from '../config';
 import GTMBodyNoScript from '../components/GTMBodyNoScript.astro';
 import { Image, getImage } from 'astro:assets';
 import '../styles/global.css';
@@ -98,7 +100,8 @@ const optimisedHomepageImage = await getImage({
   </header>
 
   <main>
-    <AboutContent />
+    {siteConfig.home.showAbout && <AboutContent />}
+    <Footer />
   </main>
 </body>
 </html>
