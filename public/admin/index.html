@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager | Wild Atlas</title>
+  </head>
+  <body>
+    <!--
+      Sveltia CMS admin app. This must stay a static file in public/ rather than
+      an Astro page, otherwise the dev server reloads it on every file change and
+      can interrupt a save.
+
+      The version is pinned deliberately: the project is pre-1.0, so `latest`
+      could change the editing UI without warning. To remove the CDN dependency
+      entirely, download this file next to index.html and point src at it.
+    -->
+    <script src="https://unpkg.com/@sveltia/cms@0.259.0/dist/sveltia-cms.js"></script>
+  </body>
+</html>

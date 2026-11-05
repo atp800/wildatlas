@@ -1,6 +1,22 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+/**
+ * Article dates can arrive in three shapes:
+ * - a quoted string ("2024-02-27"), which is how the existing articles store them
+ * - a YAML date, which Astro parses into a Date object
+ * - missing entirely, when the CMS saves an optional field the editor left blank
+ * All three collapse to a Date or null.
+ */
+const optionalDate = z
+	.union([z.string(), z.date()])
+	.nullable()
+	.optional()
+	.transform((value) => {
+		if (!value || value === 'null') return null;
+		return value instanceof Date ? value : new Date(value);
+	});
+
 const articles = defineCollection({
 	// Tell Astro to load all md and mdx files from this specific folder
 	loader: glob({ 
@@ -20,9 +36,9 @@ const articles = defineCollection({
 		highlighted: z.boolean(),
 		status: z.string(),
 		created_at: z.coerce.date(),		
-		published_at: z.string().nullable().transform((val) => val === "null" ? null : new Date(val)),
-		updated_at: z.string().nullable().transform((val) => val === "null" ? null : new Date(val)),
-		deleted_at: z.string().nullable().transform((val) => val === "null" ? null : new Date(val)),
+		published_at: optionalDate,
+		updated_at: optionalDate,
+		deleted_at: optionalDate,
 	}),
 });
 

@@ -3,7 +3,7 @@ title: "Learning to Talk to Whales Using AI"
 # slug: "template"
 image: '../../../assets/nature/learning-to-talk-to-whales-using-ai/learning-to-talk-to-whales-using-ai.jpg'
 description: "How artificial intelliegence is breaking the species language barrier"
-section: "articles"
+section: "nature"
 topic: "whales"
 tags: "whales,ai,artificial intelligence,language,animal intelligence"
 author: "Andreas"

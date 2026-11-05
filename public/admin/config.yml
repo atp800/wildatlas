@@ -1,0 +1,146 @@
+# Sveltia CMS configuration for Wild Atlas
+# Docs: https://sveltiacms.app/en/docs
+#
+# PHASE 1: the test backend below needs no authentication and stores edits in a
+# virtual filesystem in the browser, so the admin UI can be tried locally
+# without GitHub. Swap in the `github` block once the OAuth worker is deployed.
+
+backend:
+  name: test-repo
+  # name: github
+  # repo: atp800/wildatlas
+  # branch: main
+  # base_url: https://sveltia-cms-auth.<your-subdomain>.workers.dev
+  # auth_methods: [oauth, token]
+
+# Drafts as pull requests need the GitHub backend. Enable this together with the
+# `github` block above, so each draft gets a Cloudflare Pages preview build.
+# publish_mode: editorial_workflow
+
+site_url: https://wildatlas.org
+display_url: https://wildatlas.org
+
+# Stops empty optional fields being written as `null`, which the content schema
+# does not accept for the date fields.
+output:
+  omit_empty_optional_fields: true
+
+# Fallback media location. Every collection overrides it, so this only matters
+# if a collection is added without its own media_folder/public_folder.
+media_folder: src/assets
+public_folder: ../../../assets
+
+# One collection per section folder. Articles live at
+# src/content/articles/<section>/<slug>.md, and the article URL comes from that
+# path, so the folder is authoritative; the `section` field mirrors it.
+collections:
+  - name: nature
+    label: Nature
+    label_singular: Nature article
+    folder: src/content/articles/nature
+    media_folder: /src/assets/nature
+    public_folder: ../../../assets/nature
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    summary: '{{title}}'
+    sortable_fields: [published_at, title]
+    fields: &article_fields_nature
+      - { name: title, label: Title, widget: string }
+      - { name: image, label: Hero image, widget: image }
+      - { name: description, label: Description, widget: text }
+      - name: section
+        label: Section
+        widget: select
+        options: [nature, eco, travel]
+        default: nature
+        hint: Must match the folder this entry lives in. The folder decides the article URL.
+      - { name: topic, label: Topic, widget: string, required: false }
+      - { name: tags, label: Tags, widget: string, required: false, hint: 'Comma separated, no brackets.' }
+      - { name: author, label: Author, widget: string, required: false, default: Andreas }
+      - { name: views, label: Views (legacy), widget: number, required: false, hint: 'Unused counter. Kept so saving an article does not drop it.' }
+      - { name: highlighted, label: Highlighted, widget: boolean, required: false, default: false }
+      - name: status
+        label: Status
+        widget: select
+        options: [live, draft]
+        default: draft
+      - { name: created_at, label: Created, widget: date, format: 'YYYY-MM-DD' }
+      - { name: published_at, label: Published, widget: date, format: 'YYYY-MM-DD', required: false, hint: 'Leave blank to keep the article out of section listings.' }
+      - { name: updated_at, label: Updated, widget: date, format: 'YYYY-MM-DD', required: false }
+      - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
+
+  - name: eco
+    label: Eco
+    label_singular: Eco article
+    folder: src/content/articles/eco
+    media_folder: /src/assets/eco
+    public_folder: ../../../assets/eco
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    summary: '{{title}}'
+    sortable_fields: [published_at, title]
+    fields: &article_fields_eco
+      - { name: title, label: Title, widget: string }
+      - { name: image, label: Hero image, widget: image }
+      - { name: description, label: Description, widget: text }
+      - name: section
+        label: Section
+        widget: select
+        options: [nature, eco, travel]
+        default: eco
+        hint: Must match the folder this entry lives in. The folder decides the article URL.
+      - { name: topic, label: Topic, widget: string, required: false }
+      - { name: tags, label: Tags, widget: string, required: false, hint: 'Comma separated, no brackets.' }
+      - { name: author, label: Author, widget: string, required: false, default: Andreas }
+      - { name: views, label: Views (legacy), widget: number, required: false, hint: 'Unused counter. Kept so saving an article does not drop it.' }
+      - { name: highlighted, label: Highlighted, widget: boolean, required: false, default: false }
+      - name: status
+        label: Status
+        widget: select
+        options: [live, draft]
+        default: draft
+      - { name: created_at, label: Created, widget: date, format: 'YYYY-MM-DD' }
+      - { name: published_at, label: Published, widget: date, format: 'YYYY-MM-DD', required: false, hint: 'Leave blank to keep the article out of section listings.' }
+      - { name: updated_at, label: Updated, widget: date, format: 'YYYY-MM-DD', required: false }
+      - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
+
+  - name: travel
+    label: Travel
+    label_singular: Travel article
+    folder: src/content/articles/travel
+    media_folder: /src/assets/travel
+    public_folder: ../../../assets/travel
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    summary: '{{title}}'
+    sortable_fields: [published_at, title]
+    fields: &article_fields_travel
+      - { name: title, label: Title, widget: string }
+      - { name: image, label: Hero image, widget: image }
+      - { name: description, label: Description, widget: text }
+      - name: section
+        label: Section
+        widget: select
+        options: [nature, eco, travel]
+        default: travel
+        hint: Must match the folder this entry lives in. The folder decides the article URL.
+      - { name: topic, label: Topic, widget: string, required: false }
+      - { name: tags, label: Tags, widget: string, required: false, hint: 'Comma separated, no brackets.' }
+      - { name: author, label: Author, widget: string, required: false, default: Andreas }
+      - { name: views, label: Views (legacy), widget: number, required: false, hint: 'Unused counter. Kept so saving an article does not drop it.' }
+      - { name: highlighted, label: Highlighted, widget: boolean, required: false, default: false }
+      - name: status
+        label: Status
+        widget: select
+        options: [live, draft]
+        default: draft
+      - { name: created_at, label: Created, widget: date, format: 'YYYY-MM-DD' }
+      - { name: published_at, label: Published, widget: date, format: 'YYYY-MM-DD', required: false, hint: 'Leave blank to keep the article out of section listings.' }
+      - { name: updated_at, label: Updated, widget: date, format: 'YYYY-MM-DD', required: false }
+      - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }

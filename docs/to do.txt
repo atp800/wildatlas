@@ -1,6 +1,85 @@
-USE DEV BRANCH OR DONT PUSH AS MUCH TO NOT WASTE BUILDS
+---ISSUES---
+1. Verify the Stripe product metadata before taking another order. [carried over, critical] functions/api/webhook.ts:45-75 builds download links from product.metadata.downloadURL and physical, not from the site catalog. The Lone Shark and Whale Tail products were recreated with new price IDs, so their metadata must have been re-entered in Stripe. If it wasn’t, a customer pays, gets a “Thank you” email, and receives no download links; physical orders also lose the shipping note. The site catalog has physical, but generate-catalog.mjs does not emit downloadURL, so there is no fallback. Check both products in Stripe Dashboard → Metadata (physical: "false", downloadURL: "/downloads/...") and place a test-mode order.
+
+2. Digital downloads are public, permanent URLs. [carried over, high] public/downloads/*.jpg is served directly by Pages; the webhook only emails the URL. Anyone with the link can download forever, with no expiry, auth, or revocation. The Lone Shark file is also 2.2 MB. This needs tokenised/signed delivery or R2 with short-lived links.
+
+3. The success page is static and clears the cart for anyone. [carried over, high] src/pages/success.astro always says payment succeeded, has no order lookup or download fallback, and its script calls clearCart() on load — so visiting /success directly wipes a cart. checkout.ts:116 does not append {CHECKOUT_SESSION_ID}, so the page cannot verify anything. It also has unused Stripe/getCollection imports and a stray </> (Astro drops it from the output). It is in the sitemap and indexable.
+
+4. No idempotency, rate limiting, order record, or webhook dedupe. [carried over, high/medium] Every POST creates a new Stripe session; double-clicks/retries create duplicates, and there is no throttle. The webhook emails on every delivery with no event-ID store: if Resend succeeds but the response is lost, Stripe retries and the customer gets a duplicate email. No order is persisted, so there is no re-send or refund/revocation path, and no metadata/client_reference_id ties a session to an order.
+
+P1 — correctness and SEO
+5. Every OG/Twitter image is broken. [new] BaseHead.astro defaults to ../assets/general/homepage-image.jpg and resolves it against Astro.url. Built examples:
+
+/ and /store/ → https://wildatlas.org/assets/general/homepage-image.jpg
+/product/digital_art-lone_shark/ → https://wildatlas.org/product/assets/general/homepage-image.jpg
+/travel/reef-safe-sunscreens/ → https://wildatlas.org/travel/assets/general/homepage-image.jpg
+None exist (public/assets is missing). No page passes image to BaseHead; ArticlesPost receives the article image but does not forward it, and product pages do not pass theirs. Fix by importing a real default image and resolving against Astro.site, then pass each page’s image.
+
+6. The sitemap advertises empty/checkout pages, and there is no robots.txt. [carried over + new] dist/sitemap-0.xml includes /about/ (a 0-byte page), /cart/, /success/, and /cancel/. /about is an empty file; the about content only exists on the homepage via AboutContent. Either render it at /about or delete the route and filter the sitemap. Add noindex to cart/success/cancel and a robots.txt pointing at the sitemap.
+
+7. Draft/deleted articles are still generated and discoverable. [new] [...slug].astro maps every entry in the collection with no status, published_at, deleted_at, or future-date filter. A status: "draft" or deleted article still gets a page at its URL, and the sitemap will include it. [category].astro filters only published_at != null (layouts then filter status === 'live'), and deleted_at is never read anywhere. RSS filters only status !== 'draft', so deleted and future posts still go out. Current content is all live with deleted_at: "null", so nothing is exposed today.
+
+8. A real YAML null date becomes 1 Jan 1970. [new] content.config.ts:23-25 uses .nullable().transform(val => val === "null" ? null : new Date(val)). If frontmatter is published_at: null (not the string "null"), new Date(null) → 1970, which passes published_at != null and looks published. This is also why tsc errors on those lines. Current files use the string "null", so this is latent.
+
+9. Typecheck is red and the Stripe types/API version have drifted. [carried over] npx tsc --noEmit → 13 errors, exit 2:
+
+Stripe.Checkout.SessionCreateParams no longer resolves in stripe@22 (checkout.ts lines 80/109/122); automatic_payment_methods then errors on line 113.
+Implicit any for { request, env } (checkout.ts 175, webhook.ts 22).
+apiVersion: '2023-10-16' vs the SDK’s '2026-04-22.dahlia' (checkout.ts 178, webhook.ts 31).
+The three content-config date errors above.
+The build passes because Vite strips types; this is type-surface drift, not proof checkout is broken. There is no typecheck or astro check script, so .astro type errors (for example SmallGridLayout’s undefined PostGridProps) are invisible.
+
+10. Every country sees both shipping rates. [carried over] buildShippingOptions() always returns UK £4 and International £10 whenever the cart has a physical item, and ALLOWED_COUNTRIES is broad. A US buyer can select “UK delivery £4”; a UK buyer can select £10. Stripe Checkout fixed shipping options are not country-conditioned. Options: one worldwide rate, split checkout by destination, or accept the leak.
+
+11. The webhook reads only the first page of line items. [new] checkout.ts allows 20 distinct items; webhook.ts:45 calls listLineItems once with no limit or pagination (Stripe defaults to 10). An 11–20-line order can omit downloads from the email. The current catalog has only 3 products, so this is latent.
+
+12. Metadata placeholders and host mismatch. [carried over + new] SITE_DESCRIPTION is still 'Welcome to my website!'; it is the homepage and category meta description. SITE_URL is https://www.wildatlas.org, but astro.config uses https://wildatlas.org; canonical/sitemap are non-www, RSS is www. Pick one host and make SITE_URL match Astro.site.
+
+13. type is optional in the product schema but required by the UI. [new] store.astro calls product.data.type.toUpperCase() and builds filter buttons with type.charAt(...); a product without type crashes the build. [category] and product breadcrumbs also render undefined. Either make type required or guard the UI.
+
+14. The sweatshirt still has the old Stripe price. [carried over, low/medium] Catalog: clothing-shark-sweatshirt → price_1TPf4sEV07gy7tTCx2Mt6LMw, live:false, inStock:false. It is not sold today, but flipping live:true without a new price ID will fail price verification (409) unless that old price still exists and matches £35.
+
+P2 — tooling and maintenance
+15. scripts/add-article.js cannot run. [new] package.json has "type": "module"; the script uses require. node scripts/add-article.js → ReferenceError: require is not defined in ES module scope (exit 1). Convert it to ESM or rename it .cjs; the unused convertCompilerOptionsFromJson import and the update path resetting published_at to created_at are also worth cleaning.
+
+16. optimize-images.js reprocesses its own output. [new] It writes foo.webp, foo-320w.jpg, etc. into the same directory it recursively scans. A second run sees those files and generates foo-320w-320w.jpg, etc., growing every run. It also processes public/downloads and icons. build:optimized is optional, but repeated use will bloat public.
+
+17. No tests and no check script. [carried over] No committed tests; the ad-hoc price/shipping/webhook tests from the fixes were not kept. npm run build is the only automated check, and it does not typecheck .astro files or cover checkout/webhook behaviour.
+
+18. README/env/deploy docs are missing. [new] README has no STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, RESEND_API_KEY, Cloudflare Pages build/output, or webhook setup; there is no .env.example. That is the kind of thing that breaks a redeploy six months later.
+
+P3 — cleanup and polish
+19. Dead/broken files. [carried over + new]
+
+src/pages/about.astro — empty (0 bytes), but routed and in the sitemap.
+src/components/Header.astro — empty, unused.
+src/layouts/MainLayout.astro — uses BaseHead/SITE_TITLE/SITE_DESCRIPTION without imports; unused.
+src/components/PostLayoutUnstyled.astro — contains a stray impo and imports Markdown; unused.
+PostLayoutCentred.astro and MasonryLayout.astro — unused.
+SmallGridLayout.astro — uses undefined PostGridProps; build passes because Astro strips types, astro check would fail.
+20. Small correctness/accessibility items. [mixed]
+
+BaseHead’s “critical CSS” is scoped to BaseHead’s own CID (y4licvga); no element carries it, so it is dead CSS shipped on every page. The asset URL is rewritten correctly — it just never applies.
+GTM ID is hardcoded and loads after interaction/3s without consent; your todo already flags consent.
+Footer social links use target="_blank" without rel="noopener noreferrer".
+The mobile menu lacks aria-expanded/aria-controls and cannot be closed with Escape or an outside click.
+FormattedDate outputs <time if:date ...> (invalid attribute) and uses en-UK; use en-GB and drop the directive.
+global.css uses --gray-medium but defines --grey-medium; headings fall back to the inherited colour.
+browserconfig.xml points at missing /mstile-150x150.png; site.webmanifest has no start_url/scope.
+The cart lets you increment past the server’s 10/item limit; checkout rejects with an alert. It also injects item name/image with innerHTML from localStorage (self-XSS only).
+index.astro imports atlasLogo but never uses it.
 
 
+---ADDITIONS---
+1. Integrat dropshipping
+2. Better tracking of clicks/customer journey
+3. Integrated article editor or Word file conversion, automatically meeting style guide
+4. Physical order tracking
+5. Better and more secure distribution of digital items
+
+
+
+-------------------------------------------------
 
 - switch logo to true svg
 footer extends all the way up
