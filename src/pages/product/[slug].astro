@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseHead from '../../components/BaseHead.astro';
 import Nav from '../../components/Nav.astro';
+import { siteConfig } from '../../config';
 
 // 1. Generate pages for all LIVE products
 export async function getStaticPaths() {
@@ -17,6 +18,7 @@ export async function getStaticPaths() {
 
 // 2. Extract product data
 const { product } = Astro.props;
+const storeActive = siteConfig.store.isActive;
 const { Content } = await render(product);
 
 // 3. Fallback to just the main image if no gallery is provided
@@ -99,7 +101,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
           <button 
             class="btn add-to-cart-btn" 
             id="add-to-cart-btn"
-            disabled={!product.data.inStock}
+            disabled={!storeActive || !product.data.inStock}
             data-id={product.id}
             data-name={product.data.title}
             data-price-id={product.data.stripePriceId}
@@ -107,7 +109,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
             data-image={product.data.image.src}
             data-physical={product.data.physical ? "true" : "false"}
           >
-            {product.data.inStock ? 'Add to Cart' : 'Sold Out'}
+            {!storeActive ? siteConfig.store.unavailableLabel : product.data.inStock ? 'Add to Cart' : 'Sold Out'}
           </button>
         </div>
       </div>

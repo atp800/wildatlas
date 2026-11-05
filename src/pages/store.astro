@@ -3,10 +3,12 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
+import { siteConfig } from '../config';
 
 // Fetch all products from the markdown collection
 const allProducts = await getCollection('products');
 const liveProducts = allProducts.filter((p) => p.data.live === true);
+const storeActive = siteConfig.store.isActive;
 
 // Extract unique categories and types from LIVE products only
 const categories =['all', ...new Set(liveProducts.map((p) => p.data.category))];
@@ -92,7 +94,7 @@ const types =['all', ...new Set(liveProducts.map((p) => p.data.type))];
               
               <button 
                 class="add-to-cart-btn" 
-                disabled={!product.data.inStock}
+                disabled={!storeActive || !product.data.inStock}
                 data-id={product.id}
                 data-name={product.data.title}
                 data-price-id={product.data.stripePriceId}
@@ -100,7 +102,7 @@ const types =['all', ...new Set(liveProducts.map((p) => p.data.type))];
                 data-image={product.data.image.src}
                 data-physical={product.data.physical ? "true" : "false"}
               >
-                {product.data.inStock ? 'Add to Cart' : 'Sold Out'}
+                {!storeActive ? siteConfig.store.unavailableLabel : product.data.inStock ? 'Add to Cart' : 'Sold Out'}
               </button>
             </div>
           </div>

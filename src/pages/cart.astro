@@ -270,6 +270,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
 
     <script>
       import { cart, removeFromCart } from '../store/cart.ts';
+      import { siteConfig } from '../config';
 
       function initCartPage() {
         const container = document.getElementById('cart-items-container')!;
@@ -376,6 +377,12 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         checkoutBtn?.addEventListener('click', async () => {
           const items = Object.values(cart.get());
           if (items.length === 0) return alert("Cart is empty!");
+
+          // The store can be paused without removing any products from the site.
+          if (!siteConfig.store.isActive) {
+            alert(siteConfig.store.inactiveCheckoutMessage);
+            return;
+          }
 
           const originalText = checkoutBtn.innerText;
           checkoutBtn.innerText = "Redirecting to Stripe...";
