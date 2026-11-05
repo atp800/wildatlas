@@ -8,7 +8,7 @@ export const siteConfig = {
   store: {
     // When false, products show "Currently Unavailable" instead of an
     // add-to-cart button, and checkout is blocked with the message below.
-    isActive: true,
+    isActive: false,
     unavailableLabel: 'Currently Unavailable',
     inactiveCheckoutMessage:
       'Sorry, the store is not currently live. Please check back soon!',
