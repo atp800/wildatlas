@@ -1,17 +1,27 @@
 # Sveltia CMS configuration for Wild Atlas
 # Docs: https://sveltiacms.app/en/docs
 #
-# PHASE 1: the test backend below needs no authentication and stores edits in a
-# virtual filesystem in the browser, so the admin UI can be tried locally
-# without GitHub. Swap in the `github` block once the OAuth worker is deployed.
+# LOCAL WORKFLOW: the GitHub backend is used without signing in. Open
+# /admin/index.html in Chrome or Edge, click "Work with Local Repository", pick
+# this project folder, and the CMS reads and writes the real files under src/.
+# No OAuth worker is needed until you want to edit on the deployed site: that is
+# Phase 3, where the same backend signs in with a GitHub token.
+#
+# DEPLOYED (Phase 3): auth_methods: [token] shows "Sign In with Token" at
+# wildatlas.org/admin/. The token is a fine-grained PAT limited to this repo.
+# Only if non-technical editors ever need to sign in is the OAuth worker
+# (sveltia-cms-auth) required: deploy it, fill in base_url, and switch to
+# auth_methods: [oauth, token].
+#
+# (The earlier `test-repo` backend was a browser-only virtual filesystem: it
+# never reads the repo, so it always started empty.)
 
 backend:
-  name: test-repo
-  # name: github
-  # repo: atp800/wildatlas
-  # branch: main
+  name: github
+  repo: atp800/wildatlas
+  branch: main
+  auth_methods: [token]
   # base_url: https://sveltia-cms-auth.<your-subdomain>.workers.dev
-  # auth_methods: [oauth, token]
 
 # Drafts as pull requests need the GitHub backend. Enable this together with the
 # `github` block above, so each draft gets a Cloudflare Pages preview build.
@@ -25,10 +35,11 @@ display_url: https://wildatlas.org
 output:
   omit_empty_optional_fields: true
 
-# Fallback media location. Every collection overrides it, so this only matters
-# if a collection is added without its own media_folder/public_folder.
-media_folder: src/assets
-public_folder: ../../../assets
+# Sveltia requires a top-level media_folder even though every collection below
+# declares its own. The top-level public_folder is intentionally omitted: Sveltia
+# rejects a relative one, and the collections need relative
+# ../../../assets/<section> paths for Astro's image() helper to resolve them.
+media_folder: /src/assets
 
 # One collection per section folder. Articles live at
 # src/content/articles/<section>/<slug>.md, and the article URL comes from that
@@ -66,9 +77,9 @@ collections:
         widget: select
         options: [live, draft]
         default: draft
-      - { name: created_at, label: Created, widget: date, format: 'YYYY-MM-DD' }
-      - { name: published_at, label: Published, widget: date, format: 'YYYY-MM-DD', required: false, hint: 'Leave blank to keep the article out of section listings.' }
-      - { name: updated_at, label: Updated, widget: date, format: 'YYYY-MM-DD', required: false }
+      - { name: created_at, label: Created, widget: datetime, type: date }
+      - { name: published_at, label: Published, widget: datetime, type: date, required: false, hint: 'Leave blank to keep the article out of section listings.' }
+      - { name: updated_at, label: Updated, widget: datetime, type: date, required: false }
       - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
 
   - name: eco
@@ -103,9 +114,9 @@ collections:
         widget: select
         options: [live, draft]
         default: draft
-      - { name: created_at, label: Created, widget: date, format: 'YYYY-MM-DD' }
-      - { name: published_at, label: Published, widget: date, format: 'YYYY-MM-DD', required: false, hint: 'Leave blank to keep the article out of section listings.' }
-      - { name: updated_at, label: Updated, widget: date, format: 'YYYY-MM-DD', required: false }
+      - { name: created_at, label: Created, widget: datetime, type: date }
+      - { name: published_at, label: Published, widget: datetime, type: date, required: false, hint: 'Leave blank to keep the article out of section listings.' }
+      - { name: updated_at, label: Updated, widget: datetime, type: date, required: false }
       - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
 
   - name: travel
@@ -140,7 +151,7 @@ collections:
         widget: select
         options: [live, draft]
         default: draft
-      - { name: created_at, label: Created, widget: date, format: 'YYYY-MM-DD' }
-      - { name: published_at, label: Published, widget: date, format: 'YYYY-MM-DD', required: false, hint: 'Leave blank to keep the article out of section listings.' }
-      - { name: updated_at, label: Updated, widget: date, format: 'YYYY-MM-DD', required: false }
+      - { name: created_at, label: Created, widget: datetime, type: date }
+      - { name: published_at, label: Published, widget: datetime, type: date, required: false, hint: 'Leave blank to keep the article out of section listings.' }
+      - { name: updated_at, label: Updated, widget: datetime, type: date, required: false }
       - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
