@@ -81,6 +81,7 @@ collections:
       - { name: published_at, label: Published, widget: datetime, type: date, required: false, hint: 'Leave blank to keep the article out of section listings.' }
       - { name: updated_at, label: Updated, widget: datetime, type: date, required: false }
       - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
+      - { name: body, label: Body, widget: markdown }
 
   - name: eco
     label: Eco
@@ -118,6 +119,7 @@ collections:
       - { name: published_at, label: Published, widget: datetime, type: date, required: false, hint: 'Leave blank to keep the article out of section listings.' }
       - { name: updated_at, label: Updated, widget: datetime, type: date, required: false }
       - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
+      - { name: body, label: Body, widget: markdown }
 
   - name: travel
     label: Travel
@@ -155,3 +157,4 @@ collections:
       - { name: published_at, label: Published, widget: datetime, type: date, required: false, hint: 'Leave blank to keep the article out of section listings.' }
       - { name: updated_at, label: Updated, widget: datetime, type: date, required: false }
       - { name: deleted_at, label: Deleted at, widget: string, required: false, default: 'null', hint: 'Leave as the word null unless the article is being retired.' }
+      - { name: body, label: Body, widget: markdown }
