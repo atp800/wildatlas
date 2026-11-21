@@ -26,7 +26,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
         font-family: 'Urbanist', sans-serif;
         font-size: 25px; /* You can change this value to suit your preferences */
         font-weight: bold;
-        color: #444;
+        color: var(--text, #444);
         margin-top: 2em;
         margin-bottom: 0em; /* Giving space between the title and the posts */
         width: 100%;
@@ -64,13 +64,13 @@ const livePosts = posts.filter(post => post.data.status === 'live');
         font-family: 'Urbanist', sans-serif;
         font-weight: 600px;
         font-size: 20px;
-        color: #444;
+        color: var(--text, #444);
         text-align: center;
         max-width: 180px;
     }
     .separator {
         width: 95%;
-        background-color: lightgrey;
+        background-color: var(--border, lightgrey);
         height: 1px;
         margin: 2em auto;
     }
@@ -80,7 +80,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
         font-family: 'Urbanist', sans-serif;
         font-size: 25px; /* You can change this value to suit your preferences */
         font-weight: bold;
-        color: #444;
+        color: var(--text, #444);
         margin-top: 0.5em;
         margin-bottom: 0em; /* Giving space between the title and the posts */
         width: 100%;
@@ -108,7 +108,7 @@ const livePosts = posts.filter(post => post.data.status === 'live');
             display: block;
             height: 1px;
             width: 95%;
-            background-color: lightgrey;
+            background-color: var(--border, lightgrey);
             margin-bottom: 2em;
         } */
     }
@@ -172,19 +172,19 @@ const livePosts = posts.filter(post => post.data.status === 'live');
         font-family: 'Urbanist', sans-serif;
         font-weight: 600px;
         font-size: 20px;
-        color: #444;
+        color: var(--text, #444);
         margin-bottom: 0em;
     }
     .post-description {
         font-family: 'Urbanist', sans-serif;
         font-size: 16px;
-        color: #444;
+        color: var(--text, #444);
         /* color: rgb(129, 129, 129); */
     }
     .post-date {
         font-family: 'Urbanist', sans-serif;
         font-size: 13px;
-        color: #999;
+        color: var(--muted, #999);
     }
 
     .highlighted-image-container, .post-image-container {

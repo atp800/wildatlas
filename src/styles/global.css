@@ -22,6 +22,7 @@
 }
 
 :root {
+	color-scheme: light;
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
@@ -29,6 +30,7 @@
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
 	--grey-medium: #444;
+	--gray-medium: 68, 68, 68;
 	--gray-dark: 34, 41, 57;
 	--light-beige: 251, 252, 250;
 	--background: var(--light-beige);
@@ -37,12 +39,46 @@
 		0 16px 32px rgba(var(--gray), 33%);
 }
 
+/* Semantic theme colours are shared by scoped page/component styles. Light-mode
+   fallbacks stay beside their declarations to preserve the original palette. */
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--background: #202622;/*24, 29, 27;*/
+	--gray-dark: 229, 233, 228;
+	--gray-medium: 229, 233, 228;
+	--gray-light: 43, 50, 46;
+	--grey-medium: #e5e9e4;
+	--text: #e5e9e4;
+	--heading: #f0f2ed;
+	--muted: #b9c1b9;
+	--surface: #252d28;
+	--footer: #202622;
+	--border: #4c5850;
+	--button: #3f5448;
+	--button-hover: #506956;
+	--disabled: #455047;
+	--accent: #a4c9ef;
+	--accent-dark: #d0e6ff;
+	--notice: #243743;
+	--notice-text: #beddf3;
+	--danger: #f28c85;
+	--logo-brightness: 1;
+}
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+html { background-color: rgb(var(--background)); }
+:root[data-theme='dark'] :is(input, textarea, select) {
+	background-color: var(--surface);
+	color: var(--text);
+	border-color: var(--border);
+}
+
 body {
 	font-family: 'Urbanist', sans-serif; /* Applied Urbanist globally */
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: var(--background);
+	background: rgb(var(--background));
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
@@ -78,7 +114,7 @@ h5 { font-size: 1.25em; }
 
 .page-title {
 	margin: 0 0 16px;
-	color: #444;
+	color: var(--text, #444);
 	font-family: 'Nothing You Could Do', cursive;
 	font-size: 4rem;
 	font-weight: 400;

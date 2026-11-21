@@ -1,4 +1,5 @@
 ---
+import Footer from '../components/Footer.astro';
 // success.astro
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
@@ -30,6 +31,7 @@ import { siteConfig } from '../config';
       )}
       <a href="/store" class="btn outline-btn mt-4">Return to Store</a>
     </main>
+    <Footer />
 
     <style is:global>
       .message-container {
@@ -51,13 +53,13 @@ import { siteConfig } from '../config';
         color: white;
       }
       .success-icon { background-color: #2e7d32; }
-      h1 { color: #222939; margin-bottom: 15px; }
-      p { color: #666; margin-bottom: 30px; line-height: 1.6; }
+      h1 { color: var(--heading, #222939); margin-bottom: 15px; }
+      p { color: var(--muted, #666); margin-bottom: 30px; line-height: 1.6; }
       
       /* New Download Styles */
       .downloads-card {
-        background: #f8f9fa;
-        border: 1px solid #eaeaea;
+        background: var(--surface, #f8f9fa);
+        border: 1px solid var(--border, #eaeaea);
         border-radius: 12px;
         padding: 30px;
         margin: 40px 0;
@@ -65,7 +67,7 @@ import { siteConfig } from '../config';
       }
       .downloads-card h2 {
         margin-top: 0;
-        color: #222939;
+        color: var(--heading, #222939);
         margin-bottom: 5px;
       }
       .download-list {
@@ -78,16 +80,16 @@ import { siteConfig } from '../config';
         justify-content: space-between;
         align-items: center;
         padding: 15px 0;
-        border-top: 1px solid #eaeaea;
+        border-top: 1px solid var(--border, #eaeaea);
       }
       .file-name {
         font-weight: 600;
-        color: #333;
+        color: var(--text, #333);
       }
       
       .shipping-notice {
-        background: #eef5ff;
-        color: #004085;
+        background: var(--notice, #eef5ff);
+        color: var(--notice-text, #004085);
         padding: 20px;
         border-radius: 8px;
         margin-bottom: 30px;
@@ -100,19 +102,19 @@ import { siteConfig } from '../config';
 
       .btn {
         display: inline-block;
-        background: #222939;
+        background: var(--button, #222939);
         color: white;
         padding: 12px 30px;
         border-radius: 6px;
         text-decoration: none;
         font-weight: bold;
         transition: background 0.2s;
-        border: 2px solid #222939;
+        border: 2px solid var(--border, #222939);
         cursor: pointer;
       }
-      .btn:hover { background: #444; border-color: #444; color: white;}
+      .btn:hover { background: var(--button-hover, #444); border-color: var(--border, #444); color: white;}
       .download-btn { padding: 8px 20px; font-size: 14px; }
-      .outline-btn { background: transparent; color: #222939; }
+      .outline-btn { background: transparent; color: var(--heading, #222939); }
       .mt-4 { margin-top: 20px; }
     </style>
 

@@ -20,6 +20,27 @@ Shared section headings use .page-title and .page-content in src/styles/global.c
 Keep common changes there rather than adding per-page overrides. Responsive media
 queries can intentionally override the desktop size.
 
+## Light and dark themes
+
+The shared footer has a Dark mode toggle at the far right (on its own right-aligned
+row on narrow screens). It is present on shop, cart, product and payment-result
+pages as well as the editorial pages. The initial theme follows the device setting;
+a visitor's choice is saved locally as wildatlas-theme and takes precedence.
+
+ThemeInit.astro runs in BaseHead before paint to avoid a light flash. It updates
+the toggle's pressed state, follows device changes until a choice is made, and
+synchronises changes between tabs. With blocked storage, toggling still works on
+the current page. Without JavaScript the site stays light and the toggle is hidden.
+
+Theme colours live in the data-theme='dark' section of src/styles/global.css.
+Component styles use semantic variables with the original light colours as fallbacks.
+The document and standard navigation backgrounds share --background. BaseHead
+must not add fixed body colours that override global.css; the homepage navigation
+remains transparent over its photograph.
+Keep photo overlays and button text legible; do not invert photographs to create
+dark mode. This theme applies to the website, not Stripe's hosted checkout or the
+separate CMS interface.
+
 ## Images
 
 Prefer the existing Astro image pipeline for source assets. Supply useful alt text

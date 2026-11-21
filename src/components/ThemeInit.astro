@@ -1,0 +1,36 @@
+<!-- Run before paint so a saved dark theme never flashes a light page. -->
+<script is:inline>
+  (() => {
+    const key = 'wildatlas-theme';
+    const system = window.matchMedia('(prefers-color-scheme: dark)');
+    let choice;
+    try { choice = localStorage.getItem(key); } catch { /* Storage may be blocked. */ }
+    const valid = value => value === 'dark' || value === 'light';
+    const theme = () => valid(choice) ? choice : (system.matches ? 'dark' : 'light');
+    const sync = () => {
+      document.documentElement.dataset.theme = theme();
+      document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+        button.hidden = false;
+        button.setAttribute('aria-pressed', String(theme() === 'dark'));
+      });
+    };
+    sync();
+    if (window.wildAtlasThemeInitialized) return;
+    window.wildAtlasThemeInitialized = true;
+    document.addEventListener('DOMContentLoaded', sync);
+    document.addEventListener('astro:page-load', sync);
+    document.addEventListener('astro:before-swap', event => {
+      event.newDocument.documentElement.dataset.theme = theme();
+    });
+    document.addEventListener('click', event => {
+      if (!(event.target instanceof Element) || !event.target.closest('[data-theme-toggle]')) return;
+      choice = theme() === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem(key, choice); } catch { /* Still works for this page. */ }
+      sync();
+    });
+    system.addEventListener('change', () => { if (!valid(choice)) sync(); });
+    window.addEventListener('storage', event => {
+      if (event.key === key || event.key === null) { choice = event.newValue; sync(); }
+    });
+  })();
+</script>

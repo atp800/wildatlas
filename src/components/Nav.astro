@@ -69,7 +69,8 @@ const isHome = pathname === '/' || pathname === '/index.html';
         width: 100%;
         box-sizing: border-box;
         padding: 20px 30px;
-        color: #444; 
+        color: var(--text, #444);
+        background-color: rgb(var(--background));
         z-index: 1000;
         position: relative;
     }
@@ -79,6 +80,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
         position: absolute;
         top: 0;
         left: 0;
+        background-color: transparent;
         color: white; 
     }
 
@@ -90,7 +92,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
         height: 60px; 
         width: auto;
         display: block; 
-        filter: brightness(0.2); 
+        filter: brightness(var(--logo-brightness, 0.2));
     }
     .home-header .logo-img {
         filter: none;
@@ -144,7 +146,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
         position: absolute;
         top: -5px;
         right: -10px;
-        background-color: #444; /* Dark grey */
+        background-color: var(--button-hover, #444); /* Dark grey */
         color: white;
         font-size: 12px;
         min-width: 18px;

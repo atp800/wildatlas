@@ -1,4 +1,5 @@
 ---
+import Footer from '../../components/Footer.astro';
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseHead from '../../components/BaseHead.astro';
@@ -114,6 +115,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
         </div>
       </div>
     </main>
+    <Footer />
 
     <style is:global>
       .product-page-container {
@@ -141,7 +143,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
         position: relative;
         width: 100%;
         aspect-ratio: 1 / 1;
-        background: #f4f4f4;
+        background: var(--surface, #f4f4f4);
         border-radius: 12px;
         overflow: hidden;
       }
@@ -184,7 +186,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
       }
 
       .thumbnail-btn.active-thumb {
-        border-color: #222939;
+        border-color: var(--border, #222939);
       }
 
       .thumbnail-img {
@@ -195,19 +197,19 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
 
       /* Details Styles */
       .breadcrumbs {
-        color: #888;
+        color: var(--muted, #888);
         font-size: 14px;
         margin-bottom: 20px;
       }
       .breadcrumbs a {
-        color: #888;
+        color: var(--muted, #888);
         text-decoration: none;
       }
       .breadcrumbs a:hover {
         text-decoration: underline;
       }
       .breadcrumbs span {
-        color: #222939;
+        color: var(--heading, #222939);
         font-weight: 600;
         text-transform: capitalize;
       }
@@ -216,18 +218,18 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
         font-size: 2.5em;
         margin: 0 0 15px 0;
         line-height: 1.2;
-        color: #222939;
+        color: var(--heading, #222939);
       }
 
       .product-price {
         font-size: 1.8em;
         font-weight: bold;
-        color: #444;
+        color: var(--text, #444);
         margin: 0 0 30px 0;
       }
 
       .product-description {
-        color: #555;
+        color: var(--muted, #555);
         line-height: 1.8;
         margin-bottom: 30px;
         font-size: 1.1em;
@@ -236,7 +238,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
       .features-list {
         margin: 0 0 40px 0;
         padding-left: 20px;
-        color: #555;
+        color: var(--muted, #555);
         line-height: 1.6;
       }
 
@@ -244,7 +246,7 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
         width: 100%;
         padding: 18px;
         font-size: 18px;
-        background: #222939;
+        background: var(--button, #222939);
         color: white;
         border: none;
         border-radius: 6px;
@@ -254,11 +256,11 @@ const galleryImages = product.data.gallery && product.data.gallery.length > 0
       }
 
       .btn:hover:not(:disabled) {
-        background: #444;
+        background: var(--button-hover, #444);
       }
 
       .btn:disabled {
-        background: #ccc;
+        background: var(--disabled, #ccc);
         cursor: not-allowed;
       }
 

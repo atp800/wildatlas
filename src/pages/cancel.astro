@@ -1,4 +1,5 @@
 ---
+import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 ---
@@ -15,6 +16,7 @@ import Nav from '../components/Nav.astro';
       <p>Your payment process was cancelled. Your cart is safe and you have not been charged.</p>
       <a href="/cart" class="btn">Return to Cart</a>
     </main>
+    <Footer />
 
     <style is:global>
       .message-container {
@@ -36,18 +38,18 @@ import Nav from '../components/Nav.astro';
         color: white;
       }
       .cancel-icon { background-color: #d32f2f; }
-      h1 { color: #222939; margin-bottom: 15px; }
-      p { color: #666; margin-bottom: 30px; line-height: 1.6; }
+      h1 { color: var(--heading, #222939); margin-bottom: 15px; }
+      p { color: var(--muted, #666); margin-bottom: 30px; line-height: 1.6; }
       .btn {
         display: inline-block;
-        background: #222939;
+        background: var(--button, #222939);
         color: white;
         padding: 12px 30px;
         border-radius: 6px;
         text-decoration: none;
         font-weight: bold;
       }
-      .btn:hover { background: #444; }
+      .btn:hover { background: var(--button-hover, #444); }
     </style>
   </body>
 </html>

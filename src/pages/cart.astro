@@ -1,4 +1,5 @@
 ---
+import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import { getCollection } from 'astro:content';
@@ -49,6 +50,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
 
       </div>
     </main>
+    <Footer />
 
     <style is:global>
       .cart-container {
@@ -62,7 +64,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         font-family: 'Nothing You Could Do', cursive;
         font-size: 3em;
         margin-bottom: 40px;
-        color: #222939;
+        color: var(--heading, #222939);
       }
 
       /* Layout */
@@ -79,7 +81,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         align-items: center;
         gap: 20px;
         padding: 25px 0;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid var(--border, #eaeaea);
       }
 
       .cart-item:first-child {
@@ -91,7 +93,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         height: 120px;
         object-fit: cover;
         border-radius: 8px;
-        background: #f4f4f4;
+        background: var(--surface, #f4f4f4);
       }
 
       .cart-item-info {
@@ -106,7 +108,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
 
       .cart-item-price {
         margin: 0;
-        color: #666;
+        color: var(--muted, #666);
         font-weight: bold;
       }
 
@@ -121,14 +123,14 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
       .qty-controls {
         display: flex;
         align-items: center;
-        background: #f8f8f8;
-        border: 1px solid #e0e0e0;
+        background: var(--surface, #f8f8f8);
+        border: 1px solid var(--border, #e0e0e0);
         border-radius: 50px; /* Creates the modern pill shape */
         padding: 4px;
       }
 
       .qty-btn {
-        background: white;
+        background: var(--surface, white);
         border: 1px solid transparent;
         border-radius: 50%;
         width: 32px;
@@ -137,12 +139,12 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        color: #444;
+        color: var(--text, #444);
         transition: all 0.2s ease;
       }
 
       .qty-btn:hover {
-        background: #222939;
+        background: var(--button, #222939);
         color: white;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       }
@@ -162,7 +164,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         gap: 6px;
         background: none;
         border: none;
-        color: #888;
+        color: var(--muted, #888);
         cursor: pointer;
         font-size: 14px;
         font-family: 'Urbanist', sans-serif;
@@ -171,12 +173,12 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
       }
 
       .remove-btn:hover {
-        color: #d32f2f; /* Turns red on hover */
+        color: var(--danger, #d32f2f); /* Turns red on hover */
       }
 
       /* Summary Box */
       .order-summary {
-        background: #f9f9f9;
+        background: var(--surface, #f9f9f9);
         padding: 30px;
         border-radius: 12px;
       }
@@ -196,7 +198,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
       }
 
       .shipping-note {
-        color: #666;
+        color: var(--muted, #666);
         font-size: 0.9em;
         margin-bottom: 25px;
       }
@@ -206,7 +208,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
         display: block;
         width: 100%;
         text-align: center;
-        background: #222939;
+        background: var(--button, #222939);
         color: white;
         border: none;
         padding: 16px;
@@ -220,19 +222,19 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
       }
 
       .btn:hover:not(:disabled) {
-        background: #444;
+        background: var(--button-hover, #444);
       }
 
       .outline-btn {
         background: transparent;
-        color: #222939;
-        border: 2px solid #222939;
+        color: var(--heading, #222939);
+        border: 2px solid var(--border, #222939);
         max-width: 250px;
         margin: 0 auto;
       }
 
       .outline-btn:hover {
-        background: #222939;
+        background: var(--button, #222939);
         color: white;
       }
 
@@ -244,7 +246,7 @@ const priceMap = Object.fromEntries(products.map((product) => [product.id, produ
       .empty-cart p {
         font-size: 1.3em;
         margin-bottom: 30px;
-        color: #666;
+        color: var(--muted, #666);
       }
 
       @media (max-width: 768px) {

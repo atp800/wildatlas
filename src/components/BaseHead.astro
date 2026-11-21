@@ -3,6 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 
 import '../styles/global.css';
+import ThemeInit from './ThemeInit.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -21,6 +22,7 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<ThemeInit />
 
 <!-- Font preloads -->
 <link 
@@ -60,84 +62,7 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Critical CSS for above-the-fold content -->
-<style>
-  /* Critical styles for initial render */
-  body {
-    font-family: 'Atkinson', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: rgba(251, 252, 250, 1);
-    color: rgb(34, 41, 57);
-    font-size: 20px;
-    line-height: 1.7;
-  }
-  
-  /* Hero section critical styles */
-  .hero-image {
-    background-image: url('../assets/general/homepage-image.jpg');
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    filter: saturate(1.2);
-    position: relative;
-  }
-  
-  .hero-text {
-    text-align: center;
-    font-family: 'Nothing You Could Do', cursive;
-    font-size: 4.2em;
-    color: white;
-  }
-  
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.14);
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Navigation critical styles */
-  .logo-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 20px;
-  }
-  
-  .logo-container img {
-    height: 50px;
-    width: auto;
-  }
-  
-  .top-right-nav {
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 10px;
-    margin: 20px;
-    color: white;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 24px;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 500;
-  }
-  
-  .top-right-nav a {
-    margin-left: 40px;
-    text-decoration: none;
-    color: white;
-  }
-</style>
+<!-- Page colours and typography are owned by global.css. -->
 
 <!-- Google Tag Manager - Ultra-optimized loading -->
 <script>
