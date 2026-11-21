@@ -80,6 +80,32 @@ For refunds and tracker-specific details, use the [Conservation guide](CONSERVAT
 
 ## Troubleshooting
 
+### Seeing edits reliably
+
+For CSS, content and layout work, use npm run dev and open the exact localhost
+address it prints. Save the edited file; Astro should update the page automatically.
+Use one dev server to avoid viewing an older instance on a different port.
+
+On Windows, astro.config.mjs enables file polling every 500 ms to reduce missed
+file-change notifications in synced folders such as OneDrive. Restart the dev
+server after changing this configuration. Polling uses more resources than native
+watching; it affects development only and does not eliminate every sync issue.
+
+If a change still does not appear, press Ctrl+Shift+R. While developing, you can
+also open browser DevTools, select Network and tick Disable cache (effective while
+DevTools remains open). If the terminal reports no update when saving, restart
+with Ctrl+C then npm run dev; browser cache clearing cannot fix a missed file event.
+
+npm run preview serves the last build: run npm run build again after changes.
+The public website changes only after committing/pushing and a successful deployment.
+For Cloudflare function changes, use the full local preview workflow above.
+
+Dark mode is a saved preference, not cached CSS. If you previously chose dark,
+use the footer toggle to return to light; first visits without a saved preference
+now start in light mode regardless of the device theme.
+
+### Other issues
+
 - **Tracker unavailable:** inspect function logs; check secret permissions and
   live/test mode. An error is deliberately not shown as £0.
 - **£0 despite past sales:** only new tagged shop sessions count. Older untagged

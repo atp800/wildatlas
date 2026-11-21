@@ -24,11 +24,11 @@ queries can intentionally override the desktop size.
 
 The shared footer has a Dark mode toggle at the far right (on its own right-aligned
 row on narrow screens). It is present on shop, cart, product and payment-result
-pages as well as the editorial pages. The initial theme follows the device setting;
+pages as well as the editorial pages. The initial theme is always light;
 a visitor's choice is saved locally as wildatlas-theme and takes precedence.
 
 ThemeInit.astro runs in BaseHead before paint to avoid a light flash. It updates
-the toggle's pressed state, follows device changes until a choice is made, and
+the toggle's pressed state and
 synchronises changes between tabs. With blocked storage, toggling still works on
 the current page. Without JavaScript the site stays light and the toggle is hidden.
 

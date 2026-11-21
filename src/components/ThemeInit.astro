@@ -2,11 +2,10 @@
 <script is:inline>
   (() => {
     const key = 'wildatlas-theme';
-    const system = window.matchMedia('(prefers-color-scheme: dark)');
     let choice;
     try { choice = localStorage.getItem(key); } catch { /* Storage may be blocked. */ }
     const valid = value => value === 'dark' || value === 'light';
-    const theme = () => valid(choice) ? choice : (system.matches ? 'dark' : 'light');
+    const theme = () => valid(choice) ? choice : 'light';
     const sync = () => {
       document.documentElement.dataset.theme = theme();
       document.querySelectorAll('[data-theme-toggle]').forEach(button => {
@@ -28,7 +27,6 @@
       try { localStorage.setItem(key, choice); } catch { /* Still works for this page. */ }
       sync();
     });
-    system.addEventListener('change', () => { if (!valid(choice)) sync(); });
     window.addEventListener('storage', event => {
       if (event.key === key || event.key === null) { choice = event.newValue; sync(); }
     });
