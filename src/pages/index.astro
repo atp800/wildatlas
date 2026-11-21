@@ -99,9 +99,11 @@ const optimisedHomepageImage = await getImage({
     </div>
   </header>
 
-  <main>
-    {siteConfig.home.showAbout && <AboutContent />}
-    <Footer />
-  </main>
+  {siteConfig.home.showAbout && (
+    <main>
+      <AboutContent />
+    </main>
+  )}
+  <Footer />
 </body>
 </html>

@@ -5,8 +5,8 @@ const today = new Date();
 <footer>
 	<style>	
 		footer {
-			padding: 2em 1em 2em 1em;
-			background: linear-gradient(var(--gray-gradient)) no-repeat;
+			padding: 1rem;
+			background: #f2f2f2;
 			color: #444;
 			font-family: 'Urbanist';
 			text-align: center;
@@ -14,12 +14,16 @@ const today = new Date();
 		.social-links {
 			display: flex;
 			justify-content: center;
-			gap: 1em;
-			margin-top: 1em;
+			gap: 0.5rem;
+			margin-top: 0.5rem;
 		}
 		.social-links a {
+			display: inline-flex;
 			text-decoration: none;
 			color: #111;
+		}
+		.social-links svg {
+			display: block;
 		}
 		.social-links a:hover {
 			color: #777;
