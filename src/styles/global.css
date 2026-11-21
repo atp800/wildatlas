@@ -43,7 +43,7 @@
    fallbacks stay beside their declarations to preserve the original palette. */
 :root[data-theme='dark'] {
 	color-scheme: dark;
-	--background: #121312;/*24, 29, 27;*/
+	--background: #202622;/*24, 29, 27;*/
 	--gray-dark: 229, 233, 228;
 	--gray-medium: 229, 233, 228;
 	--gray-light: 43, 50, 46;
