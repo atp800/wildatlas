@@ -2,8 +2,7 @@
 // success.astro
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
-import Stripe from 'stripe';
-import { getCollection } from 'astro:content';
+import { siteConfig } from '../config';
 
 ---
 
@@ -23,6 +22,12 @@ import { getCollection } from 'astro:content';
         </>
 
 
+      {siteConfig.conservation.isEnabled && (
+        <div id="conservation-purchase" hidden>
+          <p id="conservation-purchase-status" role="status">Confirming your contribution to conservation…</p>
+          <a href="/conservation">See the conservation fund</a>
+        </div>
+      )}
       <a href="/store" class="btn outline-btn mt-4">Return to Store</a>
     </main>
 
@@ -115,6 +120,34 @@ import { getCollection } from 'astro:content';
       import { clearCart } from '../store/cart.ts';
       // Empty the cart, order is fulfilled!
       clearCart();
+
+      const sessionId = new URLSearchParams(window.location.search).get('session_id');
+      const contribution = document.getElementById('conservation-purchase');
+      const message = document.getElementById('conservation-purchase-status');
+      if (sessionId && contribution && message) {
+        contribution.hidden = false;
+        const money = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
+        // Check payment directly with Stripe, without waiting for a webhook or
+        // cached public total. Visiting this page never increments the fund.
+        async function checkContribution(attempt = 0) {
+          try {
+            const response = await fetch(`/api/conservation?session_id=${encodeURIComponent(sessionId!)}`,
+              { cache: 'no-store', signal: AbortSignal.timeout(8000) });
+            if (!response.ok) throw new Error('Unavailable');
+            const data = await response.json();
+            if (Number.isSafeInteger(data.contributionPence) && data.contributionPence >= 0) {
+              message!.textContent = `Your purchase has added ${money.format(data.contributionPence / 100)} to the conservation fund. Thank you!`;
+              return;
+            }
+          } catch { /* Retry while Stripe confirms payment. */ }
+          if (attempt < 11) {
+            window.setTimeout(() => checkContribution(attempt + 1), 5000);
+          } else {
+            message!.textContent = 'Your conservation contribution will appear once payment confirmation has been processed.';
+          }
+        }
+        void checkContribution();
+      }
     </script>
   </body>
 </html>

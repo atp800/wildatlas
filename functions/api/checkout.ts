@@ -1,5 +1,6 @@
 import Stripe from 'stripe';
 import catalog from '../_data/catalog.json';
+import { CONSERVATION_PROGRAM } from '../../src/lib/conservation.ts';
 
 export const ALLOWED_COUNTRIES = [
   // Anglosphere
@@ -115,8 +116,13 @@ export function buildSessionConfig(
     // not a Checkout Session parameter.
     line_items: lineItems,
     mode: 'payment',
-    success_url: `${origin}/success`, // Simplified!
+    success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/cart`,
+    metadata: { conservation_program: CONSERVATION_PROGRAM },
+    payment_intent_data: { metadata: { conservation_program: CONSERVATION_PROGRAM } },
+    // The catalogue and public tracker are GBP; prevent Dashboard defaults from
+    // converting Checkout to a currency the tracker cannot aggregate.
+    adaptive_pricing: { enabled: false },
   };
 
   if (requiresShipping) {

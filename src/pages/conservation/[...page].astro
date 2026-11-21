@@ -6,6 +6,7 @@ import Nav from '../../components/Nav.astro';
 import { siteConfig } from '../../config';
 import { conservation } from '../../data/conservation';
 import { SITE_TITLE } from '../../consts';
+import { conservationQuarter } from '../../lib/conservation';
 
 // An optional rest parameter lets the flag omit /conservation altogether
 // from static output (and the sitemap), rather than only hiding its content.
@@ -20,13 +21,7 @@ const money = (pence: number) => new Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 }).format(pence / 100);
 
-const today = new Date();
-const quarterStart = Math.floor(today.getUTCMonth() / 3) * 3;
-const month = (index: number) => new Intl.DateTimeFormat('en-GB', {
-  month: 'long',
-  timeZone: 'UTC',
-}).format(new Date(Date.UTC(today.getUTCFullYear(), index, 1)));
-const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getUTCFullYear()}`;
+const period = conservationQuarter().label;
 ---
 
 <!doctype html>
@@ -44,14 +39,17 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
     <main class="conservation-page page-content">
       <h1 class="page-title">Conservation</h1>
       <p class="intro">
-        {conservation.donationPercentage}% of product purchases will support conservation charities.<br />
+        {conservation.donationPercentage}% of product purchases supports conservation charities,<br />
+        including VAT or sales tax and excluding shipping.<br />
         You’ll help choose where it goes, starting from Jan 2027.
       </p>
 
       <section class="fund" aria-labelledby="fund-label">
         <h2 class="fund-label" id="fund-label">Committed to charity this quarter</h2>
-        <p class="fund-value">{money(conservation.committedPence)}</p>
-        <p class="period">{period}</p>
+        <p class="fund-value" id="conservation-total" aria-live="polite" aria-label="Loading total">—</p>
+        <p class="period" id="conservation-period">{period}</p>
+        <p class="tracker-status" id="conservation-status" role="status">Loading the latest total…</p>
+        <noscript><p>Enable JavaScript to see the live conservation total.</p></noscript>
         <p class="paid">{money(conservation.donatedPence)} already donated to date</p>
       </section>
 
@@ -95,8 +93,9 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
           <details>
             <summary>How it will work</summary>
             <p>
-              We plan to put {conservation.donationPercentage}% of the amount paid for products,
-              after discounts and excluding shipping, into a shared charity fund.
+              We put {conservation.donationPercentage}% of the amount paid for products,
+              after discounts, including VAT or sales tax and excluding shipping,
+              into a shared charity fund. Totals update after payment is confirmed.
               Refunded products will be deducted.
             </p>
             <p>
@@ -117,12 +116,17 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
         </div>
       </section>
 
-      <p class="launch-note">Charity partners are being confirmed. Fundraising and voting have not started yet.</p>
+      <p class="launch-note">Charity partners are being confirmed. Voting has not started yet.</p>
     </main>
 
     <Footer />
   </body>
 </html>
+
+<script>
+  import { startConservationTracker } from '../../scripts/conservation-tracker';
+  startConservationTracker();
+</script>
 
 <style>
   .conservation-page {
@@ -150,6 +154,7 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
   .fund-label { color: #666; font-size: 1rem; font-weight: 400; line-height: 1.7; }
   .fund-value { font-size: 4rem; font-weight: 400; letter-spacing: -2px; line-height: 1.25; }
   .period { margin-top: 5px; color: #666; font-size: 0.875rem; }
+  .tracker-status { margin-top: 5px; color: #666; font-size: 0.875rem; }
   .paid { margin-top: 12px; color: #666; font-size: 1rem; }
   .allocation { margin-top: 34px; }
   .allocation-track { height: 8px; border-radius: 2px; background: #e2e5df; }

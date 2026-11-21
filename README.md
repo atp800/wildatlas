@@ -250,16 +250,22 @@ to `false` to hide the link and omit the page from the generated site and sitema
 Set it back to `true` to restore both. Restart the dev server or rebuild/redeploy
 the static site after changing this setting.
 
-The page starts with £0 committed and £0 donated, and voting marked as coming
-soon. The three proposed causes and starting values live in
-`src/data/conservation.ts`. The empty allocation bar means voting has not opened;
-it does not imply an equal split. No sample donations, votes or email signups are
-recorded. The quarter label is calculated at build time.
+The tracker calculates totals directly from Stripe; no database is required.
+Each paid order contributes 10% of its product total after discounts,
+including VAT/sales tax and excluding shipping (and any tax on shipping). Refunds
+adjust the original contribution. With no eligible sales the total is £0; an unavailable API
+is shown as unavailable rather than a misleading zero.
 
-The 10% commitment is based on product payments after discounts, excluding
-shipping. Live Stripe donation tracking, verified voting, newsletter signup,
-refund reconciliation and donation receipts still need to be connected before
-fundraising launches. The current page is an informational starting point.
+Follow [Conservation tracking setup](docs/CONSERVATION_TRACKING.md) to check Stripe
+credentials and test the integration before launch. Totals are briefly cached in
+server memory and the page refreshes automatically. The order success page checks
+its contribution directly with Stripe. `astro dev` alone cannot run the Cloudflare
+API functions. The existing webhook is still used for order emails, not tracking.
+
+Causes and confirmed charity transfers live in `src/data/conservation.ts`.
+Voting, newsletter signup and donation receipts remain to be implemented. The
+empty allocation bar means voting has not opened; it does not imply an equal split.
+Purchases update the committed total, not the amount already transferred to charities.
 
 ### Adding New Features
 

@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "test:conservation": "node --test tests/conservation.test.ts",
     "dev": "astro dev",
     "start": "astro dev",
     "catalog": "node scripts/generate-catalog.mjs",

@@ -19,7 +19,7 @@ export function escapeHtml(value: string) {
     .replace(/'/g, '&#39;');
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env }: { request: Request; env: Record<string, unknown> }) {
   const signature = request.headers.get('stripe-signature');
 
   if (!signature) return new Response('No signature', { status: 400 });
@@ -28,14 +28,20 @@ export async function onRequestPost({ request, env }) {
     // Initialized inside the try so a missing variable returns a readable error
     // instead of throwing before the error handling is set up.
     const stripe = new Stripe(requireEnv(env, 'STRIPE_SECRET_KEY'), {
+      // @ts-expect-error Keep the existing API contract; SDK types only allow their latest version.
       apiVersion: '2023-10-16',
       httpClient: Stripe.createFetchHttpClient()
     });
-    const resend = new Resend(requireEnv(env, 'RESEND_API_KEY'));
     const webhookSecret = requireEnv(env, 'STRIPE_WEBHOOK_SECRET');
 
     const body = await request.text();
-    const event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
+    let event: Stripe.Event;
+    try {
+      event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret,
+        undefined, Stripe.createSubtleCryptoProvider());
+    } catch {
+      return new Response('Invalid signature', { status: 400 });
+    }
 
     if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
       const session = event.data.object as Stripe.Checkout.Session;
@@ -79,6 +85,7 @@ export async function onRequestPost({ request, env }) {
         const customerName = escapeHtml(session.customer_details?.name || 'there');
 
         if (customerEmail) {
+          const resend = new Resend(requireEnv(env, 'RESEND_API_KEY'));
           let emailHtml = `<h1>Thank you for your order, ${customerName}! 🌊</h1>`;
           emailHtml += `<p>Your payment of £${(session.amount_total! / 100).toFixed(2)} was successful.</p>`;
           
@@ -99,7 +106,7 @@ export async function onRequestPost({ request, env }) {
             to: customerEmail,
             subject: 'Order Confirmation & Downloads - Wild Atlas',
             html: emailHtml,
-          });
+          }, { idempotencyKey: `order-confirmation/${session.id}` });
           
           if (emailError) {
             console.error(`❌ Resend delivery failed for ${customerEmail}: ${emailError.name}: ${emailError.message}`);
@@ -116,6 +123,7 @@ export async function onRequestPost({ request, env }) {
 
   } catch (err: any) {
     console.error(`❌ Webhook Error: ${err.message}`);
-    return new Response(`Webhook Error: ${err.message}`, { status: 400 });
+    // Stripe retries transient API failures; don't reveal internal errors.
+    return new Response('Webhook processing failed', { status: 500 });
   }
 }

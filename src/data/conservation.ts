@@ -1,9 +1,9 @@
-// Starting values for the Conservation page. These are real zero totals,
-// not the sample figures from the design. Payment tracking and verified
-// voting are not connected yet; do not populate these with estimates.
+import { CONSERVATION_PERCENTAGE } from '../lib/conservation';
+
+// Cause content and confirmed charitable transfers. Purchase commitments are
+// calculated from Stripe; donatedPence changes only after an actual donation.
 export const conservation = {
-  donationPercentage: 10,
-  committedPence: 0,
+  donationPercentage: CONSERVATION_PERCENTAGE,
   donatedPence: 0,
   causes: [
     {

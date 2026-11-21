@@ -1,0 +1,7 @@
+// Local testing only. Production continues to use the existing Pages dashboard settings.
+{
+  "name": "wildatlas-local",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-11-21",
+  "vars": { "CONSERVATION_MODE": "test" }
+}
