@@ -1,22 +1,22 @@
 ---
-title: "Ocean Bottle Review"
-image: "../../../assets/eco/ocean-bottle-review/ocean-bottle-main.png"
-description: "Likely the most eco-friendly insulated water bottle in the world"
-section: "eco"
-topic: "review"
-tags: "lifestyle,water,bottle,"
-author: "Andreas"
+title: Ocean Bottle Review
+image: ../../../assets/eco/ocean-bottle-review/ocean-bottle-main.png
+description: Likely the most eco-friendly insulated water bottle in the world
+section: eco
+topic: review
+tags: lifestyle,water,bottle,
+author: Andreas
 views: 0
 highlighted: true
-status: "live"
-created_at: "2024-09-21"
-published_at: "2024-09-22"
-updated_at: "2024-09-22"
-deleted_at: "null"
+status: live
+created_at: 2024-09-21
+published_at: 2024-09-22
+updated_at: 2024-09-22
+deleted_at: 'null'
 ---
 
-_Disclosure: I paid full price for all products I reviewed and this article isn't sponsored in any way, but it does contain affiliate links, which I earn a small commission from if you buy something using them. There is no additional cost to you, and I will never include affiliate links to products I don't genuinely recommend.
-Unless I'm running low on funds for my next superyacht - then I'll write whatever biased shit I need for that sweet cash ;)_
+_Disclosure: I paid full price for all products I reviewed and this article isn't sponsored in any way, but it does contain affiliate links, which I earn a small commission from if you buy something using them. There is no additional cost to you, and I will never include affiliate links to products I don't genuinely recommend._
+_Unless I'm running low on funds for my next superyacht - then I'll write whatever biased shit I need for that sweet cash ;)_
 &nbsp;
 
 ### Design
@@ -57,7 +57,7 @@ Ocean Bottle are also seeing a lot of positive impact through partnerships with 
 
 _TLDR: The Ocean Bottle is extremely expensive, costing £45 for 1L and £35 for 500ml, plus shipping, with Amazon offering even higher prices. Competitors like Chilly's, Hydro Flask, and Stanley offer similar or larger bottles for less, and lesser-known brands like SHO have likely comparable insulation for much cheaper (£18 for 1L). Despite its eco-friendly recycled plastic build, the Ocean Bottle's plastic parts feel less premium than expected for the price. However, it comes with a notable 10-year warranty, discounts are available for students and certain workers, and 15% of revenue supports environmental programs, somewhat justifying the high price. There’s also a cheaper, non-insulated, Ocean Bottle Lite._
 
-£45 is really fucking expensive for a water bottle. Even the smaller 500ml is £35. Plus shipping. And if you think you can dodge that by buying through Amazon, that a big fat no – the bottles are even more expensive there (£48 and £40). The 750ml Original version is £40 on the Ocean Bottle website, and not available on Amazon.
+£45 is really fucking expensive for a water bottle. Even the smaller 500ml is £35. Plus shipping. And if you think you can dodge that by buying through Amazon, that's a big fat no – the bottles are even more expensive there (£48 and £40). The 750ml Original version is £40 on the Ocean Bottle website, and not available on Amazon.
 
 For comparison, Chilly’s series 2 undercuts slightly at £42 and £32 for 1L and 500ml, and their series 1 comes in at £24, £29, and £39, for 500ml, 750ml and 1.8L, respectively. Standard Hydro Flasks are about £30 for 532ml or £36 for 709ml, and Stanley’s are £43 for 800ml, £45 for 1.2L, or £38 for their 600ml slim bottle.
 
