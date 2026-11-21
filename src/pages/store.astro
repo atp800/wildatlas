@@ -26,8 +26,8 @@ const types =['all', ...new Set(liveProducts.map((p) => p.data.type))];
   <body>
     <Nav />
 
-    <main class="store-container">
-      <h1 class="store-title">Store</h1>
+    <main class="store-container page-content">
+      <h1 class="page-title">Store</h1>
 
       <!-- FILTERS -->
       <div class="filters-container">
@@ -120,15 +120,8 @@ const types =['all', ...new Set(liveProducts.map((p) => p.data.type))];
       .store-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 40px 20px;
-      }
-
-      .store-title {
-        text-align: center;
-        font-family: 'Nothing You Could Do', cursive;
-        font-size: 3em;
-        margin-bottom: 40px;
-        color: #222939;
+        padding-inline: 20px;
+        padding-bottom: 40px;
       }
 
       /* Filter Styles */

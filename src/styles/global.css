@@ -69,6 +69,33 @@ h3 { font-size: 1.953em; }
 h4 { font-size: 1.563em; }
 h5 { font-size: 1.25em; }
 
+/* Shared heading treatment for section landing pages. Keep each page's
+   content width and other padding local; these rules own the top spacing. */
+.page-content {
+	margin-top: 0;
+	padding-top: 34px;
+}
+
+.page-title {
+	margin: 0 0 16px;
+	color: #444;
+	font-family: 'Nothing You Could Do', cursive;
+	font-size: 4rem;
+	font-weight: 400;
+	line-height: 1.2;
+	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.page-content { padding-top: 26px; }
+	.page-title { font-size: 3rem; }
+}
+
+@media (max-width: 520px) {
+	.page-content { padding-top: 20px; }
+	.page-title { font-size: 2.625rem; }
+}
+
 strong, b {
 	font-weight: 700;
 }

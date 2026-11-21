@@ -41,11 +41,11 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
     <GTMBodyNoScript />
     <Nav />
 
-    <main class="conservation-page">
-      <h1>Conservation</h1>
+    <main class="conservation-page page-content">
+      <h1 class="page-title">Conservation</h1>
       <p class="intro">
         {conservation.donationPercentage}% of product purchases will support conservation charities.<br />
-        Shipping excluded. You’ll help choose where it goes.
+        You’ll help choose where it goes, starting from Jan 2027.
       </p>
 
       <section class="fund" aria-labelledby="fund-label">
@@ -129,21 +129,14 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
     box-sizing: border-box;
     max-width: 800px;
     margin: 0 auto;
-    padding: 34px 24px 42px;
+    padding-inline: 24px;
+    padding-bottom: 42px;
     color: #444;
     font-family: 'Urbanist', sans-serif;
     text-align: center;
   }
 
-  h1, h2, h3, p { margin: 0; color: inherit; }
-
-  h1 {
-    margin-bottom: 16px;
-    font-family: 'Nothing You Could Do', cursive;
-    font-size: 3.75rem;
-    font-weight: 400;
-    line-height: 1.2;
-  }
+  h2, h3, p { margin: 0; color: inherit; }
 
   .intro {
     max-width: 560px;
@@ -203,14 +196,8 @@ const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getU
   details p { padding-top: 10px; color: #666; font-size: 0.9375rem; }
   .launch-note { margin-top: 30px; color: #666; font-size: 0.875rem; line-height: 1.6; }
 
-  @media (max-width: 768px) {
-    .conservation-page { padding-top: 26px; }
-    h1 { font-size: 3rem; }
-  }
-
   @media (max-width: 520px) {
-    .conservation-page { padding: 20px 22px 32px; }
-    h1 { font-size: 2.625rem; }
+    .conservation-page { padding-inline: 22px; padding-bottom: 32px; }
     .intro { font-size: 1.0625rem; }
     .fund-value { font-size: 3.375rem; }
     .causes { grid-template-columns: 1fr; gap: 22px; }

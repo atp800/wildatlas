@@ -71,26 +71,16 @@ const posts = allPosts
 			flex-direction: column;
 			width: 80%;
 			margin: 0 auto;
-			margin-top: 6%;
-			padding: 3em 1em;
-		}
-		.title {
-			text-align: center;
-			font-weight: bold;
-			color: #444;
-			margin-top: 0em;
-			margin-bottom: 0.6em;
-			width: 100%;
-			font-family: 'Nothing You Could Do';
-			font-size: 4.2em;
+			padding-inline: 1em;
+			padding-bottom: 3em;
 		}
 	</style>
 </head>
 <body>
     <Nav />
 	<GTMBodyNoScript />
-    <main>
-		<div class="title">{title}</div>
+    <main class="page-content">
+		<h1 class="page-title">{title}</h1>
 		<!-- 4. Dynamically render the correct layout component -->
 		<Layout posts={posts} />
     </main>
