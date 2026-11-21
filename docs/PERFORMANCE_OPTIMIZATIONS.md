@@ -20,6 +20,11 @@ Shared section headings use .page-title and .page-content in src/styles/global.c
 Keep common changes there rather than adding per-page overrides. Responsive media
 queries can intentionally override the desktop size.
 
+The shared body layout in global.css uses a column flexbox with a minimum viewport
+height (100dvh, with a 100vh fallback). Footer.astro uses an automatic top margin
+to keep the footer at the bottom on short pages and after the content on long
+pages. Keep this layout shared; no fixed positioning or per-page spacer is needed.
+
 ## Light and dark themes
 
 The shared footer has a Dark mode toggle at the far right (on its own right-aligned
@@ -35,7 +40,13 @@ the current page. Without JavaScript the site stays light and the toggle is hidd
 Theme colours live in the data-theme='dark' section of src/styles/global.css.
 Component styles use semantic variables with the original light colours as fallbacks.
 The document and standard navigation backgrounds share --background. BaseHead
-must not add fixed body colours that override global.css; the homepage navigation
+uses the global stylesheet for these colours. Set --background to a complete CSS
+colour, such as #202622 or rgb(32, 38, 34), just like --footer. Do not use bare
+comma-separated numbers for --background; its consumers use var(--background)
+directly. The older --gray-* channel variables still use comma-separated numbers
+inside rgb(...) and have a different format.
+
+BaseHead must not add fixed body colours that override global.css; the homepage navigation
 remains transparent over its photograph.
 Keep photo overlays and button text legible; do not invert photographs to create
 dark mode. This theme applies to the website, not Stripe's hosted checkout or the

@@ -17,16 +17,7 @@ const { title, description, published_at, updated_at, image } = Astro.props as P
 ---
 
 <style>
-  html, body {
-      height: 100%;
-      margin: 0;
-  }
-  body {
-      display: flex;
-      flex-direction: column; /* Stack main and footer vertically */
-  }
   main {
-      flex: 1; /* Allows the main content to expand and fill the available space */
       display: flex;
       flex-direction: column; /* Stack the content inside main vertically */
       justify-content: space-between; /* Distributes the space */
