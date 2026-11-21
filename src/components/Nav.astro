@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import atlasLogo from '../assets/general/atlas.png';
+import { siteConfig } from '../config';
 
 // Logic to check if we are on the homepage
 const pathname = new URL(Astro.url).pathname;
@@ -8,7 +9,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
 ---
 
 <!-- class:list dynamically adds the 'home-header' class ONLY if we are on the homepage -->
-<header class:list={["site-header", { "home-header": isHome }]}>
+<header class:list={["site-header", { "home-header": isHome, "has-conservation": siteConfig.conservation.isEnabled }]}>
     
     <div class="logo">
         <a href="/">
@@ -23,14 +24,17 @@ const isHome = pathname === '/' || pathname === '/index.html';
         </a>
     </div>
 
-    <button class="menu-icon" aria-label="Menu">☰</button>
+    <button class="menu-icon" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-navigation">☰</button>
 
-    <nav class="top-right-nav">
+    <nav class="top-right-nav" id="main-navigation" aria-label="Main navigation">
         <!-- The link only renders if we are NOT on the homepage -->
         {!isHome && <a href="/">HOME</a>}
         <a href="/travel">TRAVEL</a> 
         <a href="/nature">NATURE</a> 
         <a href="/eco">ECO</a> 
+        {siteConfig.conservation.isEnabled && (
+            <a href="/conservation" aria-current={pathname.replace(/\/$/, '') === '/conservation' ? 'page' : undefined}>CONSERVATION</a>
+        )}
         <a href="/store">STORE</a> <!-- Added Store Link -->
 
         <!-- Cart Link with SVG Icon -->
@@ -115,6 +119,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
     .top-right-nav a {
         text-decoration: none;
         color: inherit; 
+        white-space: nowrap;
         transition: opacity 0.2s;
     }
 
@@ -158,6 +163,53 @@ const isHome = pathname === '/' || pathname === '/index.html';
         color: #111;
     }
 
+    /* Keep the original desktop spacing; use the existing mobile menu earlier
+       when the extra Conservation link would crowd the logo. */
+    @media (min-width: 769px) and (max-width: 1000px) {
+        .has-conservation .menu-icon {
+            display: block;
+        }
+        .has-conservation .top-right-nav {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .has-conservation .top-right-nav {
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-top: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            width: 250px;
+            max-width: 100%;
+            height: 100dvh;
+            box-sizing: border-box;
+            padding: 80px 20px 30px;
+            overflow-y: auto;
+            z-index: 999;
+        }
+        .has-conservation .top-right-nav.active {
+            display: flex;
+        }
+        .has-conservation .top-right-nav a {
+            color: white;
+            font-size: 24px;
+        }
+        .has-conservation .cart-link {
+            width: max-content;
+        }
+        .has-conservation .cart-badge {
+            background-color: white;
+            color: #111;
+        }
+        .has-conservation .menu-icon[aria-expanded="true"] {
+            color: white;
+        }
+    }
+
     @media (max-width: 768px) {
         .site-header {
             padding: 20px 15px; 
@@ -186,6 +238,10 @@ const isHome = pathname === '/' || pathname === '/index.html';
             display: flex;
         }
 
+        .menu-icon[aria-expanded="true"] {
+            color: white;
+        }
+
         .top-right-nav a {
             color: white; 
             font-size: 24px;
@@ -207,12 +263,20 @@ const isHome = pathname === '/' || pathname === '/index.html';
     import { cart } from '../store/cart.ts';
 
     const initNav = () => {
-        const menuIcon = document.querySelector('.menu-icon');
-        const nav = document.querySelector('.top-right-nav');
+        const menuIcon = document.querySelector<HTMLButtonElement>('.menu-icon');
+        const nav = document.querySelector<HTMLElement>('.top-right-nav');
 
         if (menuIcon && nav) {
             menuIcon.onclick = () => {
-                nav.classList.toggle('active');
+                const isOpen = nav.classList.toggle('active');
+                menuIcon.setAttribute('aria-expanded', String(isOpen));
+            };
+            nav.onkeydown = (event) => {
+                if (event.key === 'Escape') {
+                    nav.classList.remove('active');
+                    menuIcon.setAttribute('aria-expanded', 'false');
+                    menuIcon.focus();
+                }
             };
         }
 

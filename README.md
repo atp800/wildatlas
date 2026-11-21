@@ -242,6 +242,25 @@ Key metrics:
 
 ## 🛠️ Development
 
+### Conservation page
+
+The Conservation page is available at `/conservation`. Its menu link appears
+between Eco and Store. Set `siteConfig.conservation.isEnabled` in `src/config.ts`
+to `false` to hide the link and omit the page from the generated site and sitemap.
+Set it back to `true` to restore both. Restart the dev server or rebuild/redeploy
+the static site after changing this setting.
+
+The page starts with £0 committed and £0 donated, and voting marked as coming
+soon. The three proposed causes and starting values live in
+`src/data/conservation.ts`. The empty allocation bar means voting has not opened;
+it does not imply an equal split. No sample donations, votes or email signups are
+recorded. The quarter label is calculated at build time.
+
+The 10% commitment is based on product payments after discounts, excluding
+shipping. Live Stripe donation tracking, verified voting, newsletter signup,
+refund reconciliation and donation receipts still need to be connected before
+fundraising launches. The current page is an informational starting point.
+
 ### Adding New Features
 
 1. **Components**: Create in `src/components/`

@@ -1,0 +1,226 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import GTMBodyNoScript from '../../components/GTMBodyNoScript.astro';
+import Nav from '../../components/Nav.astro';
+import { siteConfig } from '../../config';
+import { conservation } from '../../data/conservation';
+import { SITE_TITLE } from '../../consts';
+
+// An optional rest parameter lets the flag omit /conservation altogether
+// from static output (and the sitemap), rather than only hiding its content.
+export function getStaticPaths() {
+  return siteConfig.conservation.isEnabled
+    ? [{ params: { page: undefined } }]
+    : [];
+}
+
+const money = (pence: number) => new Intl.NumberFormat('en-GB', {
+  style: 'currency',
+  currency: 'GBP',
+}).format(pence / 100);
+
+const today = new Date();
+const quarterStart = Math.floor(today.getUTCMonth() / 3) * 3;
+const month = (index: number) => new Intl.DateTimeFormat('en-GB', {
+  month: 'long',
+  timeZone: 'UTC',
+}).format(new Date(Date.UTC(today.getUTCFullYear(), index, 1)));
+const period = `${month(quarterStart)}–${month(quarterStart + 2)} ${today.getUTCFullYear()}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`Conservation | ${SITE_TITLE}`}
+      description="Our plans to support conservation through 10% of product purchases, excluding shipping. Explore the causes and follow our progress."
+    />
+  </head>
+  <body>
+    <GTMBodyNoScript />
+    <Nav />
+
+    <main class="conservation-page">
+      <h1>Conservation</h1>
+      <p class="intro">
+        {conservation.donationPercentage}% of product purchases will support conservation charities.<br />
+        Shipping excluded. You’ll help choose where it goes.
+      </p>
+
+      <section class="fund" aria-labelledby="fund-label">
+        <h2 class="fund-label" id="fund-label">Committed to charity this quarter</h2>
+        <p class="fund-value">{money(conservation.committedPence)}</p>
+        <p class="period">{period}</p>
+        <p class="paid">{money(conservation.donatedPence)} already donated to date</p>
+      </section>
+
+      <section class="allocation" aria-labelledby="causes-label">
+        <h2 class="sr-only" id="causes-label">Our proposed conservation causes</h2>
+        <div class="allocation-track" role="img" aria-label="No allocation yet. Voting has not opened."></div>
+        <ul class="causes">
+          {conservation.causes.map((cause) => (
+            <li class="cause">
+              <div class="cause-heading">
+                <span class="cause-dot" style={`background-color: ${cause.color}`} aria-hidden="true"></span>
+                <h3>{cause.title}</h3>
+              </div>
+              <p class="cause-description">{cause.description}</p>
+              <p class="cause-share">{money(0)} <span>· No votes yet</span></p>
+              <button class="choose-cause" type="button" disabled aria-label={`Voting for ${cause.title} is coming soon`}>
+                Choose cause
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="voting" aria-labelledby="voting-heading">
+        <div class="vote-row">
+          <div>
+            <h2 id="voting-heading">Voting is coming soon</h2>
+            <p>We’re preparing our first round of conservation funding.</p>
+          </div>
+          <button class="vote-button" type="button" disabled>Coming soon</button>
+        </div>
+
+        <div class="details-row">
+          <details>
+            <summary>Get a free community vote</summary>
+            <p>
+              Once voting opens, you’ll be able to verify your email for one
+              community vote each quarter. Newsletter signup will be optional.
+            </p>
+          </details>
+          <details>
+            <summary>How it will work</summary>
+            <p>
+              We plan to put {conservation.donationPercentage}% of the amount paid for products,
+              after discounts and excluding shipping, into a shared charity fund.
+              Refunded products will be deducted.
+            </p>
+            <p>
+              Each paid order will give you three votes, with one free community
+              vote per verified email each quarter. Votes will determine how the
+              shared fund is distributed between the three causes.
+            </p>
+            <p>
+              We’ll confirm the charity partners and full voting rules before
+              opening the first round, and publish payment confirmations when
+              donations are made.
+            </p>
+          </details>
+          <details>
+            <summary>Donation history</summary>
+            <p>No donations have been made yet. Confirmed payments will appear here.</p>
+          </details>
+        </div>
+      </section>
+
+      <p class="launch-note">Charity partners are being confirmed. Fundraising and voting have not started yet.</p>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .conservation-page {
+    box-sizing: border-box;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 34px 24px 42px;
+    color: #444;
+    font-family: 'Urbanist', sans-serif;
+    text-align: center;
+  }
+
+  h1, h2, h3, p { margin: 0; color: inherit; }
+
+  h1 {
+    margin-bottom: 16px;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 3.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .intro {
+    max-width: 560px;
+    margin-inline: auto;
+    color: #666;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .fund { margin-top: 37px; }
+  .fund-label { color: #666; font-size: 1rem; font-weight: 400; line-height: 1.7; }
+  .fund-value { font-size: 4rem; font-weight: 400; letter-spacing: -2px; line-height: 1.25; }
+  .period { margin-top: 5px; color: #666; font-size: 0.875rem; }
+  .paid { margin-top: 12px; color: #666; font-size: 1rem; }
+  .allocation { margin-top: 34px; }
+  .allocation-track { height: 8px; border-radius: 2px; background: #e2e5df; }
+
+  .causes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  .cause { min-width: 0; }
+  .cause-heading { display: flex; align-items: center; gap: 8px; }
+  .cause-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  h3 { font-size: 1.3125rem; font-weight: 500; line-height: 1.35; }
+  .cause-description { min-height: 48px; margin-top: 10px; color: #666; font-size: 1rem; line-height: 1.5; }
+  .cause-share { margin: 13px 0 14px; font-size: 1rem; }
+  .cause-share span { color: #666; }
+
+  button { font: inherit; }
+  button:disabled { cursor: not-allowed; }
+  .choose-cause {
+    min-height: 44px;
+    padding: 6px 18px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: transparent;
+    color: #767676;
+    font-size: 1rem;
+  }
+
+  .voting { margin-top: 32px; padding-top: 25px; border-top: 1px solid #e2e5df; text-align: left; }
+  .vote-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .vote-row h2 { font-size: 1.0625rem; font-weight: 500; line-height: 1.7; }
+  .vote-row p { color: #666; font-size: 0.875rem; }
+  .vote-button { min-height: 44px; padding: 10px 26px; border: 0; border-radius: 4px; background: #777; color: #fff; font-size: 1.0625rem; white-space: nowrap; }
+  .details-row { display: flex; align-items: start; gap: 20px; margin-top: 24px; font-size: 0.9375rem; }
+  details { flex: 1; min-width: 0; }
+  summary { padding: 5px 0; list-style: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+  summary::-webkit-details-marker { display: none; }
+  details p { padding-top: 10px; color: #666; font-size: 0.9375rem; }
+  .launch-note { margin-top: 30px; color: #666; font-size: 0.875rem; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .conservation-page { padding-top: 26px; }
+    h1 { font-size: 3rem; }
+  }
+
+  @media (max-width: 520px) {
+    .conservation-page { padding: 20px 22px 32px; }
+    h1 { font-size: 2.625rem; }
+    .intro { font-size: 1.0625rem; }
+    .fund-value { font-size: 3.375rem; }
+    .causes { grid-template-columns: 1fr; gap: 22px; }
+    .cause { display: grid; grid-template-columns: 1fr auto; column-gap: 14px; align-items: center; padding-bottom: 18px; border-bottom: 1px solid #e2e5df; }
+    .cause-heading, .cause-description { grid-column: 1 / -1; }
+    .cause-description { min-height: 0; margin-top: 5px; }
+    .cause-share { margin: 12px 0 0; }
+    .choose-cause { margin-top: 12px; }
+    .vote-row { flex-wrap: wrap; }
+    .voting { margin-top: 6px; border-top: 0; }
+    .details-row { flex-direction: column; gap: 7px; }
+  }
+</style>

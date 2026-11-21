@@ -19,6 +19,12 @@ export const siteConfig = {
     showAbout: false,
   },
 
+  conservation: {
+    // Controls both /conservation and its menu link. When false, the page
+    // is not generated or included in the sitemap. Rebuild to apply.
+    isEnabled: true,
+  },
+
   // Add future site-wide settings here, for example:
   // social: { instagram: '...', tiktok: '...' },
 };
