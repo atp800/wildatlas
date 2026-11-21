@@ -1,38 +1,20 @@
----
-title: "How Long to Stay at the Lake District"
-# slug: "template"
-image: "/blog/blog-placeholder-about.jpg"
-description: "Even a quick visit can be worth the time if you know where to go"
-section: "blog"
-topic: "cambodia"
-tags: "se asia,cambodia,backpacking"
-author: "Andreas"
-views: 0
-highlighted: false
-status: "draft"
-created_at: "2024-02-27"
-published_at: "2016-06-5"
-updated_at: "2024-02-27"
-deleted_at: "null"
----
+# Using MDX
 
-This theme comes with the [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) integration installed and configured in your `astro.config.mjs` config file. If you prefer not to use MDX, you can disable support by removing the integration from your config file.
+[Documentation index](README.md) · [Content guide](CONTENT.md)
 
-## Why MDX?
+MDX support is already enabled in astro.config.mjs. Use .md for ordinary prose
+and .mdx when an article needs an imported component or JavaScript expressions.
+Frontmatter uses the same article schema as Markdown.
 
-MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+Imports go after frontmatter. For a file three directories below src, a relative
+component import would look like this (substitute a component that actually exists):
 
-If you have existing content authored in MDX, this integration will hopefully make migrating to Astro a breeze.
+```mdx
+import ArticleDiagram from '../../../components/ArticleDiagram.astro';
 
-## Example
+<ArticleDiagram />
+```
 
-Here is how you import and use a UI component inside of MDX.  
-When you open this page in the browser, you should see the clickable button below.
-
-
-
-## More Links
-
-- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
-- [Astro Usage Documentation](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
-- **Note:** [Client Directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) are still required to create interactive components. Otherwise, all components in your MDX will render as static HTML (no JavaScript) by default.
+This example does not install or define ArticleDiagram. Rendering a component
+does not automatically provide client-side interactivity; follow that component's
+own script/framework requirements. Preview and build after introducing MDX syntax.

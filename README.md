@@ -1,313 +1,68 @@
-# WildAtlas
+# Wild Atlas
 
-A high-performance static website built with Astro for travel blogging, eco product reviews, and science/nature articles. Features optimized images, responsive design, and excellent Lighthouse performance scores.
+Science, nature and travel articles, eco product reviews, and a Stripe shop.
+The site builds static pages with Astro; Cloudflare Pages Functions handle
+checkout, order emails and conservation totals.
 
-## 🌟 Features
+## Documentation
 
-- **Multi-category content**: Travel guides, eco product reviews, science articles, and personal blog posts
-- **Performance optimized**: Lighthouse scores 85-95+ with advanced image optimization
-- **Responsive design**: Mobile-first approach with optimized images for all screen sizes
-- **Modern web standards**: WebP images with fallbacks, lazy loading, and critical CSS
-- **SEO friendly**: Sitemap generation, RSS feeds, and OpenGraph metadata
-- **Content management**: MDX support with frontmatter validation
-- **Analytics ready**: Google Tag Manager integration with performance optimization
+Start with the [documentation index](docs/README.md). The main guides are:
 
-## 🚀 Quick Start
+| Task | Guide |
+| --- | --- |
+| Configure the site, Stripe and Cloudflare; go live | [Setup and deployment](docs/DEPLOYMENT.md) |
+| Write articles, manage products and use the CMS | [Content guide](docs/CONTENT.md) |
+| Understand charity totals, test mode and refunds | [Conservation tracking](docs/CONSERVATION_TRACKING.md) |
+| Check a change before publishing | [Testing](docs/TESTING_GUIDE.md) |
+| Maintain images, fonts and loading behaviour | [Performance](docs/PERFORMANCE_OPTIMIZATIONS.md) |
+| Find unfinished work and older ideas | [Backlog](docs/BACKLOG.md) |
 
-### Prerequisites
+## Local development
 
-- Node.js (version 18 or higher)
-- npm or yarn package manager
+Use Node.js 22.12 or newer as required by package.json, and npm.
+The conservation tests run TypeScript directly; use Node 22.18+ for those
+(Node 26 was used for the latest checks).
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd WildAtlas
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-   The site will be available at `http://localhost:4321`
-
-## 📋 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server at `localhost:4321` |
-| `npm run start` | Alias for `npm run dev` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run optimize-images` | Optimize all images (WebP conversion + responsive sizes) |
-| `npm run build:optimized` | Run image optimization then build for production |
-| `npm run astro` | Run Astro CLI commands |
-
-## 🏗️ Project Structure
-
-```
-├── public/                 # Static assets (images, icons, fonts)
-├── src/
-│   ├── components/         # Reusable Astro/Svelte components
-│   │   ├── OptimizedImage.astro    # Responsive image component
-│   │   ├── BaseHead.astro          # SEO and performance optimizations
-│   │   └── ...
-│   ├── content/           # Content collections (MDX files)
-│   │   ├── articles/      # Science and nature articles
-│   │   ├── blog/          # Personal blog posts
-│   │   ├── eco/           # Eco product reviews
-│   │   ├── travel/        # Travel guides and tips
-│   │   └── config.ts      # Content schema validation
-│   ├── layouts/           # Page layout templates
-│   │   ├── MainLayout.astro        # Base layout
-│   │   ├── BlogPost.astro          # Blog post layout
-│   │   ├── ArticlesPost.astro      # Article layout
-│   │   ├── EcoPost.astro           # Eco review layout
-│   │   └── TravelPost.astro        # Travel post layout
-│   ├── pages/             # File-based routing
-│   │   ├── index.astro             # Homepage
-│   │   ├── about.astro             # About page
-│   │   ├── articles/               # Articles section
-│   │   ├── blog/                   # Blog section
-│   │   ├── eco/                    # Eco reviews section
-│   │   ├── travel/                 # Travel section
-│   │   └── rss.xml.js              # RSS feed generation
-│   └── styles/            # Global CSS styles
-├── scripts/
-│   └── optimize-images.js  # Image optimization script
-├── astro.config.mjs       # Astro configuration
-├── package.json           # Dependencies and scripts
-└── tsconfig.json          # TypeScript configuration
+```sh
+npm ci
+npm run dev
 ```
 
-## 📝 Content Management
+Open the address printed in the terminal (normally http://localhost:4321).
+This previews the static site; it does not run Cloudflare APIs.
+See [full local testing](docs/DEPLOYMENT.md#local-preview-with-payments).
 
-### Adding New Content
+## Commands
 
-Content is organized into four main categories:
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` / `npm run start` | Generate the catalogue, then start Astro development |
+| `npm run catalog` | Generate server prices from product frontmatter |
+| `npm run build` | Generate the catalogue and build the site to dist |
+| `npm run preview` | Preview the static build |
+| `npm run test:conservation` | Run mocked Stripe tracker tests |
+| `npm run astro -- --help` | Astro CLI help |
+| `npm run optimize-images` | Optional legacy public-image processing; read the performance guide first |
+| `npm run build:optimized` | Catalogue + legacy image processing + Astro build; not the normal deploy command |
 
-1. **Articles** (`src/content/articles/`): Science and nature articles
-2. **Blog** (`src/content/blog/`): Personal blog posts
-3. **Eco** (`src/content/eco/`): Eco-friendly product reviews
-4. **Travel** (`src/content/travel/`): Travel guides and tips
+## Code map
 
-### Content Format
+| Location | Purpose |
+| --- | --- |
+| `src/config.ts` | Store, homepage About and Conservation visibility switches |
+| `src/content.config.ts` | Article and product schemas |
+| `src/content/articles/{nature,eco,travel}/` | Markdown/MDX articles |
+| `src/content/products/` | Product files, kept directly in this folder |
+| `src/assets/`, `public/` | Build-managed images; directly served assets |
+| `src/pages/`, `src/layouts/`, `src/components/` | Routes and presentation |
+| `src/styles/global.css` | Shared styles, including .page-title and .page-content |
+| `functions/api/` | Checkout, order email webhook and Conservation API |
+| `functions/_lib/conservation.ts` | Stripe totals, refund calculation and temporary cache |
+| `src/lib/conservation.ts`, `src/data/conservation.ts` | Shared calculation settings; causes and confirmed charity transfers |
+| `public/admin/config.yml` | Sveltia CMS configuration |
+| `scripts/`, `tests/` | Catalogue/image helpers and automated tests |
 
-All content files use MDX format with frontmatter:
-
-```markdown
----
-title: "Your Post Title"
-description: "Brief description for SEO"
-pubDate: "2024-01-01"
-heroImage: "/path/to/image.jpg"
-tags: ["tag1", "tag2"]
----
-
-Your content here using Markdown and MDX syntax...
-```
-
-### Adding Images
-
-1. **Place images** in the `public/` directory
-2. **Run optimization** (recommended):
-   ```bash
-   npm run optimize-images
-   ```
-3. **Use OptimizedImage component** in your content:
-   ```astro
-   <OptimizedImage 
-     src="/your-image.jpg" 
-     alt="Description" 
-     width={800} 
-     height={600} 
-   />
-   ```
-
-## 🎨 Customization
-
-### Styling
-
-- Global styles: `src/styles/global.css`
-- Component-specific styles: Scoped `<style>` blocks in `.astro` files
-- CSS custom properties for consistent theming
-
-### Site Configuration
-
-Update `astro.config.mjs` for:
-- Site URL and base path
-- Integration settings
-- Build configurations
-
-### Content Schema
-
-Modify `src/content/config.ts` to:
-- Add new content types
-- Update frontmatter validation
-- Define content relationships
-
-## ⚡ Performance Features
-
-This site includes advanced performance optimizations:
-
-### Image Optimization
-- **WebP format** with JPEG fallbacks
-- **Responsive images** with multiple sizes (320w, 640w, 768w, 1024w, 1280w)
-- **Lazy loading** for below-the-fold content
-- **Proper dimensions** to prevent layout shifts
-
-### Loading Optimizations
-- **Critical CSS** inlined for above-the-fold content
-- **Asynchronous font loading** with fallbacks
-- **Deferred third-party scripts** (Google Tag Manager)
-- **Resource preloading** for critical assets
-
-### Build Optimizations
-- **Static site generation** for fast loading
-- **Automatic sitemap** generation
-- **RSS feed** generation
-- **Bundle optimization** with Astro's build system
-
-## 🧪 Testing
-
-### Performance Testing
-
-1. **Local Lighthouse testing**:
-   ```bash
-   npm run dev
-   # Open Chrome DevTools → Lighthouse → Performance
-   ```
-
-2. **Production build testing**:
-   ```bash
-   npm run build:optimized
-   npm run preview
-   # Test at http://localhost:4321
-   ```
-
-### Content Testing
-
-- Verify all content renders correctly
-- Check responsive design on different screen sizes
-- Test image loading and optimization
-- Validate RSS feeds and sitemaps
-
-## 🚀 Deployment
-
-### Build for Production
-
-```bash
-# Standard build
-npm run build
-
-# Optimized build (recommended)
-npm run build:optimized
-```
-
-### Deployment Options
-
-The built site (`dist/` folder) can be deployed to:
-- **Netlify**: Drag and drop or Git integration
-- **Vercel**: Git integration with automatic builds
-- **GitHub Pages**: Static site hosting
-- **Any static hosting provider**
-
-### Environment Variables
-
-For production deployment, configure:
-- Site URL in `astro.config.mjs`
-- Google Analytics/Tag Manager IDs
-- Any API keys for external services
-
-## 📊 Performance Metrics
-
-Expected Lighthouse scores after optimization:
-- **Performance**: 85-95+
-- **Accessibility**: 95+
-- **Best Practices**: 95+
-- **SEO**: 95+
-
-Key metrics:
-- **LCP (Largest Contentful Paint)**: < 2.5s
-- **FID (First Input Delay)**: < 100ms
-- **CLS (Cumulative Layout Shift)**: < 0.1
-
-## 🛠️ Development
-
-### Conservation page
-
-The Conservation page is available at `/conservation`. Its menu link appears
-between Eco and Store. Set `siteConfig.conservation.isEnabled` in `src/config.ts`
-to `false` to hide the link and omit the page from the generated site and sitemap.
-Set it back to `true` to restore both. Restart the dev server or rebuild/redeploy
-the static site after changing this setting.
-
-The tracker calculates totals directly from Stripe; no database is required.
-Each paid order contributes 10% of its product total after discounts,
-including VAT/sales tax and excluding shipping (and any tax on shipping). Refunds
-adjust the original contribution. With no eligible sales the total is £0; an unavailable API
-is shown as unavailable rather than a misleading zero.
-
-Follow [Conservation tracking setup](docs/CONSERVATION_TRACKING.md) to check Stripe
-credentials and test the integration before launch. Totals are briefly cached in
-server memory and the page refreshes automatically. The order success page checks
-its contribution directly with Stripe. `astro dev` alone cannot run the Cloudflare
-API functions. The existing webhook is still used for order emails, not tracking.
-
-Causes and confirmed charity transfers live in `src/data/conservation.ts`.
-Voting, newsletter signup and donation receipts remain to be implemented. The
-empty allocation bar means voting has not opened; it does not imply an equal split.
-Purchases update the committed total, not the amount already transferred to charities.
-
-### Adding New Features
-
-1. **Components**: Create in `src/components/`
-2. **Pages**: Add to `src/pages/` (file-based routing)
-3. **Layouts**: Create in `src/layouts/`
-4. **Content types**: Update `src/content/config.ts`
-
-### Code Style
-
-- Use TypeScript for type safety
-- Follow Astro component conventions
-- Implement responsive design patterns
-- Optimize for performance and accessibility
-
-## 📚 Documentation
-
-- **Performance optimizations**: See `PERFORMANCE_OPTIMIZATIONS.md`
-- **Testing guide**: See `TESTING_GUIDE.md`
-- **Astro documentation**: [docs.astro.build](https://docs.astro.build)
-- **MDX guide**: [mdxjs.com](https://mdxjs.com/)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test performance impact
-5. Submit a pull request
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🆘 Support
-
-For issues or questions:
-1. Check existing documentation
-2. Review performance guides
-3. Test in development environment
-4. Create an issue with detailed information
-
----
-
-Built with ❤️ using [Astro](https://astro.build) and optimized for performance and user experience.
+Documentation reflects the source, not a guarantee that the latest code is
+deployed. Cloudflare deployment success and a Stripe test checkout must be checked
+separately. Keep documentation with the change it describes; add new guides to the
+index rather than duplicating setup instructions.

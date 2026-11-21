@@ -1,5 +1,13 @@
 # Conservation tracking — Stripe only
 
+[Documentation index](README.md) · [Setup and deployment](DEPLOYMENT.md)
+
+**No new Cloudflare variable is required for production.** CONSERVATION_MODE
+defaults to live; set it to test only when using a separate Stripe test environment.
+The config.ts Conservation switch controls page/menu visibility, not payment mode.
+wrangler.local.jsonc is used only when explicitly selected for local testing and
+does not need editing or deletion before your normal Git-connected deployment.
+
 The tracker calculates **10% of the final product amount paid, after discounts,
 including VAT/sales tax and excluding shipping and tax on shipping**. For example,
 £120 in products including VAT plus £6 shipping adds £12. It uses Checkout's

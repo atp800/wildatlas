@@ -1,146 +1,60 @@
-# Testing Performance Optimizations Safely
+# Testing
 
-This guide shows you how to test the performance improvements without risking your production site.
+[Documentation index](README.md)
 
-## 🔍 Method 1: Local Lighthouse Testing (Recommended)
+## Routine checks
 
-Your dev server is running at `http://localhost:4323/`
+Run these from the project root:
 
-**Steps:**
-1. Open Chrome and navigate to `http://localhost:4323/`
-2. Open Chrome DevTools (F12)
-3. Click on the "Lighthouse" tab
-4. Select "Performance" category
-5. Click "Generate report"
-6. Compare with your original Lighthouse results
-
-**What to look for:**
-- ✅ LCP should be under 2.5s (was 2,560ms)
-- ✅ No "Exclude display blocking resources" warnings
-- ✅ Reduced "Third-party code impact" (should be minimal now)
-- ✅ No "Image elements do not have width/height" warnings
-- ✅ "Next-generation image formats" should show improvements
-
-## 🏗️ Method 2: Production Build Testing
-
-Test the optimized production build locally:
-
-```bash
-# Stop the dev server first (Ctrl+C)
-npm run build:optimized
-npx astro preview
+```sh
+npm run test:conservation
+npm run build
 ```
 
-This serves your production build locally for more accurate testing.
+The tracker tests use mocked Stripe responses; they do not charge a card or contact
+a live account. They cover money/tax/shipping calculations, refunds, pagination,
+cache expiry/concurrency, quarter boundaries, mode validation, error handling and
+email-webhook compatibility. The last implementation check passed 14 tests.
 
-## 🔄 Method 3: Git Safety Net
+The Astro build checks content and produces static pages. It does not establish
+that all TypeScript or .astro type errors are absent. There is currently no
+project-wide typecheck script. A previous targeted TypeScript check and function
+bundle check passed for the tracking change; these are not a full-project audit.
 
-Create a backup branch before any deployment:
+## Browser checks
 
-```bash
-# Create backup of current state
-git add .
-git commit -m "Performance optimizations applied - additional improvements"
-git checkout -b performance-backup-v2
+Use npm run dev while editing; for production-style static output run npm run build
+then npm run preview. Use the terminal's actual URL rather than assuming a fixed port.
 
-# Switch back to main
-git checkout main
-```
+Check Home, Travel, Nature, Eco, Store, Conservation, an article and a product:
 
-**Quick rollback if needed:**
-```bash
-git checkout performance-backup-v2
-```
+- Navigation, footer and heading styles at desktop and mobile widths.
+- Images, fonts, links and keyboard navigation.
+- Site switches after rebuilding, including Conservation menu/page visibility.
+- Conservation loading/error states; static-only previews cannot return live totals.
 
-## 📊 Method 4: Compare Before/After
+## Payment and refund checks
 
-**Original Issues (from your Lighthouse report):**
-- Display blocking resources: 1,760ms
-- Third-party code blocking: 280ms
-- LCP: 2,560ms
-- Missing image dimensions
-- Non-optimized image formats: 1,242 KB potential savings
-- Oversized images: 939 KB potential savings
+Use the full [test-mode setup](DEPLOYMENT.md#local-preview-with-payments), including
+test Stripe price IDs and a test key. Verify:
 
-**Latest Improvements Applied:**
-- ✅ Fonts load asynchronously (no blocking)
-- ✅ GTM deferred until user interaction or 3s delay (ultra-optimized)
-- ✅ WebP images with fallbacks
-- ✅ Proper image dimensions for all images
-- ✅ Responsive images for mobile
-- ✅ Critical CSS inlined
-- ✅ Hero images preloaded for faster LCP
-- ✅ URL encoding for filenames with spaces
-- ✅ Fixed about page image optimization
+1. Successful checkout shows the correct product and shipping amounts.
+2. The success page confirms the contribution, and the public fund updates.
+3. The order email contains the expected download links or physical-order message.
+4. Full and partial product refunds reduce the total.
+5. Shipping-only refund metadata preserves the product contribution.
+6. Test payments never appear in the production fund.
 
-## 🚀 Method 5: Staging Deployment
+A real Stripe test checkout in Cloudflare remains to be verified; automated test
+success alone is not end-to-end payment verification. See the
+[refund examples](CONSERVATION_TRACKING.md#refunds).
 
-If you have a staging environment:
-1. Deploy to staging first
-2. Test Lighthouse on staging URL
-3. Only deploy to production after verification
+## Performance and deployment
 
-## ⚡ Quick Test Checklist
+Measure the production build with the browser's Lighthouse tools. Record the URL,
+commit, device profile and date, and compare repeated runs with matching settings.
+Old numerical estimates are not current benchmark results.
 
-With your dev server running (`localhost:4323`):
-
-- [ ] Homepage loads quickly
-- [ ] About page loads quickly with optimized image
-- [ ] Images display properly (including those with spaces in filenames)
-- [ ] Navigation works correctly
-- [ ] Google Analytics still tracking (check browser console after 3s or interaction)
-- [ ] Fonts render correctly
-- [ ] Mobile responsive design intact
-- [ ] WebP images load with JPEG fallbacks
-
-## 🔧 Files Modified (for rollback reference)
-
-**Recently Modified files:**
-- `src/components/BaseHead.astro` - Ultra-optimized GTM loading
-- `src/pages/about.astro` - Fixed image reference
-- `src/layouts/BlogPost.astro` - Added image preloading
-- `src/components/OptimizedImage.astro` - URL encoding for spaces
-- `TESTING_GUIDE.md` - Updated instructions
-
-**Previous modifications:**
-- `src/pages/index.astro` - Image optimization & preloading
-- `src/components/PostLayoutLeft.astro` - Image component usage
-- `package.json` - Added optimization scripts
-
-**New files added:**
-- `src/components/OptimizedImage.astro` - Responsive image component
-- `scripts/optimize-images.js` - Image optimization script
-- `PERFORMANCE_OPTIMIZATIONS.md` - Documentation
-
-## 🆘 Emergency Rollback
-
-If you encounter issues and need to quickly revert:
-
-1. **Stop any running servers**
-2. **Restore from git:**
-   ```bash
-   git checkout performance-backup-v2
-   ```
-3. **Or manually revert key files if needed**
-
-## ✅ Ready for Production?
-
-Once local testing confirms everything works:
-1. Test both homepage and about page performance
-2. Verify GTM loads on user interaction (check Network tab)
-3. Confirm images load properly with WebP format
-4. Commit your changes
-5. Push to your repository
-6. Deploy to production
-7. Run final Lighthouse audit on live site
-
-## 🎯 Expected Performance Score
-
-With these additional optimizations, you should see:
-- **Performance score: 85-95+** (up from 79)
-- **LCP: Under 2.5s** (significant improvement from 5.7s)
-- **TBT: Under 50ms** (down from 60ms)
-- **CLS: Maintained at 0.005** (excellent)
-- **Minimal third-party blocking** (GTM only loads on interaction)
-
-Your optimizations should now show dramatic improvements in all performance metrics!
+After deployment, confirm the deployed commit, the API response and visible
+Conservation total. Changing local files or checking out a branch does not change
+the live site until deployment occurs.
