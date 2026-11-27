@@ -20,7 +20,6 @@ Most people like to consider themselves fairly good people. Maybe they avoid buy
 
 When it comes to consumption, most of us also spend money on things we don’t really need, fly to other countries for our own enjoyment, and own a pretty sizeable collection of possessions which we could quite comfortably live without. And while we tend to think of ethical consumption in terms of _what_ we buy, what it’s made form and how it’s sourced, arguably the much bigger ethical question is whether we should be buying most of these things at all.
 
-
 Is it morally ok to spend £20 on a night out when that same £20 could be used to buy mosquito nets that would directly save people’s lives? And if it isn’t, are we genuinely just morally obligated to sell most of our possessions and give away all of our disposable income?
 
 **The Drowning Child**
@@ -32,6 +31,8 @@ I think most people would agree that you have a moral obligation to save the chi
 But what if, instead of being in the pond in front of you, the child is several thousand miles away? And instead of ruining a £80 pair of shoes to save them, you’re just choosing not to buy the shoes in the first place, and donating the money to an effective charity? Or even just not having £80 in your bank account?
 
 Is there actually much of a moral difference between the two scenarios?
+
+![Stick figure drawing of a drowning child next to a shoe](../../../assets/eco/consumption-ethics/IMG_4059.jpeg "but which is better?")
 
 Of course, in donating there’s generally no guarantee that your £80 is going to save a specific child. But there absolutely are effective charities you can donate to, where there’s a very real chance that your money will directly save someone’s life, or at least contribute to doing so. And there’s certainly an argument to be made that this chance is worth considerably more than a nice pair of shoes.
 
