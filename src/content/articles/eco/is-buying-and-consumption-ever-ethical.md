@@ -1,7 +1,7 @@
 ---
 title: Is Buying and Consumption Ever Ethical?
 image: ../../../assets/eco/consumption-ethics/Plastic Pollution.png
-description: And is it even possible to live ethically in the modern world?
+description: Is it even possible to live ethically in the modern world?
 section: eco
 topic: consumption
 tags: consumption,ethics,morality,emotivism,utilitarianism
