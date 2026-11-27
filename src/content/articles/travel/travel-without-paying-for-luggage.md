@@ -4,7 +4,7 @@ image: ../../../assets/travel/travel-without-paying-for-luggage/travel-without-p
 description: Tricks to travel with just a personal item under 7kg
 section: travel
 topic: travel
-tags: se asia,tips,backpacking,luggage,packing
+tags: se asia,tips,backpacking,luggage,packing,budget,travel
 author: Andreas
 views: 0
 highlighted: true
