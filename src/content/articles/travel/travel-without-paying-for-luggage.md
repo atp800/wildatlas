@@ -1,19 +1,18 @@
 ---
-title: "Travel Without Paying For Luggage"
-# slug: "template"
-image: "../../../assets/travel/travel-without-paying-for-luggage/travel-without-paying-for-luggage.jpg"
-description: "Tricks to travel with just a personal item under 7kg"
-section: "travel"
-topic: "tips"
-tags: "se asia,tips,backpacking,luggage,packing"
-author: "Andreas"
+title: Travel Without Paying For Luggage
+image: ../../../assets/travel/travel-without-paying-for-luggage/travel-without-paying-for-luggage.jpg
+description: Tricks to travel with just a personal item under 7kg
+section: travel
+topic: travel
+tags: se asia,tips,backpacking,luggage,packing,budget,travel
+author: Andreas
 views: 0
 highlighted: true
-status: "live"
-created_at: "2024-04-09"
-published_at: "2024-04-09"
-updated_at: "2024-09-21"
-deleted_at: "null"
+status: live
+created_at: 2024-04-09
+published_at: 2024-04-09
+updated_at: 2024-09-21
+deleted_at: 'null'
 ---
 
 ### Travelling With Just a Personal Item

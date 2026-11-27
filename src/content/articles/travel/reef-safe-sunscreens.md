@@ -1,19 +1,18 @@
 ---
-title: "Reef Safe Sunscreens"
-# slug: "template"
-image: '../../../assets/travel/reef-safe-sunscreens/reef-safe-sunscreens.jpg'
-description: "Why you should be using them, and which ones to get"
-section: "travel"
-topic: "sunscreen"
-tags: "reefs,sunscreen,suncream,eco-friendly,environment"
-author: "Andreas"
+title: Reef Safe Sunscreams
+image: ../../../assets/travel/reef-safe-sunscreens/reef-safe-sunscreens.jpg
+description: Why you should be using them, and which ones to get
+section: travel
+topic: sunscreen
+tags: reefs,sunscreen,suncream,eco-friendly,environment
+author: Andreas
 views: 0
 highlighted: true
-status: "live"
-created_at: "2024-04-09"
-published_at: "2024-04-09"
-updated_at: "2024-04-09"
-deleted_at: "null"
+status: live
+created_at: 2024-04-09
+published_at: 2024-04-09
+updated_at: 2024-04-09
+deleted_at: 'null'
 ---
 
 
