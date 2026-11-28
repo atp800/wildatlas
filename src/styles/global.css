@@ -153,14 +153,6 @@ a:hover {
 	color: var(--accent-dark);
 }
 
-p {
-	margin-bottom: 1.5em; /* Increased slightly for better Urbanist spacing */
-}
-
-.prose p {
-	margin-bottom: 2em;
-}
-
 /* Form Elements */
 textarea, input {
 	font-family: 'Urbanist', sans-serif;
@@ -259,7 +251,11 @@ th {
 
 /* Adjust paragraph spacing (1 is standard */
 p {
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 1em;
+    line-height: 1.7;
+}
+
+.prose p {
+    margin-bottom: 0.75em;
 }
