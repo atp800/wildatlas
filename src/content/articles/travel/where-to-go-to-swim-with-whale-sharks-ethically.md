@@ -41,10 +41,7 @@ Oslob is one of the most studied whale shark tourism operations in the world, an
 - The sharks expend considerably more energy during tourism interactions
 - Regulations around tourists getting too close to sharks are constantly broken
 
-\<img src="../../../assets/travel/swim-ethically-with-whale-sharks/31c7d144-4b17-4be4-ad7a-582b31cbfd0c_still%20%282%29.jpeg"
-     alt="A whale shark eating fish from fishermen near the ocean surface"
-     title="Whale shark being fed"
-     style="width: 60%; height: auto; display: block; margin: auto;">
+![A whale shark eating fish from fishermen near the ocean surface](../../../assets/travel/swim-ethically-with-whale-sharks/31c7d144-4b17-4be4-ad7a-582b31cbfd0c_still%20%282%29.jpeg "Whale shark being fed #small")
 
 It's worth acknowledging that whale shark tourism has had a huge positive economic impact on the local community, providing alternative sources of income for fishermen. But given that there are several other places in the Philippines where you can swim with whale sharks without feeding them, I'd really struggle to recommend Oslob.
 <br/><br/>
@@ -93,10 +90,7 @@ I wouldn't necessarily put Saleh Bay in quite the same category as Oslob, but it
 
 I would still massively recommend the Komodo tour though, and there are actually quite a few tours that go the opposite direction, from Flores to Lombok, which skip this stop and visit other islands instead. 
 
-\<img src="../../../assets/travel/swim-ethically-with-whale-sharks/IMG_7242.jpeg"
-     alt="A photo from the viewpoint on Padar Island"
-     title="Padar Island viewpoint"
-     style="width: 50%; height: auto;">
+![A photo from the viewpoint on Padar Island](../../../assets/travel/swim-ethically-with-whale-sharks/IMG_7242.jpeg "Padar Island viewpoint #small")
 
 Or you can do the typical route but just opt out of the whale shark swim. It might see like a pointless protest, but from what I’ve heard increasingly people do stay out of the water or even complain, and the crew do notice. I wouldn’t be surprised if this leads to a few tours popping up that explicitly advertise that they don’t include whale sharks
 <br/><br/>
