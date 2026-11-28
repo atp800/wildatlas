@@ -27,7 +27,6 @@ It also encourages them to associate humans and boats with food, which isn't a p
 <br/><br/>
 
 **Oslob, Philippines**
-
 **Recommendation: Avoid**
 
 Oslob is probably one of the first places you'll come across if you've looked into swimming with whale sharks. It's relatively inexpensive, easily accessible from other popular destinations in the Philippines, and sightings are pretty much guaranteed year-round.
@@ -47,9 +46,7 @@ It's worth acknowledging that whale shark tourism has had a huge positive econom
 <br/><br/>
 
 **Donsol, Philippines**
-
 **Recommendation: Great alternative to Oslob**
-
 **Best time to visit: February–April**
 
 Turns out the Philippines actually had a much more responsible whale shark tourism industry before the one in Oslob even existed.
@@ -62,9 +59,7 @@ Of course, the lack of feeding means sightings aren't guaranteed, and the water 
 <br/><br/>
 
 **Southern Leyte, Philippines**
-
 **Recommendation: Great alternative to Oslob, potentially less crowds than Donsols**
-
 **Best time to visit: November–May**
 
 Another, considerably less well-known alternative to Oslob is Sogod Bay, particularly around Pintuyan in Southern Leyte.
@@ -75,7 +70,6 @@ The main issue is getting there. It’s definitely harder to incorporate into a 
 <br/><br/>
 
 **Saleh Bay, Indonesia (Lombok to Komodo Tour)**
-
 **Recommendation: Not as bad as Oslob, but lean towards avoid**
 
 Another particularly popular one. The Komodo Tour is one of the most well-known and loved excursions in SE Asia, if not the world. It’s typically a 4-day, 3-night boat trip from Lombok to Flores, stopping at several islands, including Komodo island to see Komodo dragons. It also includes hiking up Padar Island for a stunning and very iconic view, visiting pink sand beaches, and swimming with whale sharks.
@@ -96,9 +90,7 @@ Or you can do the typical route but just opt out of the whale shark swim. It mig
 <br/><br/>
 
 **Ningaloo Reef, Western Australia**
-
 **Recommendation: One of the best options in the world**
-
 **Best time to visit: March–July**
 
 Ningaloo Reef probably sets the bar for ethical whale shark tourism. Whale sharks naturally aggregate around Ningaloo following seasonal increases in food availability, associated in part with the reef's annual coral spawning events. Rather than attracting the sharks to boats, operators use small spotter planes to locate them in the ocean.
@@ -119,9 +111,7 @@ Having said that, Ningaloo is an incredible destination in its own right, with m
 <br/><br/>
 
 **La Paz, Mexico**
-
 **Recommendation: Very good**
-
 **Best time to visit: October–April (but check seasonal opening dates)**
 
 Young whale sharks naturally aggregate in the shallow waters of La Paz Bay, and the local tourism industry has become increasingly well regulated.
@@ -132,9 +122,7 @@ There are still concerns regarding boat-related injuries, but the lack of feedin
 <br/><br/>
 
 **Isla Mujeres, Holbox and Cancún, Mexico**
-
 **Recommendation: Not too bad, but crowding can be an issue (operator dependent)**
-
 **Best time to visit: June–September**
 
 This  is one of the largest known natural aggregations of whale sharks in the world, with hundreds of sharks congregating to feed on plankton and fish eggs during the summer months.
@@ -145,9 +133,7 @@ Take the time to look into different operators. And don’t assume that just bec
 <br/> <br/>
 
 **South Ari Atoll, Maldives**
-
 **Recommendation: Very dependent on the operator**
-
 **Best time to visit: Year-round**
 
 The Maldives is one of relatively few places where you have a good chance of seeing whale sharks year-round without human feeding.
@@ -160,9 +146,7 @@ Also, you don't need to stay at one of the ridiculously expensive overwater reso
  <br/><br/>
 
 **Mafia Island, Tanzania**
-
 **Recommendation: Very good**
-
 **Best time to visit: October–February**
 
 Acoustic tag tracking here revealed that many of the sharks actually remain in the surrounding waters throughout the year, simply moving deeper and further offshore outside the typical whale shark season.
@@ -173,9 +157,7 @@ Mafia Island also has some great diving and relatively undeveloped beaches, and 
  <br/><br/>
 
 **Nosy Be, Madagascar**
-
 **Recommendation: Particularly good for conservation-focused tourism**
-
 **Best time to visit: September–December**
 
 The [Madagascar Whale Shark Project](https://www.madawhalesharks.org/) has been studying the population since 2016, and helped develop a code of conduct for whale shark tourism which was incorporated into Malagasy law in 2023). Also turns you’re meant to call things from Madagascar ‘Malagasy’, not ‘Madagascan’, so that’s a fun fact.
