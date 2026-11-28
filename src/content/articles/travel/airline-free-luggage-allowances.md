@@ -58,6 +58,7 @@ _P = underseat/personal item; C = overhead cabin bag. “Combined” means share
 ·       **Middle East:** Nearly all airlines allow 7 kg, or include a cabin or hold bag, and most major airlines allow more than the practical minimum with 55 × 36 × 20 cm. Gulf Air has a Basic fare with a 45 x 40 x 30 cm, 7 kg limit on some routes. SalamAir sets the minimum with a 33 x 25 x 20 cm personal item on its cheapest, with a 5 kg limit
 
 ·       **Africa:** Kenya Airways' 55 × 35 × 25 cm and FlySafair's 56 × 36 × 23 cm set minimum dimension limits. Most airlines allow at least 7 kg and have cabin bags, but Mozambique’s LAM has a stricter 55 x 30 x 20 cm, 5 kg limit for Q400 aircraft Lite fare, without checked baggage.
+
  <br/>
 
 **Baggage Allowance Limits by Airline**
@@ -87,6 +88,8 @@ _Σ is the sum of checked luggage dimensions_
 | airBaltic | **MINI** — P: 40 × 30 × 15, 8 kg | **CLASSIC** — P: 40 × 30 × 15; C: 55 × 40 × 23; 8 kg combined; H: 100 × 80 × 50, 23 kg. Intermediate BASIC fare excludes H.\n\nairBaltic+2 |
 | Jet2 | **Standard** — P: 40 × 30 × 20, NS; C: 56 × 45 × 25, 10 kg | **Standard** — Same as cheapest fare |
 
+<br/>
+
 **North America**
 
 | **Airline** | **Cheapest fare – included baggage** | **Standard Economy – included baggage** |
@@ -102,6 +105,8 @@ _Σ is the sum of checked luggage dimensions_
 | Delta | **Main Basic** — P: NS; C: 56 × 35 × 23, NS; H: Σ158, 23 kg on qualifying international routes | **Main Classic** — Same P and C; H: Σ158, 23 kg on qualifying international routes |
 | Southwest | **Basic** — P: NS; C: 61 × 41 × 25.4, NS | **Choice** — Same as cheapest fare |
 | Flair | **Unbundled fare** — P: 43 × 33 × 15, 7 kg | **Basic bundle** — P: 43 × 33 × 15, 7 kg; C: 55 × 40 × 23, 10 kg; H: Σ168, 23 kg |
+
+<br/>
 
 **Central and South America**
 
@@ -121,6 +126,8 @@ _Σ is the sum of checked luggage dimensions_
 | GOL | **Basic** — P: 43 × 32 × 22, NS | **Light** — Same P; C: 55 × 35 × 25, 12 kg |
 | Azul | **Azul** — P: NS; C: 55 × 35 × 25, 10 kg | **Mais Azul** — Same P and C; H: Σ158, 23 kg |
 
+<br/>
+
 **Australia**
 
 | **Airline** | **Cheapest fare – included baggage** | **Standard Economy – included baggage** |
@@ -130,6 +137,8 @@ _Σ is the sum of checked luggage dimensions_
 | Jetstar Airways (until 1 Feb 2027) | **Starter** — P: NS; C: 56 × 36 × 23; 7 kg combined | **Starter Plus** — Same P and C, 7 kg combined; H: 20 kg, no individual dimension exceeding 100 cm without oversized-baggage arrangements |
 | Jetstar Airways (from 2 Feb 2027) | **Starter** — P: 40 × 30 × 20, 10 kg | **Starter Plus** — P: 40 × 30 × 20, 10 kg; H: 20 kg. Other bundles include Priority Carry-on instead or additionally. |
 | Rex | **Community/Saver** — C: 48 × 34 × 23, 7 kg; H: generally 15 kg, dimensions NS | **Standard Economy** — C: 48 × 34 × 23, 7 kg; H: generally 15 kg |
+
+<br/>
 
 **Asia**
 
@@ -150,6 +159,8 @@ _Σ is the sum of checked luggage dimensions_
 | HK Express | **Ultra Lite** — P: 40 × 25 × 20, 7 kg | **Lite** — P: 40 × 25 × 20; C: 56 × 36 × 23; 7 kg combined. Alternative **Essential** fare includes P and a 20 kg H (Σ158), instead of C. |
 | Spring Airlines | **Lowest baggage-free fare** — C: 40 × 30 × 20, 7 kg | **Baggage-inclusive fare** — C: 40 × 30 × 20, 7 kg; H: 20 kg on applicable packages, subject to route and fare |
 | IndiGo | **Lite** — C: 55 × 35 × 25, 7 kg | **Regular/Saver** — P: NS, 3 kg; C: 55 × 35 × 25, 7 kg; H: Σ158, 15 kg domestic or generally 20–30 kg international |
+
+<br/>
 
 **Middle East**
 
@@ -174,6 +185,8 @@ _Σ is the sum of checked luggage dimensions_
 | Israir | **Basic international** — P: 40 × 30 × 20, NS. Certain domestic and long-haul routes include C or H | **Standard international** — Same as cheapest fare, unless a baggage-inclusive ticket is selected |
 | Arkia | **Basic international** — P: 40 × 30 × 20, NS | **Standard international** — Same as cheapest fare, unless a baggage-inclusive ticket is selected |
 | Turkish Airlines | **EcoFly** — P: 40 × 30 × 15, 4 kg; C: 55 × 40 × 23, 8 kg; H included on qualifying routes | **ExtraFly** — Same P and C; H: generally 20–25 kg domestically or route-specific international allowance, typically Σ158 |
+
+<br/>
 
 **Africa**
 
