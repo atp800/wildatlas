@@ -6,7 +6,7 @@ section: travel
 topic: whale sharks
 tags: travel,ethics,responsible,wildlife,nature,snorkelling,scuba
 author: Andreas
-highlighted: false
+highlighted: true
 status: live
 created_at: 2026-11-28
 published_at: 2026-11-28
