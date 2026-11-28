@@ -7,7 +7,7 @@ topic: sunscreen
 tags: reefs,sunscreen,suncream,eco-friendly,environment
 author: Andreas
 views: 0
-highlighted: true
+highlighted: false
 status: live
 created_at: 2024-04-09
 published_at: 2024-04-09
