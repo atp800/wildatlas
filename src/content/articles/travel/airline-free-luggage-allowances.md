@@ -14,7 +14,7 @@ updated_at: 2026-11-28
 deleted_at: 'null'
 ---
 
-Here is pretty much everything you need to know for avoiding luggage fees.
+Particularly if you're backpacking and taking multiple flights, having to pay for a checked bag for every flight can quickly get expensive. And honestly in my experience, having done several multi-month trips now, if you pack carefully you genuinely can get away without even a cabin bag. So here is pretty much everything you need to know about what you can take for free on budget and economy fares across the world.
 
 Of course, these limits may change over time, so bear that in mind, and if you know which airlines you’ll be flying with, I’d still recommend double checking on their websites. Also, while I’ve been pretty extensive in checking limits, there may be some (e.g. small regional carriers that I’ve missed.
 
