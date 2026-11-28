@@ -155,13 +155,13 @@ _Σ is the sum of checked luggage dimensions_
 | Cebu Pacific | **GO Basic** — P: 35 × 20 × 20; C: 56 × 36 × 23; 10 kg combined on Cebu Pacific (5J), 7 kg on Cebgo (DG) | **GO Easy** — Same P and C; H: 99 × 99 × 99, 20 kg |
 | HK Express | **Ultra Lite** — P: 40 × 25 × 20, 7 kg | **Lite** — P: 40 × 25 × 20; C: 56 × 36 × 23; 7 kg combined. Alternative **Essential** fare includes P and a 20 kg H (Σ158), instead of C. |
 | Spring Airlines | **Lowest baggage-free fare** — C: 40 × 30 × 20, 7 kg | **Baggage-inclusive fare** — C: 40 × 30 × 20, 7 kg; H: 20 kg on applicable packages, subject to route and fare |
-| IndiGo | **Lite** — C: 55 × 35 × 25, 7 kg | **Regular/Saver** — P: NS, 3 kg; C: 55 × 35 × 25, 7 kg; H: Σ158, 15 kg domestic or generally 20–30 kg international |
- 
- 
- 
+| IndiGo | **Lite** — C: 55 × 35 × 25, 7 kg | **Regular/Saver** — P: NS, 3 kg; C: 55 × 35 × 25, 7 kg; H: Σ158, 15 kg domestic or generally 20–30 kg international | 
+
+
 **Middle East**
 
 | **Airline** | **Cheapest fare – included baggage** | **Standard Economy – included baggage** |
+| ----- | ----- | ----- |
 | Emirates | **Special** — C: 55 × 38 × 22, 7 kg; H: generally 20 kg or 1 × 23 kg depending on route | **Saver** — C: 55 × 38 × 22, 7 kg; H: generally 25 kg or 2 × 23 kg. Hold dimensions: Σ300 on weight-system routes; Σ150 on piece-system routes |
 | Qatar Airways | **Economy Lite** — C: 50 × 37 × 25, 7 kg; H: 20 kg or 1 × 23 kg, depending on route | **Economy Classic** — Same C; H: 25 kg or 2 × 23 kg. Hold dimensions: Σ300 or Σ158 respectively |
 | Etihad | **Basic** — C: 56 × 36 × 23, 7 kg | **Value** — Same C; H: typically 25 kg or route-specific piece allowance, maximum dimensions generally 90 × 72 × 45 |
@@ -186,6 +186,7 @@ _Σ is the sum of checked luggage dimensions_
 **Africa**
 
 | **Airline** | **Cheapest fare – included baggage** | **Standard Economy – included baggage** |
+| ----- | ----- | ----- |
 | Royal Air Maroc | **Eco Essential** — P: 40 × 30 × 15, 2 kg; C: 55 × 40 × 25, 10 kg; H: Σ203, 23 kg on qualifying routes | **Eco Classic** — Same P and C; H: Σ203, generally 1–2 × 23 kg depending on route |
 | Kenya Airways | **Economy Saver** — P: 40 × 30 × 15; C: 55 × 35 × 25; 10–12 kg combined depending on route; H: Σ158, generally 1–2 × 23 kg | **Economy standard** — Same P and C; H: Σ158, generally 1–2 × 23 kg |
 | South African Airways | **Economy** — P: 40 × 30 × 10, NS; C: 56 × 36 × 23, 8 kg; H: Σ158, generally 1 × 23 kg, with regional exceptions | **Economy** — Same as cheapest fare |
