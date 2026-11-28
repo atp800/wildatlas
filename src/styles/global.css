@@ -209,3 +209,31 @@ blockquote {
 	white-space: nowrap;
 	border-width: 0;
 }
+
+
+/*Allows CMS images to be resized*/
+img[title$="#small"] {
+    width: 40%;
+}
+img[title$="#medium"] {
+    width: 60%;
+}
+img[title$="#large"] {
+    width: 80%;
+}
+
+img[title$="#small"],
+img[title$="#medium"],
+img[title$="#large"] {
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+@media (max-width: 600px) {
+    img[title$="#small"],
+    img[title$="#medium"],
+    img[title$="#large"] {
+        width: 100%;
+    }
+}
