@@ -25,6 +25,7 @@ It’s worth pointing out, these allowances don’t include your clothes or thin
 It’s also worth noting that there’s different levels of strictness and enforcement. I’ve backpacked across  South-East Asia 4 times now, and have routinely had a backpack that is both over-seized and over-weight. I’ve very rarely had it checked, and in cases where it has been I’ve just jammed my pockets full of toiletries and portable chargers, or squished it into the measurer. Of course, there if you do travel overweight/size there is an element of luck with enforcement and how strict a particular attendant is, but I will say from plenty of personal experience, with a backpack I’ve never had real problems, and the one time I did get weighed, sneakily stuffing my cargo trouser pockets before weighing let me dodge any extra fees.
 
 The dimensions take the lowest each of height, width and depth, so a bag within these restrictions should be accepted by all the checked airlines. The weight is the free allowance on the cheapest budget/economy fares. In most cases these minimum limits are for tickets that only include a personal item, but in some cases may include a cabin bag. For example, most Asian and Australian flights include either a cabin or checked bag.
+
 <br/>
 
 **Baggage Allowance Limits by Region**
