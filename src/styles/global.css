@@ -237,3 +237,22 @@ img[title$="#large"] {
         width: 100%;
     }
 }
+
+
+/* Add borders to tables*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  padding: 10px 14px;
+  text-align: left;
+}
+
+th {
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
+  font-weight: 600;
+}
