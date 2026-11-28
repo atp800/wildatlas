@@ -256,3 +256,9 @@ th {
   background-color: color-mix(in srgb, currentColor 5%, transparent);
   font-weight: 600;
 }
+
+/* Adjust paragraph spacing (1 is standard */
+p {
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
