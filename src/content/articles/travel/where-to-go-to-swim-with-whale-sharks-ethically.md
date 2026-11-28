@@ -1,5 +1,5 @@
 ---
-title: Where to Go to Swim With Whale Sharks Ethically
+title: Where to Swim With Whale Sharks Ethically
 image: ../../../assets/travel/swim-ethically-with-whale-sharks/3ba511f6-00a0-44c4-a6e6-8458d80bfdda_still (2).jpeg
 description: The places to go to see whale sharks responsibly, and where to avoid
 section: travel
