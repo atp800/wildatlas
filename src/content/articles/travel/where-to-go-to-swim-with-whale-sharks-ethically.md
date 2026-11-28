@@ -17,14 +17,14 @@ deleted_at: 'null'
 Swimming with whale sharks is pretty high on a lot of people's bucket lists, and understandably so. Whale sharks (or _rhincodon typus_ if you want to be all technical), are the largest fish in the world, and despite being capable of growing to over 12 metres in length, they feed predominantly on plankton and other small marine organisms, and pose very little danger to humans. They’re definitely more whale than shark in how they come across (although I would argue most sharks are pretty chill too).
 
 Unfortunately, their popularity has led to some fairly questionable practices to make interactions with them more accessible and reliable, and a lot of supposedly ‘ethical’ excursions are a bit dodgy.
-<br/>
+<br/><br/>
 
 **What's wrong with feeding whale sharks?**
 
 Whale sharks are naturally highly mobile animals, and travel thousands of kilometres in search of food. Providing them with a reliable source of food in one location can interfere with their natural movements, feeding habits, and potentially even reproductive behaviour.
 
 It also encourages them to associate humans and boats with food, which isn't a particularly good association for an animal very vulnerable to boat strikes. Having said that, there are varying degrees of feeding, and big differences in how whale shark tourism operates around the world.
-<br/>
+<br/><br/>
 
 **Oslob, Philippines**
 
@@ -41,13 +41,13 @@ Oslob is one of the most studied whale shark tourism operations in the world, an
 - The sharks expend considerably more energy during tourism interactions
 - Regulations around tourists getting too close to sharks are constantly broken
 
-<img src="../../../assets/travel/swim-ethically-with-whale-sharks/31c7d144-4b17-4be4-ad7a-582b31cbfd0c_still%20%282%29.jpeg"
+\<img src="../../../assets/travel/swim-ethically-with-whale-sharks/31c7d144-4b17-4be4-ad7a-582b31cbfd0c_still%20%282%29.jpeg"
      alt="A whale shark eating fish from fishermen near the ocean surface"
      title="Whale shark being fed"
      style="width: 60%; height: auto; display: block; margin: auto;">
 
 It's worth acknowledging that whale shark tourism has had a huge positive economic impact on the local community, providing alternative sources of income for fishermen. But given that there are several other places in the Philippines where you can swim with whale sharks without feeding them, I'd really struggle to recommend Oslob.
-<br/>
+<br/><br/>
 
 **Donsol, Philippines**
 
@@ -62,7 +62,7 @@ Whale shark tourism in Donsol began in 1998 with the help of WWF-Philippines, an
 The sharks aren't fed, and instead boats head out with local spotters to find them. Only six tourists are supposed to swim with a shark at once, although there have been issues with overcrowding and compliance with regulations.
 
 Of course, the lack of feeding means sightings aren't guaranteed, and the water tends to be a bit murkier than at other destinations. But since that a lot of that murkiness is the plankton the sharks are actually there to eat, that's actually a good indication that you're seeing them in the right sort of environment.
-<br/>
+<br/><br/>
 
 **Southern Leyte, Philippines**
 
@@ -75,7 +75,7 @@ Another, considerably less well-known alternative to Oslob is Sogod Bay, particu
 Like in Donsol, the sharks are attracted by naturally occurring food, and local fishermen help locate them rather than feed them. Research by the Large Marine Vertebrates Research Institute Philippines (LAMAVE) has identified Southern Leyte as having a particularly sustainable whale shark tourism model.
 
 The main issue is getting there. It’s definitely harder to incorporate into a typical Philippines backpacking itinerary, but that’s obviously the trade-off that results in less crowds, and it’s not _toooo_ hard to reach.
-<br/>
+<br/><br/>
 
 **Saleh Bay, Indonesia (Lombok to Komodo Tour)**
 
@@ -93,13 +93,13 @@ I wouldn't necessarily put Saleh Bay in quite the same category as Oslob, but it
 
 I would still massively recommend the Komodo tour though, and there are actually quite a few tours that go the opposite direction, from Flores to Lombok, which skip this stop and visit other islands instead. 
 
-<img src="../../../assets/travel/swim-ethically-with-whale-sharks/IMG_7242.jpeg"
+\<img src="../../../assets/travel/swim-ethically-with-whale-sharks/IMG_7242.jpeg"
      alt="A photo from the viewpoint on Padar Island"
      title="Padar Island viewpoint"
      style="width: 50%; height: auto;">
 
 Or you can do the typical route but just opt out of the whale shark swim. It might see like a pointless protest, but from what I’ve heard increasingly people do stay out of the water or even complain, and the crew do notice. I wouldn’t be surprised if this leads to a few tours popping up that explicitly advertise that they don’t include whale sharks
-<br/>
+<br/><br/>
 
 **Ningaloo Reef, Western Australia**
 
@@ -122,7 +122,7 @@ Importantly, these regulations are also relatively well enforced. Research has f
 The main downside is that it's relatively expensive and a bit of a pain to get to, with Exmouth being about a 1,250km drive north of Perth.
 
 Having said that, Ningaloo is an incredible destination in its own right, with manta rays, turtles, dugongs, dolphins, and humpback whales. It’s perfect for integrating into an Aussie west coast road trip, and a lot of the reef itself is accessible just by swimming out from the beach.
-<br/>
+<br/><br/>
 
 **La Paz, Mexico**
 
@@ -135,7 +135,7 @@ Young whale sharks naturally aggregate in the shallow waters of La Paz Bay, and 
 The number of boats allowed into the area is restricted, with GPS tracking used to monitor their movements and speeds. The number of boats permitted is also informed by research into whale shark abundance and the area's ‘carrying capacity’ (basically, how much tourist activity the area can reasonably support).
 
 There are still concerns regarding boat-related injuries, but the lack of feeding and the scientific approach to managing the industry make La Paz a solid option.
-<br/>
+<br/><br/>
 
 **Isla Mujeres, Holbox and Cancún, Mexico**
 
@@ -148,7 +148,7 @@ This  is one of the largest known natural aggregations of whale sharks in the w
 Unfortunately, it’s also one of Mexico's most popular tourist destinations, and there’s a lot of documented violations of whale shark interaction regulations.
 
 Take the time to look into different operators. And don’t assume that just because you’re leaving from Holbox (a quieter island) instead of Cancun you’ll necessarily avoid the crowds, because a lot of the boats ultimately head to the same feeding grounds.
-<br/> 
+<br/> <br/>
 
 **South Ari Atoll, Maldives**
 
@@ -163,7 +163,7 @@ There are some really good conservation initiatives here, including the [Maldive
 Unfortunately, boat strikes and overcrowding remain concerns. Look for smaller, conservation-focused operators that are willing to abandon an interaction if too many boats or swimmers are already present.
 
 Also, you don't need to stay at one of the ridiculously expensive overwater resorts to see whale sharks. Local islands like Dhigurah are way more affordable and give access to the exact same waters.
- <br/>
+ <br/><br/>
 
 **Mafia Island, Tanzania**
 
@@ -176,7 +176,7 @@ Acoustic tag tracking here revealed that many of the sharks actually remain in t
 The sharks feed naturally, and the tourism industry is relatively small, although overcrowding will start to become more fo an issue as popularity grows.
 
 Mafia Island also has some great diving and relatively undeveloped beaches, and is really nice alternative to Zanzibar if you're looking for somewhere a little less touristy.
- <br/>
+ <br/><br/>
 
 **Nosy Be, Madagascar**
 
@@ -187,7 +187,7 @@ Mafia Island also has some great diving and relatively undeveloped beaches, and 
 The [Madagascar Whale Shark Project](https://www.madawhalesharks.org/) has been studying the population since 2016, and helped develop a code of conduct for whale shark tourism which was incorporated into Malagasy law in 2023). Also turns you’re meant to call things from Madagascar ‘Malagasy’, not ‘Madagascan’, so that’s a fun fact.
 
 Anyway, they’ve also helped establish a network of responsible marine tourism operators, making it easier to identify companies that are genuinely trying to minimise their impact, instead of just sticking ‘eco’ in their name.
- <br/>
+ <br/><br/>
 
 **Other places worth looking into**
 
@@ -196,7 +196,7 @@ Anyway, they’ve also helped establish a network of responsible marine tourism 
 - **Gladden Spit, Belize (March–June):** also historically known for aggregations, but sightings have become less reliable here too
 - **Djibouti (November–February):** important seasonal feeding ground for juveniles
 - **Utila, Honduras (particularly March–April):** relatively inexpensive diving destination where whale sharks can be encountered naturally
- <br/>
+<br/><br/>
 
 **So to summarise:**
 
@@ -214,7 +214,7 @@ Anyway, they’ve also helped establish a network of responsible marine tourism 
 | Nosy Be, Madagascar | September–December | Very good |
 
 These are just estimates of best visiting time though; obviously sharks aren’t that fussed about the Gregorian calendar.
-<br/>
+<br/><br/>
 
 **How to swim with whale sharks responsibly**
 
@@ -233,7 +233,7 @@ And when you're in the water:
 Also, if you do get photos, submit them to [Sharkbook](https://www.sharkbook.ai/)!
 
 Each whale shark has a unique pattern of spots, a bit like a fingerprint, which researchers can use to identify individuals and track their movements. Interestingly, some of the technology used was originally developed to identify stars in astronomical images, and was later adapted to identify whale sharks. So your photos can actually contribute to shark research.
-<br/>
+<br/><br/>
 
 **Is swimming with whale sharks ever completely ethical?**
 
