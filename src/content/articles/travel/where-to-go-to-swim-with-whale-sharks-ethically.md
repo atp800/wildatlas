@@ -88,11 +88,10 @@ There's a distinction between observing whale sharks that have naturally learnt 
 
 I wouldn't necessarily put Saleh Bay in quite the same category as Oslob, but it’s not really a natural whale shark experience.
 
-I would still massively recommend the Komodo tour though, and there are actually quite a few tours that go the opposite direction, from Flores to Lombok, which skip this stop and visit other islands instead. 
+I would still massively recommend the Komodo tour though, and there are actually quite a few tours that go the opposite direction, from Flores to Lombok, which skip this stop and visit other islands instead. Or you can do the typical route but just opt out of the whale shark swim. It might seem like a pointless protest, but from what I’ve heard increasingly people do stay out of the water or even complain, and the crew do notice. I wouldn’t be surprised if this leads to a few tours popping up that explicitly advertise that they don’t include whale sharks
 
 ![A photo from the viewpoint on Padar Island](../../../assets/travel/swim-ethically-with-whale-sharks/IMG_7242.jpeg "Padar Island viewpoint #medium")
 
-Or you can do the typical route but just opt out of the whale shark swim. It might see like a pointless protest, but from what I’ve heard increasingly people do stay out of the water or even complain, and the crew do notice. I wouldn’t be surprised if this leads to a few tours popping up that explicitly advertise that they don’t include whale sharks
 <br/><br/>
 
 **Ningaloo Reef, Western Australia**
