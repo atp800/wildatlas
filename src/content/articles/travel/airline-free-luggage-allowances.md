@@ -124,8 +124,8 @@ _Σ is the sum of checked luggage dimensions_
 | Aeroméxico | **Light/Basic** — P: NS; C: 55 × 40 × 25, where included, with a 10 kg combined cabin allowance | **Classic** — P: NS; C: 55 × 40 × 25, 10 kg combined; H: Σ158, 25 kg on qualifying routes |
 | GOL | **Basic** — P: 43 × 32 × 22, NS | **Light** — Same P; C: 55 × 35 × 25, 12 kg |
 | Azul | **Azul** — P: NS; C: 55 × 35 × 25, 10 kg | **Mais Azul** — Same P and C; H: Σ158, 23 kg |
- 
- 
+
+
 **Australia**
 
 | **Airline** | **Cheapest fare – included baggage** | **Standard Economy – included baggage** |
@@ -140,6 +140,7 @@ _Σ is the sum of checked luggage dimensions_
 **Asia**
 
 | **Airline** | **Cheapest fare – included baggage** | **Standard Economy – included baggage** |
+| ----- | ----- | ----- |
 | Air India | **Basic/Value** — P: 40 × 30 × 20, 3 kg; C: 55 × 40 × 20, 7 kg; H: Σ158, generally 15 kg domestic or 20–25 kg / 1 × 23 kg international | **Classic** — Same P and C; H: generally 20 kg domestic or 25–35 kg / 1–2 × 23 kg international |
 | ANA | **Economy discount** — P: 40 × 30 × 20; C: 55 × 40 × 25; 10 kg combined. H: domestic generally 20 kg, Σ203; international typically 1–2 × 23 kg, Σ158 | **Standard Economy** — Same P and C; H: generally 2 × 23 kg internationally. Smaller aircraft: C maximum 45 × 35 × 20 |
 | Korean Air | **Economy Saver** — P: 40 × 30 × 15; C: 55 × 40 × 20; 10 kg combined; H: Σ158, typically 1 × 23 kg | **Economy Standard** — Same P and C; H: Σ158, 1–2 × 23 kg depending on route |
