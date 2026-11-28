@@ -7,7 +7,7 @@ topic: luggage
 tags: travel,flights,luggage,airlines,airplanes,aeroplanes,economy,budget,backpacking
 author: Andreas
 highlighted: false
-status: draft
+status: live
 created_at: 2026-11-28
 published_at: 2026-11-28
 updated_at: 2026-11-28
