@@ -1,7 +1,7 @@
 ---
 title: Is Buying and Consumption Ever Ethical?
 image: ../../../assets/eco/consumption-ethics/Plastic Pollution.png
-description: And is it even possible to live ethically in the modern world?
+description: Is it even possible to live ethically in the modern world?
 section: eco
 topic: consumption
 tags: consumption,ethics,morality,emotivism,utilitarianism
@@ -20,8 +20,8 @@ Most people like to consider themselves fairly good people. Maybe they avoid buy
 
 When it comes to consumption, most of us also spend money on things we don’t really need, fly to other countries for our own enjoyment, and own a pretty sizeable collection of possessions which we could quite comfortably live without. And while we tend to think of ethical consumption in terms of _what_ we buy, what it’s made form and how it’s sourced, arguably the much bigger ethical question is whether we should be buying most of these things at all.
 
-
 Is it morally ok to spend £20 on a night out when that same £20 could be used to buy mosquito nets that would directly save people’s lives? And if it isn’t, are we genuinely just morally obligated to sell most of our possessions and give away all of our disposable income?
+<br/><br/>
 
 **The Drowning Child**
 
@@ -33,12 +33,15 @@ But what if, instead of being in the pond in front of you, the child is several 
 
 Is there actually much of a moral difference between the two scenarios?
 
+![Stick figure drawing of a drowning child next to a shoe](../../../assets/eco/consumption-ethics/IMG_4059.jpeg "but which is better?")
+
 Of course, in donating there’s generally no guarantee that your £80 is going to save a specific child. But there absolutely are effective charities you can donate to, where there’s a very real chance that your money will directly save someone’s life, or at least contribute to doing so. And there’s certainly an argument to be made that this chance is worth considerably more than a nice pair of shoes.
 
 Singer’s argument is essentially that if we can prevent something bad from happening without sacrificing something of comparable moral importance, we have a moral obligation to do so.
 It definitely makes sense, but if you actually apply it consistently, its implications are pretty extreme.
+<br/><br/>
 
-A**re you morally obligated to sell all your possessions?**
+**Are you morally obligated to sell all your possessions?**
 
 Let’s go back to the £20 night out. £20 probably isn’t going to get you particularly far on a night out in London, but it could fund several insecticide-treated mosquito nets, potentially protecting multiple people from a deadly disease for years.
 
@@ -57,6 +60,7 @@ Taken to its logical conclusion, Singer’s argument would mean selling most of 
 Interestingly though, this doesn’t necessarily mean selling literally _everything_. Keeping a laptop that allows you to work, investing in your education, or even spending money on things that keep you happy and motivated might ultimately allow you to do considerably more good over the course of your life. Giving away too much money and subsequently becoming dependent on other people obviously isn’t particular helpful either. 
 
 Actually, trying to gain as much money as possible, leveraging exponential growth to later maximise your impact, would arguably become the most ethical thing to do. To the point where you could _maybe_ even argue for abusing workers or customers to some extent, if the wealth you build as a result ultimately results in a more positive impact overall. But either way, this still obligates you to never actually spent money on yourself, besides the essentials for a healthy and sustainable life – which is far beyond the money even most of us non-millionaires would ideally like to spend.
+<br/><br/>
 
 **Can you actually consume ethically?**
 
@@ -71,10 +75,13 @@ And then there’s the clothes we wear, the energy we use  to heat our homes, a
 Even with a lot of products marketed as sustainable, in many cases the most environmentally friendly option is just not too buying them. A reusable water bottle is great if it stops you buying disposable plastic bottles, but if you already have a perfectly functional reusable bottle, buying a new, more sustainably manufactured one does more harm than just using a less eco-friendly one you already own.
 
 None of this is to say that trying to consume ethically is pointless though. Obviously, there are varying degrees of harm associated with different products, and the fact that both options have some negative impact doesn’t make them morally equivalent. But it’s pretty difficult to see how you can consume or participate in society without causing harm. Even withdrawing from modern society entirely would have its own impacts.
+<br/><br/>
 
 **Where do you draw the line?**
 
 So we’ve established it’s likely impossible to live without causing harm. And we’ve established there’s always more ethical ways to spend your money (and by extension, your time). So either you accept these conclusions and turn every waking moment into an effort to minimise suffering and maximise good. Or you choose somewhere to draw the line. 
+
+![A picture of a line drawn in sand on a beach](../../../assets/eco/consumption-ethics/Scraped%20Line%20Across%20Sunlit%20Sand.png "Line in the sand")
 
 A lot of this comes down to how you think about morality in general, and two key philosophical ideas in this context are utilitarianism and emotivism.
 
@@ -95,6 +102,7 @@ Soooo have a good think but, ultimately do what you want?
 That might seem like a kind of nihilistic conclusion, but I would bet that what most people want is still to be kind to the people around them, and to make an effort to have a generally positive impact on the world – even if they don’t literally maximise towards that.
 
 The important thing, I would say, is that you actually put some thought into where you draw it, rather than just letting your lifestyle dictate where it happens to fall.
+<br/><br/>
 
 **References:**
 
