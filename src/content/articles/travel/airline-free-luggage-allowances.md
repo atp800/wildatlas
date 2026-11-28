@@ -14,8 +14,7 @@ updated_at: 2026-11-28
 deleted_at: 'null'
 ---
 
-**Airline Allowance, Size and Weight Limits - By Airline and By Region, November 2026**
- 
+
 Here is pretty much everything you need to know for avoiding luggage fees.
 
 Of course, these limits may change over time, so bear that in mind, and if you know which airlines you’ll be flying with, I’d still recommend double checking on their websites. Also, while I’ve been pretty extensive in checking limits, there may be some (e.g. small regional carriers that I’ve missed.
@@ -27,6 +26,8 @@ It’s worth pointing out, these allowances don’t include your clothes or thin
 It’s also worth noting that there’s different levels of strictness and enforcement. I’ve backpacked across  South-East Asia 4 times now, and have routinely had a backpack that is both over-seized and over-weight. I’ve very rarely had it checked, and in cases where it has been I’ve just jammed my pockets full of toiletries and portable chargers, or squished it into the measurer. Of course, there if you do travel overweight/size there is an element of luck with enforcement and how strict a particular attendant is, but I will say from plenty of personal experience, with a backpack I’ve never had real problems, and the one time I did get weighed, sneakily stuffing my cargo trouser pockets before weighing let me dodge any extra fees.
 
 The dimensions take the lowest each of height, width and depth, so a bag within these restrictions should be accepted by all the checked airlines. The weight is the free allowance on the cheapest budget/economy fares. In most cases these minimum limits are for tickets that only include a personal item, but in some cases may include a cabin bag. For example, most Asian and Australian flights include either a cabin or checked bag.
+<br/>
+
  
 **Baggage Allowance Limits by Region**
 
@@ -59,9 +60,8 @@ _P = underseat/personal item; C = overhead cabin bag. “Combined” means share
 ·       **Middle East:** Nearly all airlines allow 7 kg, or include a cabin or hold bag, and most major airlines allow more than the practical minimum with 55 × 36 × 20 cm. Gulf Air has a Basic fare with a 45 x 40 x 30 cm, 7 kg limit on some routes. SalamAir sets the minimum with a 33 x 25 x 20 cm personal item on its cheapest, with a 5 kg limit
 
 ·       **Africa:** Kenya Airways' 55 × 35 × 25 cm and FlySafair's 56 × 36 × 23 cm set minimum dimension limits. Most airlines allow at least 7 kg and have cabin bags, but Mozambique’s LAM has a stricter 55 x 30 x 20 cm, 5 kg limit for Q400 aircraft Lite fare, without checked baggage.
- 
- 
- 
+ <br/>
+
 **Baggage Allowance Limits by Airline**
 
 _Σ is the sum of checked luggage dimensions_
