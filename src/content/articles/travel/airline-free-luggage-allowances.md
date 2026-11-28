@@ -61,6 +61,10 @@ _P = underseat/personal item; C = overhead cabin bag. “Combined” means share
 
  <br/>
 
+\------------------------------------------------------------------------------------
+
+ <br/>
+
 **Baggage Allowance Limits by Airline**
 
 _Σ is the sum of checked luggage dimensions_
